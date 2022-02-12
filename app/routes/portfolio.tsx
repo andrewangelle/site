@@ -86,10 +86,10 @@ export default function Portfolio(){
       <SplitRight>
         <NavList>
           <NavItem>
-            <Link to='/'>Home</Link>
+            <Link to='/' style={{color: 'white', textDecoration: 'none'}}>Home</Link>
           </NavItem>
           <NavItem>
-            <Link to='/contact'>Contact</Link>
+            <Link to='/contact' style={{color: 'white', textDecoration: 'none'}}>Contact</Link>
           </NavItem>
         </NavList>
       </SplitRight>

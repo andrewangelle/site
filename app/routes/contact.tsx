@@ -45,10 +45,10 @@ export default function Contact(){
       <SplitRight>
         <NavList>
           <NavItem>
-            <Link to='/'>Home</Link>
+            <Link to='/' style={{color: 'white', textDecoration: 'none'}}>Home</Link>
           </NavItem>
           <NavItem>
-            <Link to='/portfolio'>Portfolio</Link>
+            <Link to='/portfolio' style={{color: 'white', textDecoration: 'none'}}>Portfolio</Link>
           </NavItem>
         </NavList>
       </SplitRight>

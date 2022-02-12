@@ -24,10 +24,10 @@ export default function Index() {
       <SplitRight>
         <NavList>
           <NavItem>
-            <Link to='/portfolio'>Portfolio</Link>
+            <Link to='/portfolio' style={{color: 'white', textDecoration: 'none'}}>Portfolio</Link>
           </NavItem>
           <NavItem>
-            <Link to='/contact'>Contact</Link>
+            <Link to='/contact' style={{color: 'white', textDecoration: 'none'}}>Contact</Link>
           </NavItem>
         </NavList>
       </SplitRight>
