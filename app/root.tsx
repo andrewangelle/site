@@ -8,6 +8,7 @@ import {
 } from "remix";
 import type { MetaFunction } from "remix";
 import { NotFound } from "./components";
+import GlobalFonts from "./styles/GlobalFonts";
 
 export const meta: MetaFunction = () => {
   return { title: "Andrew Angelle: front end software developer" };
@@ -34,6 +35,7 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
+        <GlobalFonts />
         {process.env.NODE_ENV === "development" && <LiveReload />}
       </body>
     </html>

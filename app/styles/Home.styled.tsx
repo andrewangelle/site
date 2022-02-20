@@ -56,7 +56,7 @@ export const NameWrapper = styled.div`
 export const NameText = styled.div` 
   font-size: 2.5rem;
   font-weight: 3;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Montserrat', sans-serif;
 
   @media screen and (max-width: 550px) {
     font-size: 2rem;
@@ -64,6 +64,7 @@ export const NameText = styled.div`
 `;
 
 export const NameTitle = styled.div` 
+  font-family: 'Helvetica Neue';
   font-size: 1.25rem;
   color: #8B0000;
 
