@@ -4,14 +4,20 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+import { NotFound } from "./components";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Andrew Angelle: front end software developer" };
 };
 
+export function CatchBoundary() {
+  return (
+    <NotFound />
+  );
+}
 export default function App() {
   return (
     <html lang="en">

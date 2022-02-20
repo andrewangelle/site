@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-export const Card = styled.div` 
+export const Card = styled.div`
+  height: 30vh;
   position: relative;
   box-sizing: border-box;
   padding: 1rem;
@@ -19,6 +20,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-content: center;
 
   h3 {
     margin: 0;
