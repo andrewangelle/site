@@ -1,14 +1,8 @@
 version: '3.3'
 services:
   web:
-    build:
-      context: ./
-      target: production
-    volumes:
-      - .:/src
-    command: npm start
+    image: andrewangelle/site
+    restart: always
     ports:
-      - "6006:6006"
-    environment:
-      NODE_ENV: production
-      DEBUG: andrewangelle-site:*
+      - "3000:3000"
+    command: npm start

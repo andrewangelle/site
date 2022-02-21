@@ -5,9 +5,9 @@
   "license": "",
   "scripts": {
     "build": "remix build",
-    "dev": "PORT=6006 remix dev",
+    "dev": "remix dev",
     "postinstall": "remix setup node",
-    "start": "PORT=6006 remix-serve build"
+    "start": "remix-serve build"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.0.0",

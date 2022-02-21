@@ -2,7 +2,7 @@ FROM node:14-alpine as base
 
 WORKDIR /
 COPY package*.json /
-EXPOSE 6006
+EXPOSE 3000
 
 FROM base as production
 ENV NODE_ENV=production

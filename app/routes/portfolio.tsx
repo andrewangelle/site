@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
-import { Link, LoaderFunction, useLoaderData, useTransition } from 'remix';
+import { Link, LoaderFunction, useLoaderData, useTransition, useCatch } from 'remix';
+import { CatchBoundary } from '~/components';
 import { PortfolioCard } from '~/components/PortfolioCard';
 
 import {  Wrapper, SplitLeft, SplitRight, NavItem, NameWrapper, NavList } from '~/styles';
@@ -12,6 +13,12 @@ export type PortfolioData = {
   githubLink: string;
   demoLink?: string;
   demoText?: string;
+}
+
+export function ErrorBoundary(){
+  return(
+    <CatchBoundary />
+  )
 }
 
 export const loader: LoaderFunction = async args => {
