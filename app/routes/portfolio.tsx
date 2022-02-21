@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Link, LoaderFunction, useLoaderData, useTransition, useCatch } from 'remix';
+import { Link, LoaderFunction, useLoaderData, useTransition, useCatch, useLocation } from 'remix';
 import { CatchBoundary } from '~/components';
 import { PortfolioCard } from '~/components/PortfolioCard';
 
@@ -15,9 +15,9 @@ export type PortfolioData = {
   demoText?: string;
 }
 
-export function ErrorBoundary(){
+export function ErrorBoundary({error}: {error: Error}){
   return(
-    <CatchBoundary />
+    <CatchBoundary error={error} />
   )
 }
 

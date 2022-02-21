@@ -1,5 +1,5 @@
 {
-  "version": "826c3046",
+  "version": "036bfa1e",
   "entry": {
     "module": "/build/entry.client-3J4WGJG2.js",
     "imports": [
@@ -48,7 +48,7 @@
       "id": "routes/portfolio",
       "parentId": "root",
       "path": "portfolio",
-      "module": "/build/routes/portfolio-ULMRPM5W.js",
+      "module": "/build/routes/portfolio-AXHGXGUN.js",
       "imports": [
         "/build/_shared/chunk-L4TBWLHP.js"
       ],
@@ -78,5 +78,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-826C3046.js"
+  "url": "/build/manifest-036BFA1E.js"
 }
