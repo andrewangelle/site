@@ -1,18 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Icons from '@fortawesome/free-brands-svg-icons'
 import * as Iconz from '@fortawesome/free-solid-svg-icons'
-import { Link, LoaderFunction, useCatch, useLoaderData, useTransition } from "remix";
+import { Link, LoaderFunction, useLoaderData, useTransition } from "remix";
 
 import { Wrapper, SplitLeft, SplitRight, NavItem, NavList, ContactWrapper } from "~/styles";
-import { ContactIconData } from "./resources/contact";
 import { CatchBoundary } from "~/components";
-
-
-export function ErrorBoundary({error}: {error: Error}){
-  return (
-    <CatchBoundary error={error} />
-  )
-}
+import { ContactIconData } from "~/utils";
 
 const contactDataPath = 'http://andrewangelle.com/resources/contact';
 
@@ -20,6 +13,12 @@ export const loader: LoaderFunction = async args => {
   const response = await fetch(contactDataPath);
   const data = await response.json();
   return data
+}
+
+export function ErrorBoundary({error}: {error: Error}){
+  return (
+    <CatchBoundary error={error} />
+  )
 }
 
 export default function Contact(){

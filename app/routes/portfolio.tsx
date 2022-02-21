@@ -1,30 +1,22 @@
 import { Fragment } from 'react';
-import { Link, LoaderFunction, useLoaderData, useTransition, useCatch, useLocation } from 'remix';
-import { CatchBoundary } from '~/components';
-import { PortfolioCard } from '~/components/PortfolioCard';
+import { Link, LoaderFunction, useLoaderData, useTransition } from 'remix';
 
-import {  Wrapper, SplitLeft, SplitRight, NavItem, NameWrapper, NavList } from '~/styles';
+import { CatchBoundary, PortfolioCard } from '~/components';
+import { Wrapper, SplitLeft, SplitRight, NavItem, NameWrapper, NavList } from '~/styles';
+import { PortfolioData } from '~/utils';
 
 const portfolioDataPath = 'http://andrewangelle.com/resources/portfolio';
 
-export type PortfolioData = {
-  title: string;
-  description: string;
-  githubLink: string;
-  demoLink?: string;
-  demoText?: string;
+export const loader: LoaderFunction = async args => {
+  const response = await fetch(portfolioDataPath);
+  const data = await response.json();
+  return data
 }
 
 export function ErrorBoundary({error}: {error: Error}){
   return(
     <CatchBoundary error={error} />
   )
-}
-
-export const loader: LoaderFunction = async args => {
-  const response = await fetch(portfolioDataPath);
-  const data = await response.json();
-  return data
 }
 
 export default function Portfolio(){

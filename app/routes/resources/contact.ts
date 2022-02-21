@@ -1,19 +1,13 @@
-export type ContactIconData = {
-  href: string;
-  iconName: string;
-}
+import { contactIcons } from "~/utils/constants";
 
 export async function loader(){
-  const contactIcons: ContactIconData[] = [
-    {href: 'http://www.github.com/andrewangelle', iconName: 'faGithub'},
-    {href: 'https://www.linkedin.com/in/andrew-angelle-21299774/', iconName: 'faLinkedin'},
-    {href: 'mailto:andrewangelle@gmail.com?&subject=Development Services Inquiry', iconName: 'faEnvelopeSquare'}
-  ];
-  
-  return new Response(JSON.stringify(contactIcons), {
+  const body = JSON.stringify(contactIcons);
+  const options = {
     status: 200,
     headers: {
       "Content-Type": "application/json"
     }
-  })
+  };
+
+  return new Response(body, options)
 }
