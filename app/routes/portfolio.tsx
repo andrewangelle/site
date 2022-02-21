@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Link, LoaderFunction, useLoaderData } from 'remix';
+import { Link, LoaderFunction, useLoaderData, useTransition } from 'remix';
 import { PortfolioCard } from '~/components/PortfolioCard';
 
 import {  Wrapper, SplitLeft, SplitRight, NavItem, NameWrapper, NavList } from '~/styles';
@@ -21,20 +21,24 @@ export const loader: LoaderFunction = async args => {
 }
 
 export default function Portfolio(){
+  const transition = useTransition();
   const data = useLoaderData<PortfolioData[]>();
   return (
     <Wrapper>
       <SplitLeft>
         <NameWrapper>
-          <section>
-            {data.map((portfolioData, index) => (
-              <Fragment key={index}>
-                {index === 0 && <hr />}
-                  <PortfolioCard {...portfolioData} />
-                <hr />
-              </Fragment>
-            ))}
-          </section>
+          {transition.state === 'loading' && null}
+          {transition.state !== 'loading' && (
+            <section>
+              {data.map((portfolioData, index) => (
+                <Fragment key={index}>
+                  {index === 0 && <hr />}
+                    <PortfolioCard {...portfolioData} />
+                  <hr />
+                </Fragment>
+              ))}
+            </section>
+          )}
         </NameWrapper>
       </SplitLeft>
       
