@@ -1,0 +1,82 @@
+{
+  "version": "826c3046",
+  "entry": {
+    "module": "/build/entry.client-3J4WGJG2.js",
+    "imports": [
+      "/build/_shared/chunk-PPMEHOWR.js",
+      "/build/_shared/chunk-RESDZ3PJ.js"
+    ]
+  },
+  "routes": {
+    "root": {
+      "id": "root",
+      "path": "",
+      "module": "/build/root-MAW4XL5S.js",
+      "imports": [
+        "/build/_shared/chunk-L7M46JH2.js",
+        "/build/_shared/chunk-7C7CO6M5.js"
+      ],
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": true,
+      "hasErrorBoundary": false
+    },
+    "routes/contact": {
+      "id": "routes/contact",
+      "parentId": "root",
+      "path": "contact",
+      "module": "/build/routes/contact-CAR4FHRD.js",
+      "imports": [
+        "/build/_shared/chunk-L4TBWLHP.js"
+      ],
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": true
+    },
+    "routes/index": {
+      "id": "routes/index",
+      "parentId": "root",
+      "index": true,
+      "module": "/build/routes/index-C7MPS5UJ.js",
+      "hasAction": false,
+      "hasLoader": false,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/portfolio": {
+      "id": "routes/portfolio",
+      "parentId": "root",
+      "path": "portfolio",
+      "module": "/build/routes/portfolio-ULMRPM5W.js",
+      "imports": [
+        "/build/_shared/chunk-L4TBWLHP.js"
+      ],
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": true
+    },
+    "routes/resources/contact": {
+      "id": "routes/resources/contact",
+      "parentId": "root",
+      "path": "resources/contact",
+      "module": "/build/routes/resources/contact-6AR6NELA.js",
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/resources/portfolio": {
+      "id": "routes/resources/portfolio",
+      "parentId": "root",
+      "path": "resources/portfolio",
+      "module": "/build/routes/resources/portfolio-T74WDMND.js",
+      "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    }
+  },
+  "url": "/build/manifest-826C3046.js"
+}
