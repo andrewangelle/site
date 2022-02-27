@@ -1,18 +1,13 @@
-import { useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useTransition } from 'remix';
 
-import { StyledContactForm, SuccessMessage, SuccessX } from '~/styles'
-
-import styled from 'styled-components';
-
-
+import { ErrorMessage, StyledContactForm, StyledFieldSet, SuccessMessage, SuccessX } from '~/styles'
 
 export function ContactForm(){
   const transition = useTransition();
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
-
   const [requestState, setRequestState] = useState('idle');
 
   async function submitForm(){
@@ -22,23 +17,29 @@ export function ContactForm(){
     return data
   }
 
-  function onSubmit(){
-    return submitForm()
-      .then(res => {
+  async function onFormSubmission(){
+    try {
+      const response = await submitForm();
+      if(response.message === 'success'){
         setRequestState('success')
-        setName('')
-        setSubject('')
-        setMessage('')
+      }
 
-      })
-      .catch(e => console.log(e))
+      if(response.message === 'error'){
+        setRequestState('error')
+      }
+
+      setName('')
+      setSubject('')
+      setMessage('')
+    } catch (e) {
+      setRequestState('error')
+    }
   }
 
-  useEffect(() => {
-    if(transition.state === 'submitting'){
-      setRequestState('submitting');
-    }
-  }, [transition, setRequestState]);
+  function onSubmit(event?: FormEvent<HTMLFormElement>){
+    event?.preventDefault();
+    return onFormSubmission()
+  }
 
   return (
     <StyledContactForm onSubmit={onSubmit}>
@@ -48,10 +49,15 @@ export function ContactForm(){
           <SuccessX onClick={() => setRequestState('idle')}>X</SuccessX>
         </SuccessMessage>
       )}
-      <fieldset 
-        disabled={transition.state === 'submitting'} 
-        style={{display: 'flex', flexDirection: 'column', border: 'none'}}
-      >
+
+      {requestState === 'error' && (
+        <ErrorMessage>
+          <div>Error!</div>
+          <SuccessX onClick={() => setRequestState('idle')}>X</SuccessX>
+        </ErrorMessage>
+      )}
+
+      <StyledFieldSet disabled={transition.state === 'submitting'} >
         <label htmlFor='name'>Name</label>
         <input
           name='name' 
@@ -75,7 +81,8 @@ export function ContactForm(){
           value={message} 
           onChange={event => setMessage(event.target.value)} 
         />
-      </fieldset>
+      </StyledFieldSet>
+
       <button 
         type='submit' 
         disabled={transition.state === 'submitting'}

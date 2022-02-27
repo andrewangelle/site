@@ -24,17 +24,19 @@ export default function Contact(){
   return (
     <Wrapper>
       <SplitLeft>
-        <CenterItems>
-          <div>
-            <ContactWrapper>
-              {transition.state === 'loading' && null}
-              {transition.state !== 'loading' && data.map((iconData, index) => (
-                <ContactPageIcon key={index} {...iconData} index={index} />
-              ))}  
-            </ContactWrapper>
-            <ContactForm />
-          </div>
-        </CenterItems>
+        {transition.state === 'loading' && null}
+        {transition.state !== 'loading' && (
+          <CenterItems>
+            <div>
+              <ContactWrapper>
+                {data.map((iconData, index) => (
+                  <ContactPageIcon key={index} {...iconData} index={index} />
+                ))}  
+              </ContactWrapper>
+              <ContactForm />
+            </div>
+          </CenterItems>
+        )}
       </SplitLeft>
     
       <SplitRight>

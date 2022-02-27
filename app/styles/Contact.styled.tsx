@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const ContactWrapper = styled.div`
   background: #f0f0f0;
   width: 72%;
-  /* height: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,11 +17,6 @@ export const ContactWrapper = styled.div`
     flex-direction: column;
     padding: 0.5rem;
   }
-`;
-
-export const ContactFormWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
 
 export const CenterItems = styled.div` 
@@ -46,10 +40,11 @@ export const StyledContactForm = styled(Form)`
     margin-bottom: 1rem;
     border-radius: 5px;
     border-width: 1px;
+    padding: 8px;
   }
 
   input[type='textarea'] {
-    padding: 0px 100px 100px 0px;  
+    padding: 8px 100px 100px 8px;  
   }
 
   button {
@@ -59,7 +54,18 @@ export const StyledContactForm = styled(Form)`
     padding: 8px;
     margin: 10px auto;
     align-self: flex-end;
+    cursor: pointer;
+
+    &:active {
+      background: lightskyblue;
+    }
   }
+`;
+
+export const StyledFieldSet = styled.fieldset` 
+  display: flex; 
+  flex-direction: column; 
+  border: none;
 `;
 
 export const SuccessMessage = styled.div` 
@@ -70,6 +76,13 @@ export const SuccessMessage = styled.div`
   padding: 8px;
   display: flex;
   justify-content: space-between;
+  border-radius: 5px;
+  font-weight: 600;
+  font-family: Montserrat;
+`;
+
+export const ErrorMessage = styled(SuccessMessage)`
+  background: indianred;
 `
 
 export const SuccessX = styled.div` 
