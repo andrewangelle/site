@@ -1,10 +1,8 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import * as Icons from '@fortawesome/free-brands-svg-icons'
-import * as Iconz from '@fortawesome/free-solid-svg-icons'
 import { Link, LoaderFunction, useLoaderData, useTransition } from "remix";
 
-import { Wrapper, SplitLeft, SplitRight, NavItem, NavList, ContactWrapper } from "~/styles";
-import { CatchBoundary } from "~/components";
+import { Wrapper, SplitLeft, SplitRight, NavItem, NavList, ContactWrapper, CenterItems } from "~/styles";
+import { CatchBoundary, ContactForm } from "~/components";
+import { ContactPageIcon } from "~/components/ContactPageIcon";
 import { ContactIconData } from "~/utils";
 
 const contactDataPath = 'http://andrewangelle.com/resources/contact';
@@ -27,29 +25,19 @@ export default function Contact(){
   return (
     <Wrapper>
       <SplitLeft>
-        <ContactWrapper>
-          {transition.state === 'loading' && null}
-          {transition.state !== 'loading' && data.map(({href, iconName}, index) => {
-            return (
-              <a
-                key={iconName}
-                href={href}
-                target="_blank"
-                style={{ color: 'inherit' }}
-              >
-                <FontAwesomeIcon
-                  icon={
-                    // @ts-expect-error
-                    index === 2 ? Iconz[iconName] : Icons[iconName]
-                  }
-                  size="6x"
-                />
-              </a>            
-            )
-          })}
-        </ContactWrapper>
+        <CenterItems>
+          <div>
+            <ContactWrapper>
+              {transition.state === 'loading' && null}
+              {transition.state !== 'loading' && data.map((iconData, index) => (
+                <ContactPageIcon key={index} {...iconData} index={index} />
+              ))}  
+            </ContactWrapper>
+            <ContactForm />
+          </div>
+        </CenterItems>
       </SplitLeft>
-      
+    
       <SplitRight>
         <NavList>
           <NavItem>
@@ -61,5 +49,5 @@ export default function Contact(){
         </NavList>
       </SplitRight>
     </Wrapper>
-  );
+  )
 }

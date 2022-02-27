@@ -1,20 +1,21 @@
 {
-  "version": "036bfa1e",
+  "version": "8d38f44a",
   "entry": {
-    "module": "/build/entry.client-3J4WGJG2.js",
+    "module": "/build/entry.client-S4BKTCSJ.js",
     "imports": [
-      "/build/_shared/chunk-PPMEHOWR.js",
-      "/build/_shared/chunk-RESDZ3PJ.js"
+      "/build/_shared/chunk-3XJX42ES.js",
+      "/build/_shared/chunk-YHIFKH3U.js",
+      "/build/_shared/chunk-YVIHDCKB.js"
     ]
   },
   "routes": {
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-MAW4XL5S.js",
+      "module": "/build/root-FXGZDOCJ.js",
       "imports": [
-        "/build/_shared/chunk-L7M46JH2.js",
-        "/build/_shared/chunk-7C7CO6M5.js"
+        "/build/_shared/chunk-L6SDECAO.js",
+        "/build/_shared/chunk-EXGLIB2J.js"
       ],
       "hasAction": false,
       "hasLoader": false,
@@ -25,9 +26,9 @@
       "id": "routes/contact",
       "parentId": "root",
       "path": "contact",
-      "module": "/build/routes/contact-CAR4FHRD.js",
+      "module": "/build/routes/contact-CKSXC4NM.js",
       "imports": [
-        "/build/_shared/chunk-L4TBWLHP.js"
+        "/build/_shared/chunk-SHRENNOP.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -38,7 +39,7 @@
       "id": "routes/index",
       "parentId": "root",
       "index": true,
-      "module": "/build/routes/index-C7MPS5UJ.js",
+      "module": "/build/routes/index-SFZIR2MC.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": false,
@@ -48,9 +49,9 @@
       "id": "routes/portfolio",
       "parentId": "root",
       "path": "portfolio",
-      "module": "/build/routes/portfolio-AXHGXGUN.js",
+      "module": "/build/routes/portfolio-33XTUBTS.js",
       "imports": [
-        "/build/_shared/chunk-L4TBWLHP.js"
+        "/build/_shared/chunk-SHRENNOP.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -61,8 +62,21 @@
       "id": "routes/resources/contact",
       "parentId": "root",
       "path": "resources/contact",
-      "module": "/build/routes/resources/contact-6AR6NELA.js",
+      "module": "/build/routes/resources/contact-MOICFUTY.js",
+      "imports": [
+        "/build/_shared/chunk-S53TZMMV.js"
+      ],
       "hasAction": false,
+      "hasLoader": true,
+      "hasCatchBoundary": false,
+      "hasErrorBoundary": false
+    },
+    "routes/resources/contact-form": {
+      "id": "routes/resources/contact-form",
+      "parentId": "root",
+      "path": "resources/contact-form",
+      "module": "/build/routes/resources/contact-form-RJ76PA62.js",
+      "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
@@ -71,12 +85,15 @@
       "id": "routes/resources/portfolio",
       "parentId": "root",
       "path": "resources/portfolio",
-      "module": "/build/routes/resources/portfolio-T74WDMND.js",
+      "module": "/build/routes/resources/portfolio-S2CWS5DP.js",
+      "imports": [
+        "/build/_shared/chunk-S53TZMMV.js"
+      ],
       "hasAction": false,
       "hasLoader": true,
       "hasCatchBoundary": false,
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-036BFA1E.js"
+  "url": "/build/manifest-8D38F44A.js"
 }

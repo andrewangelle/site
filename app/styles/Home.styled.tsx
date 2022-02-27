@@ -25,6 +25,7 @@ export const SplitLeft = styled.div`
   height: 100%;
   width: 72%;
   background-color: #f0f2f5;
+  overflow: scroll;
 `
 
 export const SplitRight = styled.div`
