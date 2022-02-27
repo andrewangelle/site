@@ -9,7 +9,7 @@ export function ContactForm(){
 
   function onSubmit(){
     const body = JSON.stringify({name, subject, message})
-    fetch('/resources/contact-form', {method: 'post', body})
+    fetch('http://andrewangelle.com/resources/contact-form', {method: 'post', body})
   }
 
   return (

@@ -1,5 +1,5 @@
 {
-  "version": "8d38f44a",
+  "version": "3e7280b2",
   "entry": {
     "module": "/build/entry.client-S4BKTCSJ.js",
     "imports": [
@@ -26,7 +26,7 @@
       "id": "routes/contact",
       "parentId": "root",
       "path": "contact",
-      "module": "/build/routes/contact-CKSXC4NM.js",
+      "module": "/build/routes/contact-YUFMUEF4.js",
       "imports": [
         "/build/_shared/chunk-SHRENNOP.js"
       ],
@@ -75,7 +75,7 @@
       "id": "routes/resources/contact-form",
       "parentId": "root",
       "path": "resources/contact-form",
-      "module": "/build/routes/resources/contact-form-RJ76PA62.js",
+      "module": "/build/routes/resources/contact-form-7YCNW5DR.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -95,5 +95,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-8D38F44A.js"
+  "url": "/build/manifest-3E7280B2.js"
 }

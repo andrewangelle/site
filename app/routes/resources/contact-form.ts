@@ -19,6 +19,7 @@ export async function action({request}: {request: Request}){
   const options = {
     status: 200,
     headers: {
+      "Access-Controll-Allow-Origin": "*",
       "Content-Type": "application/json"
     }
   };
