@@ -1,17 +1,16 @@
 import { redirect } from 'remix'
 import sendgrid from '@sendgrid/mail';
 
-const msg = {
-  to: 'andrewangelle@gmail.com', // Change to your recipient
-  from: 'andrewangelle.com', // Change to your verified sender
-  subject: 'Sending with SendGrid is Fun',
-  text: 'and easy to do anywhere, even with Node.js',
-  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-}
-
 export async function action({request}: {request: Request}){
+  const data = await request.json();
+  const msg = {
+    to: 'andrewangelle@gmail.com', // Change to your recipient
+    from: `websiteMessage-${data.name}@andrewangelle.com`, // Change to your verified sender
+    subject: data.subject,
+    text: data.message
+  }
   sendgrid.setApiKey(process.env.SEND_GRID_API_KEY!)
-  await sendgrid.send(msg)
+  await sendgrid.send(msg).then(res => res).catch(e => e.message)
 
 
   const body = JSON.stringify({});

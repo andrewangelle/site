@@ -1,8 +1,7 @@
 import { Link, LoaderFunction, useLoaderData, useTransition } from "remix";
 
 import { Wrapper, SplitLeft, SplitRight, NavItem, NavList, ContactWrapper, CenterItems } from "~/styles";
-import { CatchBoundary, ContactForm } from "~/components";
-import { ContactPageIcon } from "~/components/ContactPageIcon";
+import { CatchBoundary, ContactForm, ContactPageIcon } from "~/components";
 import { ContactIconData } from "~/utils";
 
 const contactDataPath = 'http://andrewangelle.com/resources/contact';
