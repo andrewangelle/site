@@ -1,6 +1,14 @@
 import { useState } from 'react';
-
+import sendgrid from '@sendgrid/mail';
 import { StyledContactForm } from '~/styles'
+
+const msg = {
+  to: 'andrewangelle@gmail.com', // Change to your recipient
+  from: 'andrewangelle.com', // Change to your verified sender
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+}
 
 export function ContactForm(){
   const [name, setName] = useState('');
@@ -9,7 +17,8 @@ export function ContactForm(){
 
   function onSubmit(){
     const body = JSON.stringify({name, subject, message})
-    fetch('http://andrewangelle.com/resources/contact-form', {method: 'post', body})
+    sendgrid.setApiKey(process.env.SEND_GRID_API_KEY!)
+    sendgrid.send(msg).then(res => console.log(res)).catch(e => console.log(e))
   }
 
   return (

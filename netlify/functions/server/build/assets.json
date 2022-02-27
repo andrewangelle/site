@@ -1,5 +1,5 @@
 {
-  "version": "3e7280b2",
+  "version": "d1deb689",
   "entry": {
     "module": "/build/entry.client-S4BKTCSJ.js",
     "imports": [
@@ -26,8 +26,9 @@
       "id": "routes/contact",
       "parentId": "root",
       "path": "contact",
-      "module": "/build/routes/contact-YUFMUEF4.js",
+      "module": "/build/routes/contact-5GCI5S6F.js",
       "imports": [
+        "/build/_shared/chunk-VCBWZY6R.js",
         "/build/_shared/chunk-SHRENNOP.js"
       ],
       "hasAction": false,
@@ -75,7 +76,10 @@
       "id": "routes/resources/contact-form",
       "parentId": "root",
       "path": "resources/contact-form",
-      "module": "/build/routes/resources/contact-form-7YCNW5DR.js",
+      "module": "/build/routes/resources/contact-form-GGUX42X2.js",
+      "imports": [
+        "/build/_shared/chunk-VCBWZY6R.js"
+      ],
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -95,5 +99,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-3E7280B2.js"
+  "url": "/build/manifest-D1DEB689.js"
 }
