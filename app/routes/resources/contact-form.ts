@@ -10,11 +10,9 @@ const msg = {
 }
 
 export async function action({request}: {request: Request}){
-  console.log(await request.json())
   sendgrid.setApiKey(process.env.SEND_GRID_API_KEY!)
-  const response = await sendgrid.send(msg)
-  console.log(response[0].statusCode)
-  console.log(response[0].headers)
+  await sendgrid.send(msg)
+
 
   const body = JSON.stringify({});
   
