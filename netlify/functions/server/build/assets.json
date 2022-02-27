@@ -1,10 +1,10 @@
 {
-  "version": "854ec558",
+  "version": "ba21c167",
   "entry": {
-    "module": "/build/entry.client-S4BKTCSJ.js",
+    "module": "/build/entry.client-6SJZYPHZ.js",
     "imports": [
-      "/build/_shared/chunk-3XJX42ES.js",
-      "/build/_shared/chunk-YHIFKH3U.js",
+      "/build/_shared/chunk-4JU4HMXT.js",
+      "/build/_shared/chunk-WQEBX6FO.js",
       "/build/_shared/chunk-YVIHDCKB.js"
     ]
   },
@@ -12,10 +12,10 @@
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-FXGZDOCJ.js",
+      "module": "/build/root-AG7BXLNH.js",
       "imports": [
-        "/build/_shared/chunk-L6SDECAO.js",
-        "/build/_shared/chunk-EXGLIB2J.js"
+        "/build/_shared/chunk-IEBTWUDU.js",
+        "/build/_shared/chunk-MGG7HQQN.js"
       ],
       "hasAction": false,
       "hasLoader": false,
@@ -26,9 +26,9 @@
       "id": "routes/contact",
       "parentId": "root",
       "path": "contact",
-      "module": "/build/routes/contact-6OV7Z5XA.js",
+      "module": "/build/routes/contact-DAOJ3GIF.js",
       "imports": [
-        "/build/_shared/chunk-SHRENNOP.js"
+        "/build/_shared/chunk-RUAO7P3Q.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -39,7 +39,7 @@
       "id": "routes/index",
       "parentId": "root",
       "index": true,
-      "module": "/build/routes/index-SFZIR2MC.js",
+      "module": "/build/routes/index-3MGUJEN4.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": false,
@@ -49,9 +49,9 @@
       "id": "routes/portfolio",
       "parentId": "root",
       "path": "portfolio",
-      "module": "/build/routes/portfolio-33XTUBTS.js",
+      "module": "/build/routes/portfolio-YYOD765F.js",
       "imports": [
-        "/build/_shared/chunk-SHRENNOP.js"
+        "/build/_shared/chunk-RUAO7P3Q.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -75,7 +75,7 @@
       "id": "routes/resources/contact-form",
       "parentId": "root",
       "path": "resources/contact-form",
-      "module": "/build/routes/resources/contact-form-YVUAO7CO.js",
+      "module": "/build/routes/resources/contact-form-A5PTFCNU.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -95,5 +95,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-854EC558.js"
+  "url": "/build/manifest-BA21C167.js"
 }

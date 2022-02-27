@@ -43,6 +43,7 @@ export const StyledContactForm = styled(Form)`
   }
 
   input {
+    margin-bottom: 1rem;
     border-radius: 5px;
     border-width: 1px;
   }
@@ -60,3 +61,17 @@ export const StyledContactForm = styled(Form)`
     align-self: flex-end;
   }
 `;
+
+export const SuccessMessage = styled.div` 
+  width: 100%;
+  height: 25px;
+  margin: auto;
+  background: lightgreen;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+`
+
+export const SuccessX = styled.div` 
+  cursor: pointer;
+`

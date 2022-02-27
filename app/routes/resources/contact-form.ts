@@ -13,7 +13,7 @@ export async function action({request}: {request: Request}){
   await sendgrid.send(msg).then(res => res).catch(e => e.message)
 
 
-  const body = JSON.stringify({});
+  const body = JSON.stringify({ message: 'success'});
   
   const options = {
     status: 200,
