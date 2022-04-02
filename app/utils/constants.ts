@@ -39,5 +39,12 @@ export const portfolioData: PortfolioData[] = [
     githubLink: 'https://github.com/andrewangelle/websynth',
     demoLink: '',
     demoText: '' 
-  }
+  },
+  {
+    title: 'Stacks - a trello clone',
+    description: 'A full stack task management web app built with React, Remix, Supabase',
+    githubLink: 'https://github.com/andrewangelle/stacks',
+    demoLink: 'https://stacks-trello-clone.netlify.app/',
+    demoText: 'Demo' 
+  }, 
 ];

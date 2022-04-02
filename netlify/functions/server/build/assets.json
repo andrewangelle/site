@@ -1,10 +1,10 @@
 {
-  "version": "48bcd8aa",
+  "version": "9e195a48",
   "entry": {
-    "module": "/build/entry.client-PSDDTPKJ.js",
+    "module": "/build/entry.client-S4BKTCSJ.js",
     "imports": [
-      "/build/_shared/chunk-DOUP52G5.js",
-      "/build/_shared/chunk-QETNBUTW.js",
+      "/build/_shared/chunk-3XJX42ES.js",
+      "/build/_shared/chunk-YHIFKH3U.js",
       "/build/_shared/chunk-YVIHDCKB.js"
     ]
   },
@@ -12,10 +12,10 @@
     "root": {
       "id": "root",
       "path": "",
-      "module": "/build/root-RGTB4W3Q.js",
+      "module": "/build/root-FXGZDOCJ.js",
       "imports": [
-        "/build/_shared/chunk-F27XUKHR.js",
-        "/build/_shared/chunk-ROPK7OGR.js"
+        "/build/_shared/chunk-L6SDECAO.js",
+        "/build/_shared/chunk-EXGLIB2J.js"
       ],
       "hasAction": false,
       "hasLoader": false,
@@ -26,9 +26,9 @@
       "id": "routes/contact",
       "parentId": "root",
       "path": "contact",
-      "module": "/build/routes/contact-XDDMW6G6.js",
+      "module": "/build/routes/contact-IHC5D7P6.js",
       "imports": [
-        "/build/_shared/chunk-2MSTPBFK.js"
+        "/build/_shared/chunk-SHRENNOP.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -39,7 +39,7 @@
       "id": "routes/index",
       "parentId": "root",
       "index": true,
-      "module": "/build/routes/index-LHJRTEKX.js",
+      "module": "/build/routes/index-SFZIR2MC.js",
       "hasAction": false,
       "hasLoader": false,
       "hasCatchBoundary": false,
@@ -49,9 +49,9 @@
       "id": "routes/portfolio",
       "parentId": "root",
       "path": "portfolio",
-      "module": "/build/routes/portfolio-UZTRBWNG.js",
+      "module": "/build/routes/portfolio-QUODMAQZ.js",
       "imports": [
-        "/build/_shared/chunk-2MSTPBFK.js"
+        "/build/_shared/chunk-SHRENNOP.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -62,9 +62,9 @@
       "id": "routes/resources/contact",
       "parentId": "root",
       "path": "resources/contact",
-      "module": "/build/routes/resources/contact-MOICFUTY.js",
+      "module": "/build/routes/resources/contact-G75ZB62E.js",
       "imports": [
-        "/build/_shared/chunk-S53TZMMV.js"
+        "/build/_shared/chunk-K5HM3GZE.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -75,7 +75,7 @@
       "id": "routes/resources/contact-form",
       "parentId": "root",
       "path": "resources/contact-form",
-      "module": "/build/routes/resources/contact-form-BEZXTA6P.js",
+      "module": "/build/routes/resources/contact-form-3FL6WJ6T.js",
       "hasAction": true,
       "hasLoader": true,
       "hasCatchBoundary": false,
@@ -85,9 +85,9 @@
       "id": "routes/resources/portfolio",
       "parentId": "root",
       "path": "resources/portfolio",
-      "module": "/build/routes/resources/portfolio-S2CWS5DP.js",
+      "module": "/build/routes/resources/portfolio-T2YEOZ6T.js",
       "imports": [
-        "/build/_shared/chunk-S53TZMMV.js"
+        "/build/_shared/chunk-K5HM3GZE.js"
       ],
       "hasAction": false,
       "hasLoader": true,
@@ -95,5 +95,5 @@
       "hasErrorBoundary": false
     }
   },
-  "url": "/build/manifest-48BCD8AA.js"
+  "url": "/build/manifest-9E195A48.js"
 }
