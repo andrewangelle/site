@@ -3,9 +3,8 @@ import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAnimate, motion } from "motion/react";
 import { useState, useEffect } from "react";
-import { strings, activeLinkConfig } from "../utils";
-import { usePrevious } from "../utils/usePrevious";
-import '../styles/index.css'
+import { strings, activeLinkConfig } from "~/utils/constants";
+import { usePrevious } from "~/utils/usePrevious";
 
 export function Links() {
   const [activeText, setActiveText] = useState<string | null>(null);
