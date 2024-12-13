@@ -1,20 +1,24 @@
 import { useEffect, useRef } from 'react';
+import { useAtom } from 'jotai/react';
 import { motion, useAnimate, useInView, useScroll, useTransform } from 'motion/react';
 import { colors, strings } from '~/utils/constants';
 import { Links } from '~/components/Links'
+import { linksInViewAtom } from '~/store/atoms';
+import { usePrevious } from '~/utils/usePrevious';
 
 export function Page() {
   const nameSectionRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
   const linksSectionRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
-  const [backgroundRef, animateBackground] = useAnimate()
   const [subTitleRef, animateSubtitle] = useAnimate()
   const { scrollYProgress } = useScroll();
-  const moveLeft = useTransform(scrollYProgress, getOffset('left'));
-  const moveRight = useTransform(scrollYProgress, getOffset('right'));
+  const moveLeft = useTransform(scrollYProgress, (v) => `-${Math.ceil(v * 1000)}px`);
+  const moveRight = useTransform(scrollYProgress, (v) => `${Math.ceil(v * 1000)}px`);
   const opacity = useTransform(scrollYProgress, (latest) => latest);
   const isLinksInView = useInView(linksRef);
+  const prevLinksInView = usePrevious(isLinksInView)
+  const [, setInView] = useAtom(linksInViewAtom)
 
   function scrollLinksIntoView() {
     linksSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
@@ -24,31 +28,20 @@ export function Page() {
     nameSectionRef?.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  function getOffset(
-    direction: 'left' | 'right'
-  ) {
-    return (latest: number) => {
-      const operator = direction === 'left' ? '-' : '';
-      const value = Math.ceil(latest * 1000);
-      return `${operator}${value}px`;
-    }
-  }  
-
   useEffect(() => {
-    const backgroundColor = isLinksInView ? colors.red : colors.sky;
-    animateBackground(backgroundRef.current, { backgroundColor }, { ease: "linear" });
+    if(isLinksInView !== prevLinksInView) {
+      setInView(isLinksInView)
+    }
 
     const color = isLinksInView ? colors.sky : colors.red;
     animateSubtitle(subTitleRef.current, { color }, { ease: "linear" });
 
-  }, [isLinksInView]);
+  }, [isLinksInView, prevLinksInView]);
 
   return (
-    <motion.div ref={backgroundRef}>
+    <>
       <div ref={nameSectionRef} className="section">
-        <div 
-          className="name-container" 
-        >
+        <div className="name-container">
           <motion.button 
             onFocus={scrollNameIntoView}
             onClick={scrollLinksIntoView} 
@@ -86,7 +79,7 @@ export function Page() {
           <Links />
         </div>
       </motion.div>
-    </motion.div>
+    </>
   )
 }
 

@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Outlet, ScrollRestoration, createRootRoute } from '@tanstack/react-router'
 import {  Meta, Scripts } from '@tanstack/start'
+import { Provider } from 'jotai'
 import { Body } from '~/components/Body';
 import { DevTools } from '~/components/DevTools';
 import appCss from '~/styles/index.css?url'
@@ -51,9 +52,11 @@ function RootDocument({ children }: { children: ReactNode }) {
       <head>
         <Meta />
       </head>
-      <Body>
-        {children}
-      </Body>
+      <Provider>
+        <Body>
+          {children}
+        </Body>
+      </Provider>
     </html>
   )
 }

@@ -14,6 +14,7 @@ export function Links() {
 
   return <DesktopLinks />
 }
+
 function DesktopLinks() {
   const [activeText, setActiveText] = useState<string | null>(null);
   const [activeTextRef, animate] = useAnimate()
@@ -150,7 +151,6 @@ function MobileLinks() {
           />
         </a> 
       </div>
-
     </div>
   )
 }
