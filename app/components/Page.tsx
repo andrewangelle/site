@@ -1,5 +1,5 @@
 import { ReactNode } from '@tanstack/react-router';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useAnimate, useInView, useScroll, useTransform } from 'motion/react';
 import { colors, strings } from '../utils';
 import { Links } from './Links';
@@ -7,6 +7,8 @@ import '../styles/index.css'
 
 
 export function Page({ children }: { children: ReactNode }) {
+  const [initialVisible, setVisible] = useState(false)
+  const isMounted = useRef<boolean | null>(null);
   const nameSectionRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
   const linksSectionRef = useRef<HTMLDivElement>(null);
@@ -38,17 +40,29 @@ export function Page({ children }: { children: ReactNode }) {
   }  
 
   useEffect(() => {
+    if(isMounted.current === null){
+      // this is related to the build style issue, and is a hack around FOUC
+      isMounted.current = true;
+      setVisible(true)
+    }
+
     const backgroundColor = isLinksInView ? colors.red : colors.sky;
     animateBackground(backgroundRef.current, { backgroundColor }, { ease: "linear" });
 
     const color = isLinksInView ? colors.sky : colors.red;
     animateSubtitle(subTitleRef.current, { color }, { ease: "linear" });
-  }, [isLinksInView]);
+  
+    return () => {
+      isMounted.current = false;
+    }
+  }, [isMounted, isLinksInView]);
 
   return (
     <motion.body ref={backgroundRef}>
       <div ref={nameSectionRef} className="section">
-        <div className="name-container">
+        <div className="name-container" style={{
+          display: initialVisible ? '' : 'none'
+        }}>
           <motion.button 
             onFocus={scrollNameIntoView}
             onClick={scrollLinksIntoView} 
