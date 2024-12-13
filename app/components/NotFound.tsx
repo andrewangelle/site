@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { strings } from "~/utils/constants";
 
 export function NotFound(){
@@ -5,9 +6,9 @@ export function NotFound(){
     <div className='section'>
       <div className="name-container">
         <div className='inner'>
-          <h1 className="title not-found">
+          <Link className="title not-found"  to='/'>
             {strings.notFound}
-          </h1>
+          </Link>
         </div>
       </div>
     </div>

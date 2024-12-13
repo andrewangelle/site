@@ -1,12 +1,20 @@
+import { useAnimate, motion } from "motion/react";
+import { useState, useEffect } from "react";
+import { isMobile } from 'react-device-detect'
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useAnimate, motion } from "motion/react";
-import { useState, useEffect } from "react";
 import { strings, activeLinkConfig } from "~/utils/constants";
 import { usePrevious } from "~/utils/usePrevious";
 
 export function Links() {
+  if(isMobile) {
+    return <MobileLinks />
+  }
+
+  return <DesktopLinks />
+}
+function DesktopLinks() {
   const [activeText, setActiveText] = useState<string | null>(null);
   const [activeTextRef, animate] = useAnimate()
   const previousActiveText = usePrevious(activeText)
@@ -86,6 +94,64 @@ export function Links() {
         </motion.a> 
       </div>
     </>
+  )
+}
+
+function MobileLinks() {
+  return (
+    <div className='links'>
+      <div className='mobile-link'>
+        <h3>
+          {strings.github}
+        </h3>
+        <a
+          href={strings.hrefs.github}
+          target="_blank"
+          style={{ color: 'inherit' }}
+        >
+          <FontAwesomeIcon
+            // @ts-expect-error
+            icon={faGithub}
+            size="4x"
+          />
+        </a> 
+      </div>
+
+      <div className='mobile-link'>
+        <h3>
+          {strings.linkedin}
+        </h3>
+        <a
+          href={strings.hrefs.linkedin}
+          target="_blank"
+          style={{ color: 'inherit' }}
+        >
+          <FontAwesomeIcon
+            // @ts-expect-error
+            icon={faLinkedin}
+            size="4x"
+          />
+        </a> 
+      </div>
+
+      <div className='mobile-link'>
+        <h3>
+          {strings.contact}
+        </h3>
+        <a
+          href={strings.hrefs.contact}
+          target="_blank"
+          style={{ color: 'inherit' }}
+        >
+          <FontAwesomeIcon
+            // @ts-expect-error
+            icon={faEnvelopeSquare}
+            size="4x"
+          />
+        </a> 
+      </div>
+
+    </div>
   )
 }
 
