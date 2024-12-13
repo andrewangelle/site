@@ -140,6 +140,8 @@ h3 {
 .mobile-link {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin: 4px;
 
   h3 {
     opacity: 1;
