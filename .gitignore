@@ -4,5 +4,7 @@ node_modules
 /build
 /public/build
 .env
-/netlify/functions/server/build
+/.netlify
 .env
+.vinxi
+dist

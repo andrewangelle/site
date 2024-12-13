@@ -1,8 +1,0 @@
-version: '3.3'
-services:
-  web:
-    image: andrewangelle/site
-    restart: always
-    ports:
-      - "3000:3000"
-    command: npm start
