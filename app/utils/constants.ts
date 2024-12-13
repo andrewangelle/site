@@ -4,6 +4,7 @@ export const strings = {
   github: 'GitHub',
   contact: 'Contact',
   linkedin: 'LinkedIn',
+  notFound: 'Not Found',
   hrefs: {
     github: 'http://www.github.com/andrewangelle',
     contact: 'mailto:andrewangelle@gmail.com?&subject=Development Inquiry',

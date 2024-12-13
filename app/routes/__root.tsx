@@ -1,8 +1,10 @@
-import {  ScrollRestoration, createRootRoute } from '@tanstack/react-router'
+import type { ReactNode } from 'react'
+import { Outlet, ScrollRestoration, createRootRoute } from '@tanstack/react-router'
 import {  Meta, Scripts } from '@tanstack/start'
-import * as React from 'react'
-import { Page } from '../components/Page'
-import '../styles/index.css'
+import { Provider } from 'jotai'
+import { Body } from '~/components/Body';
+import { DevTools } from '~/components/DevTools';
+import appCss from '~/styles/index.css?url'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -23,26 +25,38 @@ export const Route = createRootRoute({
       },
     ],
     links: [
+      { rel: 'stylesheet', href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" }
     ]
   }),
-  component: RootDocument,
+  component: Root,
 })
 
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function Root(){
+  return (
+    <RootDocument>
+      <Outlet />
+      <ScrollRestoration />
+      <Scripts />
+      <DevTools />
+    </RootDocument>
+  )
+}
+
+function RootDocument({ children }: { children: ReactNode }) {
   return (
     <html>
       <head>
         <Meta />
       </head>
-      <Page>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
-      </Page>
+      <Provider>
+        <Body>
+          {children}
+        </Body>
+      </Provider>
     </html>
   )
 }
