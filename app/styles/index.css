@@ -48,7 +48,7 @@ h3 {
   color: var(--white);
 }
 
-.section {
+section {
   height: 100vh;
   position: relative;
 }
@@ -62,7 +62,6 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   width: 100%;
 
   .inner {
@@ -72,17 +71,17 @@ h3 {
     border: none;
     background: transparent;
     outline-offset: 8px;
+    cursor: pointer;
   }
 
-  .title {
+  h1 {
     text-transform: uppercase;
     color: var(--black);
     cursor: pointer;
-    right: 30px;
     position: relative;
   }
   
-  .sub-title {
+  h2 {
     color: var(--red);
     font-family: 'Helvetica Neue';
     font-size: 20px;
@@ -93,12 +92,12 @@ h3 {
 
 
   @media (max-width: 400px) {
-    .title {
+    h1 {
       right: 10px;
       font-size: 30px;
     }
 
-    .sub-title {
+    h2 {
       font-size: 15px;
     }
   }

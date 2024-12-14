@@ -2,14 +2,6 @@ import { createRouter as createTanStackRouter } from '@tanstack/react-router'
 import { routeTree } from '~/routeTree.gen'
 import { NotFound } from '~/components/NotFound';
 
-
-export type RenderRoutePathParams = {
-  type: string; 
-  version: string; 
-  token: string;
-};
-
-
 export function createRouter() {
   const router = createTanStackRouter({
     routeTree,
