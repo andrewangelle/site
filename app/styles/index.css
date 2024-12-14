@@ -53,14 +53,19 @@ section {
   position: relative;
 }
 
+a {
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: transparent;
+}
+
 .name-container {
   position: fixed;
   top: calc(50% - 50px);
-  border: none;
-  background: transparent;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   width: 100%;
 
@@ -68,8 +73,6 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: none;
-    background: transparent;
     outline-offset: 8px;
     cursor: pointer;
   }
@@ -92,8 +95,11 @@ section {
 
 
   @media (max-width: 400px) {
+    & {
+      top: calc(50% - 72px);
+    }
+
     h1 {
-      right: 10px;
       font-size: 30px;
     }
 
@@ -126,6 +132,10 @@ section {
   }
 
   @media (max-width: 400px) {
+    & {
+      top: calc(50% - 100px);
+    }
+
     .links {
       gap: 36px;
     }

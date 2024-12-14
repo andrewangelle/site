@@ -1,11 +1,10 @@
-import { useAtom } from "jotai/react";
-import { useAnimate } from "motion/react";
 import { ReactNode, useEffect } from "react";
-import { linksInViewAtom } from "~/store/atoms";
+import { useAnimate } from "motion/react";
 import { colors } from "~/utils/constants";
+import { useIsLinksInView } from "~/utils/useIsLinksInView";
 
 export function Body({ children }: { children: ReactNode }) {
-  const [isLinksInView] = useAtom(linksInViewAtom)
+  const [,isLinksInView] = useIsLinksInView()
   const [ref, animate] = useAnimate()
 
   useEffect(() => {
