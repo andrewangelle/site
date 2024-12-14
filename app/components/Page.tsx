@@ -1,27 +1,22 @@
 import { useEffect, useRef } from 'react';
-import { useAtom } from 'jotai/react';
-import { motion, useAnimate, useInView, useScroll, useTransform } from 'motion/react';
+import { motion, useAnimate, useScroll, useTransform } from 'motion/react';
 import { isMobile } from 'react-device-detect';
-import { colors, strings } from '~/utils/constants';
 import { Links } from '~/components/Links'
-import { linksInViewAtom } from '~/store/atoms';
-import { usePrevious } from '~/utils/usePrevious';
+import { useIsLinksInView } from '~/utils/useIsLinksInView';
+import { colors, strings } from '~/utils/constants';
 
 export function Page() {
   const nameButtonRef = useRef<HTMLButtonElement>(null)
   const nameSectionRef = useRef<HTMLElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
   const linksSectionRef = useRef<HTMLElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
   const githubLinkRef = useRef<HTMLAnchorElement>(null);
   const [subTitleRef, animateSubtitle] = useAnimate()
   const { scrollYProgress } = useScroll();
-  const moveLeft = useTransform(scrollYProgress, (v) => `-${Math.ceil(v * 1000)}px`);
+  const moveLeft = useTransform(scrollYProgress, (v) => `-${Math.ceil((v * 1000) + (isMobile ? 10 : 30))}px`);
   const moveRight = useTransform(scrollYProgress, (v) => `${Math.ceil(v * 1000)}px`);
   const linksOpacity = useTransform(scrollYProgress, (latest) => latest);
-  const isLinksInView = useInView(linksRef);
-  const prevLinksInView = usePrevious(isLinksInView)
-  const [, setInView] = useAtom(linksInViewAtom)
+  const [linksRef, isLinksInView] = useIsLinksInView()
 
   function scrollLinksIntoView() {
     linksSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
@@ -35,13 +30,9 @@ export function Page() {
   }
 
   useEffect(() => {
-    if(isLinksInView !== prevLinksInView) {
-      setInView(isLinksInView)
-    }
-
     const color = isLinksInView ? colors.sky : colors.red;
     animateSubtitle(subTitleRef.current, { color }, { ease: "linear" });
-  }, [isLinksInView, prevLinksInView]);
+  }, [isLinksInView]);
 
   return (
     <>
@@ -64,7 +55,6 @@ export function Page() {
               ref={nameRef}
               style={{ 
                 x: moveLeft,
-                right: isMobile ? '10px' : '30px'
               }}
             >
               {strings.name}

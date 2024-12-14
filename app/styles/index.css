@@ -96,9 +96,9 @@ button {
 
   @media (max-width: 400px) {
     & {
-      top: calc(50% - 65px);
+      top: calc(50% - 72px);
     }
-    
+
     h1 {
       font-size: 30px;
     }
