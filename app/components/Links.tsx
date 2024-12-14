@@ -1,11 +1,9 @@
 import { useAnimate, motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { isMobile } from 'react-device-detect'
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelopeSquare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { strings, activeLinkConfig } from "~/utils/constants";
 import { usePrevious } from "~/utils/usePrevious";
+import { FaGithub, FaLinkedin, FaEnvelopeSquare } from "react-icons/fa";
 
 export function Links() {
   if(isMobile) {
@@ -51,11 +49,7 @@ function DesktopLinks() {
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FontAwesomeIcon
-            // @ts-expect-error
-            icon={faGithub}
-            size="4x"
-          />
+          <FaGithub size={60}/>
         </motion.a> 
 
         <motion.a
@@ -69,11 +63,7 @@ function DesktopLinks() {
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FontAwesomeIcon
-            // @ts-expect-error
-            icon={faLinkedin}
-            size="4x"
-          />
+          <FaLinkedin size={60}/>
         </motion.a> 
 
         <motion.a
@@ -87,11 +77,7 @@ function DesktopLinks() {
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FontAwesomeIcon
-             // @ts-expect-error
-            icon={faEnvelopeSquare}
-            size="4x"
-          />
+          <FaEnvelopeSquare size={60} />
         </motion.a> 
       </div>
     </>
@@ -110,11 +96,7 @@ function MobileLinks() {
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FontAwesomeIcon
-            // @ts-expect-error
-            icon={faGithub}
-            size="4x"
-          />
+          <FaGithub size={60}/>
         </a> 
       </div>
 
@@ -127,11 +109,7 @@ function MobileLinks() {
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FontAwesomeIcon
-            // @ts-expect-error
-            icon={faLinkedin}
-            size="4x"
-          />
+          <FaLinkedin size={60}/>
         </a> 
       </div>
 
@@ -144,11 +122,7 @@ function MobileLinks() {
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FontAwesomeIcon
-            // @ts-expect-error
-            icon={faEnvelopeSquare}
-            size="4x"
-          />
+          <FaEnvelopeSquare size={60}/>
         </a> 
       </div>
     </div>

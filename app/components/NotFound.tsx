@@ -7,7 +7,7 @@ export function NotFound(){
       <div className="name-container">
         <div className='inner'>
           <Link className="title not-found"  to='/'>
-            {strings.notFound}
+            <h1>{strings.notFound}</h1>
           </Link>
         </div>
       </div>
