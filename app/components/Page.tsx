@@ -55,10 +55,10 @@ export function Page() {
         >
           <motion.button 
             ref={nameButtonRef}
+            className='inner'
             aria-label={strings.aria.name}
             onFocus={scrollNameIntoView}
             onClick={scrollLinksIntoView} 
-            className='inner'
           >
             <motion.h1
               ref={nameRef}
@@ -94,5 +94,3 @@ export function Page() {
     </>
   )
 }
-
-

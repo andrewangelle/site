@@ -51,7 +51,7 @@ function DesktopLinks({
           aria-label={strings.aria.github} 
           href={strings.hrefs.github}
           target="_blank"
-          style={{ color: 'inherit' }}
+          rel="noopener noreferrer"
           whileFocus={activeLinkConfig}
           whileHover={activeLinkConfig}
           onHoverStart={() => setActiveText(strings.github)}
@@ -69,7 +69,7 @@ function DesktopLinks({
           aria-label={strings.aria.linkedin}
           href={strings.hrefs.linkedin}
           target="_blank"
-          style={{ color: 'inherit' }}
+          rel="noopener noreferrer"          
           whileFocus={activeLinkConfig}
           whileHover={activeLinkConfig}
           onHoverStart={() => setActiveText(strings.linkedin)}
@@ -87,7 +87,7 @@ function DesktopLinks({
           aria-label={strings.aria.contact}
           href={strings.hrefs.contact}
           target="_blank"
-          style={{ color: 'inherit' }}
+          rel="noopener noreferrer"          
           whileFocus={activeLinkConfig}
           whileHover={activeLinkConfig} 
           onHoverStart={() => setActiveText(strings.contact)}
@@ -122,7 +122,7 @@ function MobileLinks({
           aria-label={strings.aria.github} 
           href={strings.hrefs.github}
           target="_blank"
-          style={{ color: 'inherit' }}
+          rel="noopener noreferrer"
         >
           <FaGithub
             role='presentation' 
@@ -140,7 +140,7 @@ function MobileLinks({
           aria-label={strings.aria.linkedin}
           href={strings.hrefs.linkedin}
           target="_blank"
-          style={{ color: 'inherit' }}
+          rel="noopener noreferrer"
         >
           <FaLinkedin
             role='presentation' 
@@ -158,7 +158,7 @@ function MobileLinks({
           aria-label={strings.aria.contact}
           href={strings.hrefs.contact}
           target="_blank"
-          style={{ color: 'inherit' }}
+          rel="noopener noreferrer"
         >
           <FaEnvelopeSquare 
             role='presentation' 
