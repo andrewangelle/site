@@ -1,14 +1,11 @@
 import { readFile } from 'node:fs/promises';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { createAPIFileRoute } from '@tanstack/start/api';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export const APIRoute = createAPIFileRoute('/api/resume')({
   GET: async () => {
-    const pathToPdf = path.join(__dirname, '../../utils/resume.pdf');
+    console.log(process.cwd());
+    const pathToPdf = join(process.cwd(), './app/utils/resume.pdf');
     const file = await readFile(pathToPdf);
     return new Response(file, {
       headers: {
