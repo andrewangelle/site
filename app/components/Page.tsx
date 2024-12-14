@@ -13,7 +13,7 @@ export function Page() {
   const linksRef = useRef<HTMLDivElement>(null);
   const [subTitleRef, animateSubtitle] = useAnimate()
   const { scrollYProgress } = useScroll();
-  const moveLeft = useTransform(scrollYProgress, (v) => `-${Math.ceil(v * 1000)}px`);
+  const moveLeft = useTransform(scrollYProgress, (v) => `-${Math.ceil(v * 1000) + 30}px`);
   const moveRight = useTransform(scrollYProgress, (v) => `${Math.ceil(v * 1000)}px`);
   const opacity = useTransform(scrollYProgress, (latest) => latest);
   const isLinksInView = useInView(linksRef);
