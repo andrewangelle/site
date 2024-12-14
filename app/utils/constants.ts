@@ -4,24 +4,26 @@ export const strings = {
   github: 'GitHub',
   contact: 'Contact',
   linkedin: 'LinkedIn',
+  resume: 'Resume',
   notFound: 'Page Not Found',
   hrefs: {
     github: 'http://www.github.com/andrewangelle',
     contact: 'mailto:andrewangelle@gmail.com?&subject=Development Inquiry',
-    linkedin: 'https://www.linkedin.com/in/andrew-angelle-21299774/'
+    linkedin: 'https://www.linkedin.com/in/andrew-angelle-21299774/',
   },
   aria: {
-    name: 'View Andrew Angelle\s contact links',
-    github: 'Navigate to Andrew Angelle\'s GitHub Page',
-    linkedin: 'Navigate to Andrew Angelle\'s LinkedIn Page',
+    name: 'View Andrew Angelles contact links',
+    github: "Navigate to Andrew Angelle's GitHub Page",
+    linkedin: "Navigate to Andrew Angelle's LinkedIn Page",
+    resume: "Download Andrew Angelle's resume as a pdf",
     contact: 'Email Andrew Angelle',
-    notFound: 'Page Not Found. Go back to main page.'
-  }
+    notFound: 'Page Not Found. Go back to main page.',
+  },
 };
 
 export const colors = {
   red: '#8B0000',
-  sky: '#f0f2f5'
+  sky: '#f0f2f5',
 };
 
 export const activeLinkConfig = {
