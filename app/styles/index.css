@@ -78,6 +78,7 @@ h3 {
     text-transform: uppercase;
     color: var(--black);
     cursor: pointer;
+    right: 30px;
     position: relative;
   }
   
