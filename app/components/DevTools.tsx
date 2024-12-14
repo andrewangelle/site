@@ -1,18 +1,18 @@
-import { lazy, Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 
 const TanStackRouterDevtools =
   process.env.NODE_ENV === 'production'
     ? () => null // Render nothing in production
     : lazy(() =>
         import('@tanstack/router-devtools').then((res) => ({
-          default: res.TanStackRouterDevtools
+          default: res.TanStackRouterDevtools,
         })),
-      )
+      );
 
-export function DevTools(){
+export function DevTools() {
   return (
     <Suspense fallback={null}>
       <TanStackRouterDevtools />
     </Suspense>
-  )
+  );
 }

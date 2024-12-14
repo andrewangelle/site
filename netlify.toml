@@ -6,8 +6,3 @@
   functions = "/.netlify/functions-internal"
   publish = "dist"
   port = 3000
-
-# [[redirects]]
-#   from = "/*"
-#   functions = "/.netlify/functions-internal/server"
-#   status = 200

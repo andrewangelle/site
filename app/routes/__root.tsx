@@ -1,10 +1,14 @@
-import type { ReactNode } from 'react'
-import { Outlet, ScrollRestoration, createRootRoute } from '@tanstack/react-router'
-import {  Meta, Scripts } from '@tanstack/start'
-import { Provider } from 'jotai'
+import {
+  Outlet,
+  ScrollRestoration,
+  createRootRoute,
+} from '@tanstack/react-router';
+import { Meta, Scripts } from '@tanstack/start';
+import { Provider } from 'jotai';
+import type { ReactNode } from 'react';
 import { Body } from '~/components/Body';
 import { DevTools } from '~/components/DevTools';
-import appCss from '~/styles/index.css?url'
+import appCss from '~/styles/index.css?url';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -21,42 +25,44 @@ export const Route = createRootRoute({
       },
       {
         rel: 'icon',
-        link: '/favicon.ico'
+        link: '/favicon.ico',
       },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" }
-    ]
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+      { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: '' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
+      },
+    ],
   }),
   component: Root,
-})
+});
 
-
-function Root(){
+function Root() {
   return (
     <RootDocument>
       <Outlet />
-      <ScrollRestoration />
-      <Scripts />
-      <DevTools />
     </RootDocument>
-  )
+  );
 }
 
 function RootDocument({ children }: { children: ReactNode }) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <Meta />
       </head>
       <Provider>
         <Body>
           {children}
+          <ScrollRestoration />
+          <Scripts />
+          <DevTools />
         </Body>
       </Provider>
     </html>
-  )
+  );
 }

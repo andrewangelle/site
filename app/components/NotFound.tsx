@@ -1,19 +1,19 @@
-import { Link, useNavigate } from "@tanstack/react-router";
-import { strings } from "~/utils/constants";
+import { Link, useNavigate } from '@tanstack/react-router';
+import { strings } from '~/utils/constants';
 
-export function NotFound(){
-  const navigate = useNavigate()
+export function NotFound() {
+  const navigate = useNavigate();
   return (
-    <div className='section'>
+    <div className="section">
       <div className="name-container">
-        <div className='inner'>
-          <Link 
+        <div className="inner">
+          <Link
             aria-label={strings.aria.notFound}
-            className="title not-found" 
-            to='/'
-            onKeyDown={e => {
-              if(e.key === ' ') {
-                navigate({to: '/'})
+            className="title not-found"
+            to="/"
+            onKeyDown={(e) => {
+              if (e.key === ' ') {
+                navigate({ to: '/' });
               }
             }}
           >
@@ -22,5 +22,5 @@ export function NotFound(){
         </div>
       </div>
     </div>
-  )
+  );
 }
