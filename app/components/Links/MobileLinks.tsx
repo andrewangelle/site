@@ -1,5 +1,10 @@
 import type { RefObject } from 'react';
-import { FaEnvelopeSquare, FaGithub, FaLinkedin } from 'react-icons/fa';
+import {
+  FaEnvelopeSquare,
+  FaFilePdf,
+  FaGithub,
+  FaLinkedin,
+} from 'react-icons/fa';
 import { strings } from '~/utils/constants';
 
 export function MobileLinks({
@@ -47,6 +52,18 @@ export function MobileLinks({
         >
           <FaEnvelopeSquare role="presentation" size={60} />
         </a>
+      </div>
+
+      <div className="mobile-link">
+        <h3 role="presentation">{strings.resume}</h3>
+
+        <button
+          aria-label={strings.aria.resume}
+          type="button"
+          onClick={() => window?.location.assign('/api/resume')}
+        >
+          <FaFilePdf role="presentation" size={56} />
+        </button>
       </div>
     </div>
   );
