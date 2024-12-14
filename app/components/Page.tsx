@@ -24,9 +24,8 @@ export function Page() {
   const [, setInView] = useAtom(linksInViewAtom)
 
   function scrollLinksIntoView() {
-    nameButtonRef?.current?.blur();
     linksSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
-    githubLinkRef.current?.focus()
+    nameButtonRef?.current?.blur();
   }
 
   function scrollNameIntoView() {
@@ -42,14 +41,12 @@ export function Page() {
 
     const color = isLinksInView ? colors.sky : colors.red;
     animateSubtitle(subTitleRef.current, { color }, { ease: "linear" });
-
   }, [isLinksInView, prevLinksInView]);
 
   return (
     <>
       <section 
         ref={nameSectionRef} 
-        aria-hidden={isLinksInView} 
         tabIndex={-1}
       >
         <div 
@@ -84,7 +81,6 @@ export function Page() {
       </section>
 
       <motion.section
-        aria-hidden={!isLinksInView}
         ref={linksSectionRef}
         style={{ opacity: linksOpacity }}
       >

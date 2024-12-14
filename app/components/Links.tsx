@@ -59,7 +59,10 @@ function DesktopLinks({
           onFocus={() => setActiveText(strings.github)}
           onBlur={() => setActiveText(null)}
         >
-          <FaGithub aria-hidden size={60} />
+          <FaGithub 
+            role='presentation' 
+            size={60} 
+          />
         </motion.a> 
 
         <motion.a
@@ -74,7 +77,10 @@ function DesktopLinks({
           onFocus={() => setActiveText(strings.linkedin)}
           onBlur={() => setActiveText(null)}
         >
-          <FaLinkedin aria-hidden size={60}/>
+          <FaLinkedin 
+            role='presentation' 
+            size={60}
+          />
         </motion.a> 
 
         <motion.a
@@ -89,7 +95,10 @@ function DesktopLinks({
           onFocus={() => setActiveText(strings.contact)}
           onBlur={() => setActiveText(null)}
         >
-          <FaEnvelopeSquare aria-hidden size={60} />
+          <FaEnvelopeSquare 
+            role='presentation' 
+            size={60} 
+          />
         </motion.a> 
       </div>
     </>
@@ -104,7 +113,7 @@ function MobileLinks({
   return (
     <div className='links'>
       <div className='mobile-link'>
-        <h3 aria-hidden>
+        <h3 role='presentation'>
           {strings.github}
         </h3>
 
@@ -115,12 +124,15 @@ function MobileLinks({
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FaGithub size={60}/>
+          <FaGithub
+            role='presentation' 
+            size={60} 
+          />
         </a> 
       </div>
 
       <div className='mobile-link'>
-        <h3 aria-hidden>
+        <h3 role='presentation'>
           {strings.linkedin}
         </h3>
 
@@ -130,12 +142,15 @@ function MobileLinks({
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FaLinkedin size={60}/>
+          <FaLinkedin
+            role='presentation' 
+            size={60}
+          />
         </a> 
       </div>
 
       <div className='mobile-link'>
-        <h3 aria-hidden>
+        <h3 role='presentation'>
           {strings.contact}
         </h3>
 
@@ -145,7 +160,10 @@ function MobileLinks({
           target="_blank"
           style={{ color: 'inherit' }}
         >
-          <FaEnvelopeSquare size={60}/>
+          <FaEnvelopeSquare 
+            role='presentation' 
+            size={60}
+          />
         </a> 
       </div>
     </div>
