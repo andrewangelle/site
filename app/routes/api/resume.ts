@@ -4,7 +4,6 @@ import { createAPIFileRoute } from '@tanstack/start/api';
 
 export const APIRoute = createAPIFileRoute('/api/resume')({
   GET: async () => {
-    console.log(process.cwd());
     const pathToPdf = join(process.cwd(), './app/utils/resume.pdf');
     const file = await readFile(pathToPdf);
     return new Response(file, {
