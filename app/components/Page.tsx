@@ -1,7 +1,11 @@
 import { motion, useAnimate, useScroll, useTransform } from 'motion/react';
 import { useEffect, useRef } from 'react';
-import { isMobile } from 'react-device-detect';
-import { LinksSection } from '~/components/LinksSection';
+import { isDesktop, isMobile } from 'react-device-detect';
+import { ActiveText } from '~/components/ActiveText';
+import { ContactLink } from '~/components/Links/ContactLink';
+import { GitHubLink } from '~/components/Links/GitHubLink';
+import { LinkedInLink } from '~/components/Links/LinkedInLink';
+import { ResumeLink } from '~/components/Links/ResumeLink';
 import { colors, strings } from '~/utils/constants';
 import { useIsLinksInView } from '~/utils/useIsLinksInView';
 
@@ -75,7 +79,14 @@ export function Page() {
 
       <motion.section ref={linksSectionRef} style={{ opacity: linksOpacity }}>
         <div ref={linksRef} className="links-container">
-          <LinksSection ref={githubLinkRef} />
+          {isDesktop && <ActiveText />}
+
+          <div className="links">
+            <GitHubLink ref={githubLinkRef} />
+            <LinkedInLink />
+            <ContactLink />
+            <ResumeLink />
+          </div>
         </div>
       </motion.section>
     </>

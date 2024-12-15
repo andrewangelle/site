@@ -1,3 +1,9 @@
+html {
+  scroll-snap-type: both mandatory;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   --black: #000000;
   --white: #fafafa;
@@ -15,12 +21,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
   -webkit-border-radius: 1ex;
-}
-
-html {
-  scroll-snap-type: both mandatory;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
