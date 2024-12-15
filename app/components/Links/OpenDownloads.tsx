@@ -1,12 +1,13 @@
 import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
-import { FaFilePdf } from 'react-icons/fa';
-import { activeTextAtom } from '~/store/atoms';
+import { IoDocumentText } from 'react-icons/io5';
+import { activeTextAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
-export function ResumeLink() {
+export function OpenDownloads() {
   const setActiveText = useSetAtom(activeTextAtom);
+  const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
 
   if (isMobile) {
     return (
@@ -15,9 +16,12 @@ export function ResumeLink() {
         <button
           type="button"
           aria-label={strings.aria.resume}
-          onClick={() => window?.location.assign('/api/resume')}
+          onClick={() => {
+            setDownloadsSelected(true);
+            setActiveText(strings.resume);
+          }}
         >
-          <FaFilePdf role="presentation" size={56} />
+          <IoDocumentText role="presentation" size={56} />
         </button>
       </div>
     );
@@ -32,9 +36,12 @@ export function ResumeLink() {
       onHoverEnd={() => setActiveText(null)}
       onFocus={() => setActiveText(strings.resume)}
       onBlur={() => setActiveText(null)}
-      onClick={() => window?.location.assign('/api/resume')}
+      onClick={() => {
+        setDownloadsSelected(true);
+        setActiveText(strings.resume);
+      }}
     >
-      <FaFilePdf role="presentation" size={56} />
+      <IoDocumentText role="presentation" size={60} />
     </motion.button>
   );
 }

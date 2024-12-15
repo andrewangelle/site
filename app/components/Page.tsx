@@ -1,11 +1,11 @@
+import { useAtomValue } from 'jotai';
 import { motion, useAnimate, useScroll, useTransform } from 'motion/react';
 import { useEffect, useRef } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
 import { ActiveText } from '~/components/ActiveText';
-import { ContactLink } from '~/components/Links/ContactLink';
-import { GitHubLink } from '~/components/Links/GitHubLink';
-import { LinkedInLink } from '~/components/Links/LinkedInLink';
-import { ResumeLink } from '~/components/Links/ResumeLink';
+import { DownloadsSection } from '~/components/DownloadsSection';
+import { LinksSection } from '~/components/LinksSection';
+import { isDownloadsSelectedAtom } from '~/store/atoms';
 import { colors, strings } from '~/utils/constants';
 import { useIsLinksInView } from '~/utils/useIsLinksInView';
 
@@ -21,6 +21,7 @@ export function Page() {
   const moveRight = useTransform(scrollYProgress, getRightOffset);
   const linksOpacity = useTransform(scrollYProgress, (latest) => latest);
   const [linksRef, isLinksInView] = useIsLinksInView();
+  const isDownloadsSelected = useAtomValue(isDownloadsSelectedAtom);
 
   function scrollLinksIntoView() {
     linksSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
@@ -54,6 +55,7 @@ export function Page() {
         <div className="name-container" tabIndex={-1}>
           <motion.button
             ref={nameButtonRef}
+            tabIndex={isDownloadsSelected ? -1 : 0}
             className="inner"
             aria-label={strings.aria.name}
             initial="hidden"
@@ -79,14 +81,14 @@ export function Page() {
 
       <motion.section ref={linksSectionRef} style={{ opacity: linksOpacity }}>
         <div ref={linksRef} className="links-container">
-          {isDesktop && <ActiveText />}
+          {!isDownloadsSelected && (
+            <>
+              {isDesktop && <ActiveText />}
+              <LinksSection ref={githubLinkRef} />
+            </>
+          )}
 
-          <div className="links">
-            <GitHubLink ref={githubLinkRef} />
-            <LinkedInLink />
-            <ContactLink />
-            <ResumeLink />
-          </div>
+          {isDownloadsSelected && <DownloadsSection />}
         </div>
       </motion.section>
     </>
