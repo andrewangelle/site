@@ -5,7 +5,7 @@ import {
   FaGithub,
   FaLinkedin,
 } from 'react-icons/fa';
-import { strings } from '~/utils/constants';
+import { ANCHOR_REL, strings } from '~/utils/constants';
 
 export function MobileLinks({
   ref,
@@ -22,7 +22,7 @@ export function MobileLinks({
           aria-label={strings.aria.github}
           href={strings.hrefs.github}
           target="_blank"
-          rel="noopener noreferrer"
+          rel={ANCHOR_REL}
         >
           <FaGithub role="presentation" size={60} />
         </a>
@@ -35,7 +35,7 @@ export function MobileLinks({
           aria-label={strings.aria.linkedin}
           href={strings.hrefs.linkedin}
           target="_blank"
-          rel="noopener noreferrer"
+          rel={ANCHOR_REL}
         >
           <FaLinkedin role="presentation" size={60} />
         </a>
@@ -48,7 +48,7 @@ export function MobileLinks({
           aria-label={strings.aria.contact}
           href={strings.hrefs.contact}
           target="_blank"
-          rel="noopener noreferrer"
+          rel={ANCHOR_REL}
         >
           <FaEnvelopeSquare role="presentation" size={60} />
         </a>
@@ -58,8 +58,8 @@ export function MobileLinks({
         <h3 role="presentation">{strings.resume}</h3>
 
         <button
-          aria-label={strings.aria.resume}
           type="button"
+          aria-label={strings.aria.resume}
           onClick={() => window?.location.assign('/api/resume')}
         >
           <FaFilePdf role="presentation" size={56} />

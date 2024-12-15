@@ -21,6 +21,8 @@ export const strings = {
   },
 };
 
+export const ANCHOR_REL = 'noopener noreferrer';
+
 export const colors = {
   red: '#8B0000',
   sky: '#f0f2f5',

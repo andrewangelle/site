@@ -1,12 +1,11 @@
-import { useAtom } from 'jotai/react';
+import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { FaFilePdf } from 'react-icons/fa';
 import { activeTextAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
 export function ResumeLink() {
-  const [, setActiveText] = useAtom(activeTextAtom);
-
+  const setActiveText = useSetAtom(activeTextAtom);
   return (
     <motion.button
       aria-label={strings.aria.resume}
