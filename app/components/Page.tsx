@@ -37,7 +37,7 @@ export function Page() {
   function getLeftOffset(value: number) {
     const result = Math.ceil(value * 1000);
     const positionOffset = isMobile ? 10 : 30;
-    const offset = isMobile && result < 1000 ? positionOffset : 1000;
+    const offset = result < 1000 ? positionOffset : 1000;
     return `-${result + offset}px`;
   }
 
