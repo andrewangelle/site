@@ -22,12 +22,7 @@ export function PDFLink() {
             setActiveText(null);
           }}
         >
-          <BsFiletypePdf
-            role="presentation"
-            className="doc-link"
-            size={56}
-            strokeWidth={0.5}
-          />
+          <BsFiletypePdf role="presentation" className="doc-link" size={60} />
         </button>
       </div>
     );
@@ -44,12 +39,7 @@ export function PDFLink() {
         setActiveText(null);
       }}
     >
-      <BsFiletypePdf
-        role="presentation"
-        className="doc-link"
-        size={56}
-        strokeWidth={0.5}
-      />
+      <BsFiletypePdf role="presentation" className="doc-link" size={60} />
     </motion.button>
   );
 }
