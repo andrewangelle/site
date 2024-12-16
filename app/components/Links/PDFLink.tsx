@@ -1,7 +1,8 @@
 import { useSetAtom } from 'jotai';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
-import { GrDocumentPdf } from 'react-icons/gr';
+import { BsFiletypePdf } from 'react-icons/bs';
+
 import { activeTextAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
@@ -21,7 +22,12 @@ export function PDFLink() {
             setActiveText(null);
           }}
         >
-          <GrDocumentPdf role="presentation" size={56} strokeWidth={2} />
+          <BsFiletypePdf
+            role="presentation"
+            className="doc-link"
+            size={56}
+            strokeWidth={0.5}
+          />
         </button>
       </div>
     );
@@ -38,7 +44,12 @@ export function PDFLink() {
         setActiveText(null);
       }}
     >
-      <GrDocumentPdf role="presentation" size={56} strokeWidth={0.5} />
+      <BsFiletypePdf
+        role="presentation"
+        className="doc-link"
+        size={56}
+        strokeWidth={0.5}
+      />
     </motion.button>
   );
 }

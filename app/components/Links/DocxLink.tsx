@@ -22,7 +22,7 @@ export function DocxLink() {
             setActiveText(null);
           }}
         >
-          <BsFiletypeDocx role="presentation" className="docx-link" size={60} />
+          <BsFiletypeDocx role="presentation" className="doc-link" size={60} />
         </button>
       </div>
     );
@@ -39,7 +39,7 @@ export function DocxLink() {
         setActiveText(null);
       }}
     >
-      <BsFiletypeDocx role="presentation" className="docx-link" size={60} />
+      <BsFiletypeDocx role="presentation" className="doc-link" size={60} />
     </motion.button>
   );
 }
