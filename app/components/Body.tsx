@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai';
-import type { ReactNode } from 'react';
+import type { KeyboardEvent, ReactNode } from 'react';
 import { useAnimatedBackground } from '~/hooks/useAnimatedBackground';
 import { isDownloadsSelectedAtom } from '~/store/atoms';
 
@@ -8,15 +8,15 @@ export function Body({ children }: { children: ReactNode }) {
     isDownloadsSelectedAtom,
   );
   const ref = useAnimatedBackground();
+
+  function closeDownloadsSectionOnEscape(event: KeyboardEvent) {
+    if (event.key === 'Escape' && isDownloadsSelected) {
+      setDownloadsSelected(false);
+    }
+  }
+
   return (
-    <body
-      ref={ref}
-      onKeyDown={(event) => {
-        if (event.key === 'Escape' && isDownloadsSelected) {
-          setDownloadsSelected(false);
-        }
-      }}
-    >
+    <body ref={ref} onKeyDown={closeDownloadsSectionOnEscape}>
       {children}
     </body>
   );
