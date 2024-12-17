@@ -5,7 +5,8 @@ export type DocumentType = 'docx' | 'pdf';
 
 const contentType: Record<DocumentType, string> = {
   pdf: 'application/pdf',
-  docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  // doc: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  docx: 'application/msword',
 };
 
 export async function exportResume(docType: DocumentType) {

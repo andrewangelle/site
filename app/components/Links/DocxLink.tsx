@@ -1,7 +1,7 @@
 import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
-import { BsFiletypeDocx } from 'react-icons/bs';
+import { BsFiletypeDoc } from 'react-icons/bs';
 
 import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
@@ -22,7 +22,7 @@ export function DocxLink() {
             setActiveLink(null);
           }}
         >
-          <BsFiletypeDocx role="presentation" className="doc-link" size={60} />
+          <BsFiletypeDoc role="presentation" className="doc-link" size={60} />
         </button>
       </div>
     );
@@ -39,7 +39,7 @@ export function DocxLink() {
         setActiveLink(null);
       }}
     >
-      <BsFiletypeDocx role="presentation" className="doc-link" size={60} />
+      <BsFiletypeDoc role="presentation" className="doc-link" size={60} />
     </motion.button>
   );
 }
