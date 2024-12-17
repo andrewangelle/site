@@ -3,11 +3,11 @@ import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { BsFiletypePdf } from 'react-icons/bs';
 
-import { activeTextAtom, isDownloadsSelectedAtom } from '~/store/atoms';
+import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
 export function PDFLink() {
-  const setActiveText = useSetAtom(activeTextAtom);
+  const setActiveLink = useSetAtom(activeLinkAtom);
   const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
 
   if (isMobile) {
@@ -19,7 +19,7 @@ export function PDFLink() {
           onClick={() => {
             window?.location.assign('/api/resume/pdf');
             setDownloadsSelected(false);
-            setActiveText(null);
+            setActiveLink(null);
           }}
         >
           <BsFiletypePdf role="presentation" className="doc-link" size={60} />
@@ -36,7 +36,7 @@ export function PDFLink() {
       onClick={() => {
         window?.location.assign('/api/resume/pdf');
         setDownloadsSelected(false);
-        setActiveText(null);
+        setActiveLink(null);
       }}
     >
       <BsFiletypePdf role="presentation" className="doc-link" size={60} />

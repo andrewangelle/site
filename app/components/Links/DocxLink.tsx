@@ -3,11 +3,11 @@ import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { BsFiletypeDocx } from 'react-icons/bs';
 
-import { activeTextAtom, isDownloadsSelectedAtom } from '~/store/atoms';
+import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
 export function DocxLink() {
-  const setActiveText = useSetAtom(activeTextAtom);
+  const setActiveLink = useSetAtom(activeLinkAtom);
   const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
 
   if (isMobile) {
@@ -19,7 +19,7 @@ export function DocxLink() {
           onClick={() => {
             window?.location.assign('/api/resume/docx');
             setDownloadsSelected(false);
-            setActiveText(null);
+            setActiveLink(null);
           }}
         >
           <BsFiletypeDocx role="presentation" className="doc-link" size={60} />
@@ -36,7 +36,7 @@ export function DocxLink() {
       onClick={() => {
         window?.location.assign('/api/resume/docx');
         setDownloadsSelected(false);
-        setActiveText(null);
+        setActiveLink(null);
       }}
     >
       <BsFiletypeDocx role="presentation" className="doc-link" size={60} />

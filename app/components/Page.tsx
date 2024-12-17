@@ -1,26 +1,27 @@
 import { useAtomValue } from 'jotai';
-import { motion, useAnimate, useScroll, useTransform } from 'motion/react';
-import { useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
-import { ActiveText } from '~/components/ActiveText';
+import { ActiveLink } from '~/components/ActiveLink';
 import { DownloadsSection } from '~/components/DownloadsSection';
 import { LinksSection } from '~/components/LinksSection';
+import { useAnimatedSubtitle } from '~/hooks/useAnimatedSubtitle';
+import { useIsLinksInView } from '~/hooks/useIsLinksInView';
 import { isDownloadsSelectedAtom } from '~/store/atoms';
-import { colors, strings } from '~/utils/constants';
-import { useIsLinksInView } from '~/utils/useIsLinksInView';
+import { strings } from '~/utils/constants';
 
 export function Page() {
-  const nameButtonRef = useRef<HTMLButtonElement>(null);
   const nameSectionRef = useRef<HTMLElement>(null);
+  const nameButtonRef = useRef<HTMLButtonElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
+  const subTitleRef = useAnimatedSubtitle();
   const linksSectionRef = useRef<HTMLElement>(null);
   const githubLinkRef = useRef<HTMLAnchorElement>(null);
-  const [subTitleRef, animateSubtitle] = useAnimate();
+  const [linksRef] = useIsLinksInView();
   const { scrollYProgress } = useScroll();
   const moveLeft = useTransform(scrollYProgress, getLeftOffset);
   const moveRight = useTransform(scrollYProgress, getRightOffset);
   const linksOpacity = useTransform(scrollYProgress, (latest) => latest);
-  const [linksRef, isLinksInView] = useIsLinksInView();
   const isDownloadsSelected = useAtomValue(isDownloadsSelectedAtom);
 
   function scrollLinksIntoView() {
@@ -44,11 +45,6 @@ export function Page() {
   function getRightOffset(value: number) {
     return `${Math.ceil(value * 1000)}px`;
   }
-
-  useEffect(() => {
-    const color = isLinksInView ? colors.sky : colors.red;
-    animateSubtitle(subTitleRef.current, { color }, { ease: 'linear' });
-  }, [isLinksInView, animateSubtitle, subTitleRef.current]);
 
   return (
     <>
@@ -84,11 +80,10 @@ export function Page() {
         <div ref={linksRef} className="links-container">
           {!isDownloadsSelected && (
             <>
-              {isDesktop && <ActiveText />}
+              {isDesktop && <ActiveLink />}
               <LinksSection ref={githubLinkRef} />
             </>
           )}
-
           {isDownloadsSelected && <DownloadsSection />}
         </div>
       </motion.section>

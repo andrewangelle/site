@@ -1,10 +1,10 @@
 import { useSetAtom } from 'jotai';
 import { motion } from 'motion/react';
-import { activeTextAtom, isDownloadsSelectedAtom } from '~/store/atoms';
+import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { strings } from '~/utils/constants';
 
 export function CloseDownloads() {
-  const setActiveText = useSetAtom(activeTextAtom);
+  const setActiveLink = useSetAtom(activeLinkAtom);
   const setisDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
 
   return (
@@ -27,7 +27,7 @@ export function CloseDownloads() {
       }}
       onClick={() => {
         setisDownloadsSelected(false);
-        setActiveText(null);
+        setActiveLink(null);
       }}
     >
       <h3 role="presentation">{strings.backToLinks}</h3>

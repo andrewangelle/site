@@ -5,7 +5,7 @@ import { CloseDownloads } from '~/components/Links/CloseDownloads';
 import { DocxLink } from '~/components/Links/DocxLink';
 import { PDFLink } from '~/components/Links/PDFLink';
 import {
-  activeTextAtom,
+  activeLinkAtom,
   isDownloadsSelectedAtom,
   linksInViewAtom,
 } from '~/store/atoms';
@@ -16,14 +16,14 @@ export function DownloadsSection() {
   const [isDownloadsSelected, setDownloadsSelected] = useAtom(
     isDownloadsSelectedAtom,
   );
-  const setActiveText = useSetAtom(activeTextAtom);
+  const setActiveLink = useSetAtom(activeLinkAtom);
 
   useEffect(() => {
     if (!isLinksInView && isDownloadsSelected) {
       setDownloadsSelected(false);
-      setActiveText(null);
+      setActiveLink(null);
     }
-  }, [isLinksInView, isDownloadsSelected, setDownloadsSelected, setActiveText]);
+  }, [isLinksInView, isDownloadsSelected, setDownloadsSelected, setActiveLink]);
 
   return (
     <>

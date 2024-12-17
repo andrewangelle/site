@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import type { ReactNode } from 'react';
+import { useAnimatedBackground } from '~/hooks/useAnimatedBackground';
 import { isDownloadsSelectedAtom } from '~/store/atoms';
-import { useAnimatedBackground } from '~/utils/useAnimatedBackground';
 
 export function Body({ children }: { children: ReactNode }) {
   const [isDownloadsSelected, setDownloadsSelected] = useAtom(

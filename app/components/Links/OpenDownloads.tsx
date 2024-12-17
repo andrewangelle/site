@@ -2,11 +2,11 @@ import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { IoDocumentText } from 'react-icons/io5';
-import { activeTextAtom, isDownloadsSelectedAtom } from '~/store/atoms';
+import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
 export function OpenDownloads() {
-  const setActiveText = useSetAtom(activeTextAtom);
+  const setActiveLink = useSetAtom(activeLinkAtom);
   const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
 
   if (isMobile) {
@@ -18,7 +18,7 @@ export function OpenDownloads() {
           aria-label={strings.aria.resume}
           onClick={() => {
             setDownloadsSelected(true);
-            setActiveText(strings.resume);
+            setActiveLink(strings.resume);
           }}
         >
           <IoDocumentText role="presentation" size={56} />
@@ -32,13 +32,13 @@ export function OpenDownloads() {
       aria-label={strings.aria.resume}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
-      onHoverStart={() => setActiveText(strings.resume)}
-      onHoverEnd={() => setActiveText(null)}
-      onFocus={() => setActiveText(strings.resume)}
-      onBlur={() => setActiveText(null)}
+      onHoverStart={() => setActiveLink(strings.resume)}
+      onHoverEnd={() => setActiveLink(null)}
+      onFocus={() => setActiveLink(strings.resume)}
+      onBlur={() => setActiveLink(null)}
       onClick={() => {
         setDownloadsSelected(true);
-        setActiveText(strings.resume);
+        setActiveLink(strings.resume);
       }}
     >
       <IoDocumentText role="presentation" size={60} />
