@@ -1,0 +1,72 @@
+.links-container {
+  width: 100%;
+  bottom: 0px;
+  top: 0px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: calc(50% - 78px);
+  position: absolute;
+
+  h3 {
+    opacity: 0;
+    min-height: 35px;
+    color: var(--white);
+  }
+
+  button {
+    color: var(--white);
+    cursor: pointer;
+  }
+
+  .links {
+    color: var(--white);
+    display: flex;
+    gap: 24px;
+  }
+
+  .close-downloads {
+    margin-top: 15px;
+    color: var(--white);
+
+    h3 {
+      opacity: 1;
+      min-height: 0px;
+    }
+
+    &:hover,
+    &:focus {
+      h3 {
+        color: skyblue;
+      }
+    }
+  }
+
+  .mobile-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4px;
+
+    h3 {
+      opacity: 1;
+    }
+  }
+
+  .doc-link {
+    stroke-width: 0.2;
+  }
+
+  @media (max-width: 400px) {
+    & {
+      top: calc(50% - 100px);
+    }
+
+    .links {
+      gap: unset;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+  }
+}

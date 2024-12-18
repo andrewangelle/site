@@ -2,11 +2,11 @@ import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { FaEnvelopeSquare } from 'react-icons/fa';
-import { activeTextAtom } from '~/store/atoms';
+import { activeLinkAtom } from '~/store/atoms';
 import { ANCHOR_REL, activeLinkConfig, strings } from '~/utils/constants';
 
 export function ContactLink() {
-  const setActiveText = useSetAtom(activeTextAtom);
+  const setActiveLink = useSetAtom(activeLinkAtom);
 
   if (isMobile) {
     return (
@@ -32,10 +32,10 @@ export function ContactLink() {
       rel={ANCHOR_REL}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
-      onHoverStart={() => setActiveText(strings.contact)}
-      onHoverEnd={() => setActiveText(null)}
-      onFocus={() => setActiveText(strings.contact)}
-      onBlur={() => setActiveText(null)}
+      onHoverStart={() => setActiveLink(strings.contact)}
+      onHoverEnd={() => setActiveLink(null)}
+      onFocus={() => setActiveLink(strings.contact)}
+      onBlur={() => setActiveLink(null)}
       onKeyDown={(e) => {
         if (e.key === ' ') {
           window?.open(strings.hrefs.contact, ANCHOR_REL);

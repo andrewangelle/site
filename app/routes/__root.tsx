@@ -8,7 +8,9 @@ import { Provider } from 'jotai';
 import type { ReactNode } from 'react';
 import { Body } from '~/components/Body';
 import { DevTools } from '~/components/DevTools';
-import appCss from '~/styles/index.css?url';
+import indexCss from '~/styles/index.css?url';
+import linksSectionCss from '~/styles/links-container.css?url';
+import nameSectionCss from '~/styles/name-container.css?url';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -29,7 +31,9 @@ export const Route = createRootRoute({
       },
     ],
     links: [
-      { rel: 'stylesheet', href: appCss },
+      { rel: 'stylesheet', href: indexCss },
+      { rel: 'stylesheet', href: nameSectionCss },
+      { rel: 'stylesheet', href: linksSectionCss },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: '' },
       {

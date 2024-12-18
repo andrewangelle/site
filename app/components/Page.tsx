@@ -1,26 +1,28 @@
-import { motion, useAnimate, useScroll, useTransform } from 'motion/react';
-import { useEffect, useRef } from 'react';
+import { useAtomValue } from 'jotai';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
-import { ActiveText } from '~/components/ActiveText';
-import { ContactLink } from '~/components/Links/ContactLink';
-import { GitHubLink } from '~/components/Links/GitHubLink';
-import { LinkedInLink } from '~/components/Links/LinkedInLink';
-import { ResumeLink } from '~/components/Links/ResumeLink';
-import { colors, strings } from '~/utils/constants';
-import { useIsLinksInView } from '~/utils/useIsLinksInView';
+import { ActiveLink } from '~/components/ActiveLink';
+import { DownloadsSection } from '~/components/DownloadsSection';
+import { LinksSection } from '~/components/LinksSection';
+import { useAnimatedSubtitle } from '~/hooks/useAnimatedSubtitle';
+import { useIsLinksInView } from '~/hooks/useIsLinksInView';
+import { isDownloadsSelectedAtom } from '~/store/atoms';
+import { strings } from '~/utils/constants';
 
 export function Page() {
-  const nameButtonRef = useRef<HTMLButtonElement>(null);
   const nameSectionRef = useRef<HTMLElement>(null);
+  const nameButtonRef = useRef<HTMLButtonElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
+  const subTitleRef = useAnimatedSubtitle();
   const linksSectionRef = useRef<HTMLElement>(null);
   const githubLinkRef = useRef<HTMLAnchorElement>(null);
-  const [subTitleRef, animateSubtitle] = useAnimate();
+  const [linksRef] = useIsLinksInView();
   const { scrollYProgress } = useScroll();
   const moveLeft = useTransform(scrollYProgress, getLeftOffset);
   const moveRight = useTransform(scrollYProgress, getRightOffset);
   const linksOpacity = useTransform(scrollYProgress, (latest) => latest);
-  const [linksRef, isLinksInView] = useIsLinksInView();
+  const isDownloadsSelected = useAtomValue(isDownloadsSelectedAtom);
 
   function scrollLinksIntoView() {
     linksSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
@@ -34,19 +36,15 @@ export function Page() {
   }
 
   function getLeftOffset(value: number) {
+    const result = Math.ceil(value * 1000);
     const positionOffset = isMobile ? 10 : 30;
-    const result = Math.ceil(value * 1000 + positionOffset);
-    return `-${result}px`;
+    const offset = result < 1000 ? positionOffset : 1000;
+    return `-${result + offset}px`;
   }
 
   function getRightOffset(value: number) {
     return `${Math.ceil(value * 1000)}px`;
   }
-
-  useEffect(() => {
-    const color = isLinksInView ? colors.sky : colors.red;
-    animateSubtitle(subTitleRef.current, { color }, { ease: 'linear' });
-  }, [isLinksInView, animateSubtitle, subTitleRef.current]);
 
   return (
     <>
@@ -54,6 +52,7 @@ export function Page() {
         <div className="name-container" tabIndex={-1}>
           <motion.button
             ref={nameButtonRef}
+            tabIndex={isDownloadsSelected ? -1 : 0}
             className="inner"
             aria-label={strings.aria.name}
             initial="hidden"
@@ -79,14 +78,13 @@ export function Page() {
 
       <motion.section ref={linksSectionRef} style={{ opacity: linksOpacity }}>
         <div ref={linksRef} className="links-container">
-          {isDesktop && <ActiveText />}
-
-          <div className="links">
-            <GitHubLink ref={githubLinkRef} />
-            <LinkedInLink />
-            <ContactLink />
-            <ResumeLink />
-          </div>
+          {!isDownloadsSelected && (
+            <>
+              {isDesktop && <ActiveLink />}
+              <LinksSection ref={githubLinkRef} />
+            </>
+          )}
+          {isDownloadsSelected && <DownloadsSection />}
         </div>
       </motion.section>
     </>
