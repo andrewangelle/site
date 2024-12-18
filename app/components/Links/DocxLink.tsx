@@ -8,7 +8,8 @@ import { activeLinkConfig, strings } from '~/utils/constants';
 export function DocxLink() {
   const setActiveLink = useSetAtom(activeLinkAtom);
   const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
-  const fileType = isMobile ? 'docx' : 'odt';
+  // const fileType = isMobile ? 'docx' : 'odt';
+  const fileType = 'docx';
 
   if (isMobile) {
     return (
