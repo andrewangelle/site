@@ -2,13 +2,13 @@ import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { BsFiletypeDoc } from 'react-icons/bs';
-
 import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
 export function DocxLink() {
   const setActiveLink = useSetAtom(activeLinkAtom);
   const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
+  const fileType = isMobile ? 'docx' : 'odt';
 
   if (isMobile) {
     return (
@@ -17,7 +17,7 @@ export function DocxLink() {
           type="button"
           aria-label={strings.aria.resumeDoc}
           onClick={() => {
-            window?.location.assign('/api/resume/docx');
+            window?.location.assign(`/api/resume/${fileType}`);
             setDownloadsSelected(false);
             setActiveLink(null);
           }}
@@ -34,7 +34,7 @@ export function DocxLink() {
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
       onClick={() => {
-        window?.location.assign('/api/resume/docx');
+        window?.location.assign(`/api/resume/${fileType}`);
         setDownloadsSelected(false);
         setActiveLink(null);
       }}
