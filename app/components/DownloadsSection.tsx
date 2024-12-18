@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { CloseDownloads } from '~/components/Links/CloseDownloads';
 import { DocxLink } from '~/components/Links/DocxLink';
 import { PDFLink } from '~/components/Links/PDFLink';
+import { TxtLink } from '~/components/Links/TxtLink';
 import {
   activeLinkAtom,
   isDownloadsSelectedAtom,
@@ -62,6 +63,7 @@ export function DownloadsSection() {
         }}
       >
         <PDFLink />
+        <TxtLink />
         <DocxLink />
       </motion.div>
 
