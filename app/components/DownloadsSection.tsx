@@ -1,6 +1,7 @@
 import { useAtom, useAtomValue, useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
+import { isDesktop } from 'react-device-detect';
 import { CloseDownloads } from '~/components/Links/CloseDownloads';
 import { DocxLink } from '~/components/Links/DocxLink';
 import { PDFLink } from '~/components/Links/PDFLink';
@@ -64,7 +65,7 @@ export function DownloadsSection() {
       >
         <PDFLink />
         <TxtLink />
-        <DocxLink />
+        {isDesktop && <DocxLink />}
       </motion.div>
 
       <CloseDownloads />
