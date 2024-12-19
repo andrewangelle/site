@@ -4,7 +4,7 @@ import {
   createRootRoute,
 } from '@tanstack/react-router';
 import { Meta, Scripts } from '@tanstack/start';
-import { Provider } from 'jotai';
+import { Provider } from 'jotai/react';
 import type { ReactNode } from 'react';
 import { Body } from '~/components/Body';
 import { DevTools } from '~/components/DevTools';
