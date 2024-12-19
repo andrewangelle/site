@@ -1,7 +1,7 @@
 import { useAtomValue } from 'jotai/react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
-import { isDesktop, isMobile } from 'react-device-detect';
+import { isDesktop } from 'react-device-detect';
 import { ActiveLink } from '~/components/ActiveLink';
 import { DownloadsSection } from '~/components/DownloadsSection';
 import { LinksSection } from '~/components/LinksSection';
@@ -37,9 +37,8 @@ export function Page() {
 
   function getLeftOffset(value: number) {
     const result = Math.ceil(value * 1000);
-    const positionOffset = isMobile ? 10 : 30;
-    const offset = result < 1000 ? positionOffset : 1000;
-    return `-${result + offset}px`;
+    const offset = result < 1000 ? result : 1000;
+    return `${Math.abs(result + offset) * -1}px`;
   }
 
   function getRightOffset(value: number) {
