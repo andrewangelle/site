@@ -2,7 +2,6 @@ import { useSetAtom } from 'jotai';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { BsFiletypePdf } from 'react-icons/bs';
-
 import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 

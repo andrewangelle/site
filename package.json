@@ -30,8 +30,8 @@
     "@biomejs/biome": "^1.9.4",
     "@netlify/functions": "^2.8.2",
     "@sendgrid/mail": "^7.6.1",
-    "@tanstack/react-router": "^1.91.2",
-    "@tanstack/start": "^1.91.2",
+    "@tanstack/react-router": "^1.91.3",
+    "@tanstack/start": "^1.91.3",
     "dotenv": "^16.0.0",
     "husky": "^9.1.7",
     "jotai": "^2.10.3",
@@ -44,7 +44,7 @@
     "vinxi": "^0.5.1"
   },
   "devDependencies": {
-    "@tanstack/router-devtools": "^1.91.2",
+    "@tanstack/router-devtools": "^1.91.3",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",

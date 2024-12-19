@@ -1,4 +1,4 @@
-import { useAtomValue } from 'jotai';
+import { useAtomValue } from 'jotai/react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { isDesktop, isMobile } from 'react-device-detect';
