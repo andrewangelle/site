@@ -1,0 +1,21 @@
+.container {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  .box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+      color: #000;
+    }
+  }
+
+  .box {
+    width: 125px;
+    height: 50px;
+  }
+}
