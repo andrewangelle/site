@@ -1,0 +1,33 @@
+diff --git a/node_modules/vinxi/lib/nitro-dev.js b/node_modules/vinxi/lib/nitro-dev.js
+index 83b0824..52dac79 100644
+--- a/node_modules/vinxi/lib/nitro-dev.js
++++ b/node_modules/vinxi/lib/nitro-dev.js
+@@ -292,27 +292,7 @@ export async function createDevServer(nitro) {
+ 	// 		});
+ 	// 	}),
+ 	// );
+-
+-	const adapter = wsAdapter({
+-		...wsApp.websocket,
+-		hooks: {
+-			open: (event) => {
+-				event.ctx.node.req.url = event.ctx.node.req.originalUrl;
+-			},
+-			message: (event) => {
+-				event.ctx.node.req.url = event.ctx.node.req.originalUrl;
+-			},
+-			close: (event) => {
+-				event.ctx.node.req.url = event.ctx.node.req.originalUrl;
+-			},
+-			error: (event) => {
+-				event.ctx.node.req.url = event.ctx.node.req.originalUrl;
+-			},
+-			upgrade: (event) => {
+-				// event.ctx.node.req.url = event.ctx.node.req.originalUrl;
+-			},
+-		},
+-	});
++  const adapter = wsAdapter(wsApp.websocket);
+ 	// Listen
+ 	/** @type {import("@vinxi/listhen").Listener[]}  */
+ 	let listeners = [];
