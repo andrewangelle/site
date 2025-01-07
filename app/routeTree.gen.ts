@@ -13,7 +13,6 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as ColorsImport } from './routes/colors'
 import { Route as IndexImport } from './routes/index'
-import { Route as TypeVersionImport } from './routes/$type.$version'
 
 // Create/Update Routes
 
@@ -26,12 +25,6 @@ const ColorsRoute = ColorsImport.update({
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const TypeVersionRoute = TypeVersionImport.update({
-  id: '/$type/$version',
-  path: '/$type/$version',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -53,13 +46,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ColorsImport
       parentRoute: typeof rootRoute
     }
-    '/$type/$version': {
-      id: '/$type/$version'
-      path: '/$type/$version'
-      fullPath: '/$type/$version'
-      preLoaderRoute: typeof TypeVersionImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -68,41 +54,36 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/colors': typeof ColorsRoute
-  '/$type/$version': typeof TypeVersionRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/colors': typeof ColorsRoute
-  '/$type/$version': typeof TypeVersionRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/colors': typeof ColorsRoute
-  '/$type/$version': typeof TypeVersionRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/colors' | '/$type/$version'
+  fullPaths: '/' | '/colors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/colors' | '/$type/$version'
-  id: '__root__' | '/' | '/colors' | '/$type/$version'
+  to: '/' | '/colors'
+  id: '__root__' | '/' | '/colors'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ColorsRoute: typeof ColorsRoute
-  TypeVersionRoute: typeof TypeVersionRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ColorsRoute: ColorsRoute,
-  TypeVersionRoute: TypeVersionRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,8 +97,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/colors",
-        "/$type/$version"
+        "/colors"
       ]
     },
     "/": {
@@ -125,9 +105,6 @@ export const routeTree = rootRoute
     },
     "/colors": {
       "filePath": "colors.tsx"
-    },
-    "/$type/$version": {
-      "filePath": "$type.$version.tsx"
     }
   }
 }
