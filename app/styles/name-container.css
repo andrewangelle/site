@@ -39,7 +39,7 @@
     }
   }
 
-  @media(max-width: 450px) {
+  @media (max-width: 450px) {
     .inner {
       max-width: 320px;
     }

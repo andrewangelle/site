@@ -13,7 +13,8 @@
     "lint:check": "npx biome check .",
     "format": "npx biome format . --write",
     "pre-commit": "lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "patch-package"
   },
   "husky": {
     "hooks": {
@@ -39,6 +40,7 @@
     "jotai": "^2.10.3",
     "lint-staged": "^15.2.11",
     "motion": "^11.13.5",
+    "patch-package": "^8.0.0",
     "react": "^19.0.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
