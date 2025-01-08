@@ -5,7 +5,11 @@ import {
 } from 'vinxi/http';
 
 export const socket = defineWebSocket({
-  open(peer) {
+  async upgrade(request) {
+    console.log('Upgrade request', request.headers);
+    return { status: 101 };
+  },
+  async open(peer) {
     peer.publish('test', `User ${peer} has connected!`);
     peer.send('You have connected successfully!');
     peer.subscribe('test');
@@ -32,6 +36,8 @@ export const socket = defineWebSocket({
 });
 
 export default defineEventHandler({
-  handler() {},
+  handler(e) {
+    console.log('Socket handler', e);
+  },
   websocket: socket,
 });
