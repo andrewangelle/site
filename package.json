@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "netlify:dev": "netlify dev",
-    "dev": "vinxi dev",
+    "dev": "vinxi dev --port=8080",
     "build": "vinxi build",
-    "start": "vinxi start",
+    "start": "vinxi start --port=8080",
     "lint:fix": "npx biome check . --write",
     "lint:check": "npx biome check .",
     "format": "npx biome format . --write",

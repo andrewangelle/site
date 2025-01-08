@@ -3,7 +3,7 @@ import tsConfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
   server: {
-    preset: 'netlify',
+    preset: 'node-server',
     experimental: {
       websocket: true
     }
@@ -21,4 +21,10 @@ export default defineConfig({
   handler: "./app/ws.ts", // the file we created above
   target: "server",
   base: "/_ws",
-});
+}).addRouter(		{
+  name: "party",
+  type: "http",
+  handler: "./app/party.ts",
+  target: "server",
+  base: "/party",
+})
