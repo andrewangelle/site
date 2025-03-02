@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { createAPIFileRoute } from '@tanstack/start/api';
+import { createAPIFileRoute } from '@tanstack/react-start/api';
 
 export const APIRoute = createAPIFileRoute('/api/resume/pdf')({
   GET: async () => {
