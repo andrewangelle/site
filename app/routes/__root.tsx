@@ -1,5 +1,9 @@
-import { Outlet, createRootRoute } from '@tanstack/react-router';
-import { Meta, Scripts } from '@tanstack/start';
+import {
+  HeadContent,
+  Outlet,
+  Scripts,
+  createRootRoute,
+} from '@tanstack/react-router';
 import { Provider } from 'jotai/react';
 import type { ReactNode } from 'react';
 import { Body } from '~/components/Body';
@@ -53,7 +57,7 @@ function RootDocument({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <Meta />
+        <HeadContent />
       </head>
       <Provider>
         <Body>
