@@ -5,7 +5,7 @@ import { BsFiletypePdf } from 'react-icons/bs';
 import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
-export function PDFLink() {
+export function ViewPDFLink() {
   const setActiveLink = useSetAtom(activeLinkAtom);
   const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
 

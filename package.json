@@ -30,8 +30,8 @@
     "@biomejs/biome": "^1.9.4",
     "@netlify/functions": "^2.8.2",
     "@sendgrid/mail": "^7.6.1",
-    "@tanstack/react-router": "^1.112.0",
-    "@tanstack/react-start": "^1.112.3",
+    "@tanstack/react-router": "^1.114.24",
+    "@tanstack/react-start": "^1.114.24",
     "dotenv": "^16.0.0",
     "husky": "^9.1.7",
     "jotai": "^2.10.3",
@@ -41,10 +41,10 @@
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
-    "vinxi": "^0.5.1"
+    "vinxi": "^0.5.3"
   },
   "devDependencies": {
-    "@tanstack/router-devtools": "^1.112.5",
+    "@tanstack/react-router-devtools": "^1.114.24",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",

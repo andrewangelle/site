@@ -9,6 +9,7 @@ export const strings = {
   notFound: 'Page Not Found',
   backToLinks: 'Close',
   downloads: 'Download',
+  view: 'View',
   hrefs: {
     github: 'http://www.github.com/andrewangelle',
     contact: 'mailto:andrewangelle@gmail.com?&subject=Development Inquiry',
@@ -21,6 +22,7 @@ export const strings = {
     resume: "View options for downloading Andrew Angelle's resume",
     closeDownloads: 'Close the downloads section',
     resumePdf: "Download Andrew Angelle's resume as a pdf",
+    resumeView: "View Andrew Angelle's resume as a pdf",
     contact: 'Email Andrew Angelle',
     notFound: 'Page Not Found. Go back to main page.',
   },
