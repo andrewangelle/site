@@ -2,7 +2,8 @@ import { useAtom, useAtomValue, useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
 import { CloseDownloads } from '~/components/Links/CloseDownloads';
-import { PDFLink } from '~/components/Links/PDFLink';
+import { DownloadPDFLink } from '~/components/Links/DownloadPDFLink';
+import { ViewPDFLink } from '~/components/Links/ViewPDFLink';
 import {
   activeLinkAtom,
   isDownloadsSelectedAtom,
@@ -26,6 +27,27 @@ export function DownloadsSection() {
 
   return (
     <>
+      <div className="pdf-links-container">
+        <LinkAction label={strings.view}>
+          <ViewPDFLink />
+        </LinkAction>
+
+        <LinkAction label={strings.downloads}>
+          <DownloadPDFLink />
+        </LinkAction>
+      </div>
+
+      <CloseDownloads />
+    </>
+  );
+}
+
+function LinkAction({
+  label,
+  children,
+}: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="pdf-link">
       <motion.h3
         initial="hidden"
         animate="visible"
@@ -41,7 +63,7 @@ export function DownloadsSection() {
           },
         }}
       >
-        {strings.downloads}
+        {label}
       </motion.h3>
 
       <motion.div
@@ -60,10 +82,8 @@ export function DownloadsSection() {
           },
         }}
       >
-        <PDFLink />
+        {children}
       </motion.div>
-
-      <CloseDownloads />
-    </>
+    </div>
   );
 }
