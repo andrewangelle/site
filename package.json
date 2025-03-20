@@ -29,9 +29,8 @@
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
     "@netlify/functions": "^2.8.2",
-    "@sendgrid/mail": "^7.6.1",
-    "@tanstack/react-router": "^1.114.24",
-    "@tanstack/react-start": "^1.114.24",
+    "@tanstack/react-router": "^1.116.0",
+    "@tanstack/react-start": "^1.116.2",
     "dotenv": "^16.0.0",
     "husky": "^9.1.7",
     "jotai": "^2.10.3",
@@ -44,7 +43,7 @@
     "vinxi": "^0.5.3"
   },
   "devDependencies": {
-    "@tanstack/react-router-devtools": "^1.114.24",
+    "@tanstack/react-router-devtools": "^1.116.0",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",

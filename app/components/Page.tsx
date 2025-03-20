@@ -2,28 +2,34 @@ import { useAtomValue } from 'jotai/react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { isDesktop } from 'react-device-detect';
-import { ActiveLink } from '~/components/ActiveLink';
-import { DownloadsSection } from '~/components/DownloadsSection';
-import { LinksSection } from '~/components/LinksSection';
+import { ActiveLink } from '~/components/LinksSection/ActiveLink';
+import { LinksSection } from '~/components/LinksSection/LinksSection';
+import { Name } from '~/components/Name';
+import { ResumeSection } from '~/components/ResumeSection/ResumeSection';
 import { useAnimatedSubtitle } from '~/hooks/useAnimatedSubtitle';
 import { useIsLinksInView } from '~/hooks/useIsLinksInView';
-import { isDownloadsSelectedAtom } from '~/store/atoms';
-import { strings } from '~/utils/constants';
+import { SECTIONS, activeViewAtom } from '~/store/atoms';
 
 export function Page() {
+  /** refs */
   const nameSectionRef = useRef<HTMLElement>(null);
   const nameButtonRef = useRef<HTMLButtonElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
-  const subTitleRef = useAnimatedSubtitle();
   const linksSectionRef = useRef<HTMLElement>(null);
   const githubLinkRef = useRef<HTMLAnchorElement>(null);
+
+  /** state */
   const [linksRef] = useIsLinksInView();
+  const activeView = useAtomValue(activeViewAtom);
+
+  /** animations */
   const { scrollYProgress } = useScroll();
+  const subTitleRef = useAnimatedSubtitle();
   const moveLeft = useTransform(scrollYProgress, getLeftOffset);
   const moveRight = useTransform(scrollYProgress, getRightOffset);
   const linksOpacity = useTransform(scrollYProgress, (latest) => latest);
-  const isDownloadsSelected = useAtomValue(isDownloadsSelectedAtom);
 
+  /** handlers */
   function scrollLinksIntoView() {
     linksSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
     nameButtonRef?.current?.blur();
@@ -48,42 +54,26 @@ export function Page() {
   return (
     <>
       <section ref={nameSectionRef} tabIndex={-1}>
-        <div className="name-container" tabIndex={-1}>
-          <motion.button
-            ref={nameButtonRef}
-            tabIndex={isDownloadsSelected ? -1 : 0}
-            className="inner"
-            aria-label={strings.aria.name}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1 },
-            }}
-            onFocus={scrollNameIntoView}
-            onClick={scrollLinksIntoView}
-          >
-            <motion.h1 ref={nameRef} style={{ x: moveLeft }}>
-              {strings.name}
-            </motion.h1>
-
-            <motion.h2 ref={subTitleRef} style={{ x: moveRight }}>
-              {strings.subtitle}
-            </motion.h2>
-          </motion.button>
-        </div>
+        <Name
+          nameButtonRef={nameButtonRef}
+          nameRef={nameRef}
+          subTitleRef={subTitleRef}
+          moveLeft={moveLeft}
+          moveRight={moveRight}
+          scrollNameIntoView={scrollNameIntoView}
+          scrollLinksIntoView={scrollLinksIntoView}
+        />
       </section>
 
       <motion.section ref={linksSectionRef} style={{ opacity: linksOpacity }}>
         <div ref={linksRef} className="links-container">
-          {!isDownloadsSelected && (
+          {activeView === SECTIONS.LINKS && (
             <>
               {isDesktop && <ActiveLink />}
               <LinksSection ref={githubLinkRef} />
             </>
           )}
-          {isDownloadsSelected && <DownloadsSection />}
+          {activeView === SECTIONS.RESUME && <ResumeSection />}
         </div>
       </motion.section>
     </>

@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
 import type { RefObject } from 'react';
-import { ContactLink } from '~/components/Links/ContactLink';
-import { GitHubLink } from '~/components/Links/GitHubLink';
-import { LinkedInLink } from '~/components/Links/LinkedInLink';
-import { OpenDownloads } from '~/components/Links/OpenDownloads';
+import { ContactLink } from '~/components/LinksSection/ContactLink';
+import { GitHubLink } from '~/components/LinksSection/GitHubLink';
+import { LinkedInLink } from '~/components/LinksSection/LinkedInLink';
+import { ViewResumeSection } from '~/components/LinksSection/ViewResumeSection';
 
 export function LinksSection({
   ref,
@@ -30,7 +30,7 @@ export function LinksSection({
       <GitHubLink ref={ref} />
       <LinkedInLink />
       <ContactLink />
-      <OpenDownloads />
+      <ViewResumeSection />
     </motion.div>
   );
 }
