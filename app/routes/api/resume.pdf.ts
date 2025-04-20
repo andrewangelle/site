@@ -4,11 +4,15 @@ import { createAPIFileRoute } from '@tanstack/react-start/api';
 
 export const APIRoute = createAPIFileRoute('/api/resume/pdf')({
   GET: async ({ request }) => {
-    const pathToPdf = join(process.cwd(), './app/utils/resume.pdf');
-    const file = await readFile(pathToPdf);
-    return new Response(file, {
-      headers: getResponseHeaders(request),
-    });
+    try {
+      const pathToPdf = join(process.cwd(), './app/utils/resume.pdf');
+      const file = await readFile(pathToPdf);
+      return new Response(file, {
+        headers: getResponseHeaders(request),
+      });
+    } catch (e) {
+      return new Response(e);
+    }
   },
 });
 
