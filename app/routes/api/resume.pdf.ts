@@ -1,14 +1,21 @@
-import { readFile } from 'node:fs/promises';
-import { join } from 'node:path';
 import { createAPIFileRoute } from '@tanstack/react-start/api';
 
 export const APIRoute = createAPIFileRoute('/api/resume/pdf')({
   GET: async ({ request }) => {
-    const pathToPdf = join(process.cwd(), './app/utils/resume.pdf');
-    const file = await readFile(pathToPdf);
-    return new Response(file, {
-      headers: getResponseHeaders(request),
-    });
+    try {
+      const url = new URL(request.url);
+      const response = await fetch(`${url.origin}/resume.pdf`);
+      return new Response(response.body, {
+        headers: getResponseHeaders(request),
+      });
+    } catch (e) {
+      return new Response(
+        JSON.stringify({
+          status: 500,
+          message: (e as Error).message,
+        }),
+      );
+    }
   },
 });
 

@@ -2,12 +2,12 @@ import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { IoDocumentText } from 'react-icons/io5';
-import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
+import { SECTIONS, activeLinkAtom, activeViewAtom } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
-export function OpenDownloads() {
+export function ViewResumeSection() {
   const setActiveLink = useSetAtom(activeLinkAtom);
-  const setDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
+  const setActiveView = useSetAtom(activeViewAtom);
 
   if (isMobile) {
     return (
@@ -17,7 +17,7 @@ export function OpenDownloads() {
           type="button"
           aria-label={strings.aria.resume}
           onClick={() => {
-            setDownloadsSelected(true);
+            setActiveView(SECTIONS.RESUME);
             setActiveLink(strings.resume);
           }}
         >
@@ -37,7 +37,7 @@ export function OpenDownloads() {
       onFocus={() => setActiveLink(strings.resume)}
       onBlur={() => setActiveLink(null)}
       onClick={() => {
-        setDownloadsSelected(true);
+        setActiveView(SECTIONS.RESUME);
         setActiveLink(strings.resume);
       }}
     >

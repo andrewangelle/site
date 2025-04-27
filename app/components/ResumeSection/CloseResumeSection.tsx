@@ -1,12 +1,11 @@
 import { useSetAtom } from 'jotai';
 import { motion } from 'motion/react';
-import { activeLinkAtom, isDownloadsSelectedAtom } from '~/store/atoms';
+import { SECTIONS, activeLinkAtom, activeViewAtom } from '~/store/atoms';
 import { strings } from '~/utils/constants';
 
-export function CloseDownloads() {
+export function CloseResumeSection() {
   const setActiveLink = useSetAtom(activeLinkAtom);
-  const setisDownloadsSelected = useSetAtom(isDownloadsSelectedAtom);
-
+  const setActiveView = useSetAtom(activeViewAtom);
   return (
     <motion.button
       aria-label={strings.aria.closeDownloads}
@@ -26,7 +25,7 @@ export function CloseDownloads() {
         },
       }}
       onClick={() => {
-        setisDownloadsSelected(false);
+        setActiveView(SECTIONS.LINKS);
         setActiveLink(null);
       }}
     >

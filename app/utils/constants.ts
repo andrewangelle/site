@@ -7,6 +7,7 @@ export const strings = {
   resume: 'Resume',
   pdf: 'PDF',
   notFound: 'Page Not Found',
+  errorBoundary: 'Something happened',
   backToLinks: 'Close',
   downloads: 'Download',
   view: 'View',
