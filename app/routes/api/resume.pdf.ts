@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { createAPIFileRoute } from '@tanstack/react-start/api';
 
@@ -11,7 +11,15 @@ export const APIRoute = createAPIFileRoute('/api/resume/pdf')({
         headers: getResponseHeaders(request),
       });
     } catch (e) {
-      return new Response(e);
+      const err = e as Error;
+      const files = await readdir(process.cwd(), { recursive: true });
+      return new Response(
+        JSON.stringify({
+          status: 500,
+          files: files,
+          message: err.message,
+        }),
+      );
     }
   },
 });
