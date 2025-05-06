@@ -7,8 +7,8 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["./app/routeTree.gen.ts"],
-    "include": ["app"]
+    "ignore": ["./src/routeTree.gen.ts"],
+    "include": ["src"]
   },
   "formatter": {
     "enabled": true,
