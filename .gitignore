@@ -9,3 +9,5 @@ node_modules
 .vinxi
 dist
 .output
+.nitro
+.tanstack-start/build

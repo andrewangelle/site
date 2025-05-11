@@ -1,4 +1,3 @@
-import { createFileRoute } from '@tanstack/react-router';
 import { motion } from 'motion/react';
 import { useRef } from 'react';
 import { Links } from '~/components/LinksSection/LinksSection';
@@ -8,7 +7,7 @@ import { useAnimatedSubtitle } from '~/hooks/useAnimatedSubtitle';
 import { useAnimatedTitle } from '~/hooks/useAnimatedTitle';
 import { useIsLinksInView } from '~/hooks/useIsLinksInView';
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute({
   notFoundComponent: NotFound,
   component() {
     /** refs */
