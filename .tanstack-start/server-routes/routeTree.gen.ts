@@ -19,7 +19,7 @@ import {
   createServerFileRoute,
 } from '@tanstack/react-start/server'
 
-import { ServerRoute as ApiResumePdfRouteImport } from './../../src/routes/api/resume.pdf'
+import { ServerRoute as ApiResumePdfRouteImport } from './../../src/routes/api.resume.pdf'
 
 // Create/Update Routes
 
@@ -47,7 +47,7 @@ declare module '@tanstack/react-start/server' {
 
 // Add type-safety to the createFileRoute function across the route tree
 
-declare module './../../src/routes/api/resume.pdf' {
+declare module './../../src/routes/api.resume.pdf' {
   const createServerFileRoute: CreateServerFileRoute<
     FileRoutesByPath['/api/resume/pdf']['parentRoute'],
     FileRoutesByPath['/api/resume/pdf']['id'],
@@ -103,7 +103,7 @@ export const routeTree = rootRoute
       ]
     },
     "/api/resume/pdf": {
-      "filePath": "api/resume.pdf.ts"
+      "filePath": "api.resume.pdf.ts"
     }
   }
 }
