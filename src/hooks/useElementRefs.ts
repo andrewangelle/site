@@ -9,10 +9,13 @@ export function useElementRefs() {
 
   function scrollLinksIntoView() {
     linksSection?.current?.scrollIntoView({ behavior: 'smooth' });
+    nameButton?.current?.blur();
   }
 
   function scrollNameIntoView() {
+    githubLink?.current?.blur();
     nameSection?.current?.scrollIntoView({ behavior: 'smooth' });
+    nameButton?.current?.focus();
   }
 
   return {
