@@ -23,10 +23,6 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        name: 'viewport',
-        content: 'width=500, initial-scale=2',
-      },
-      {
         title: 'Andrew Angelle',
       },
       {
