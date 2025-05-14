@@ -1,63 +1,44 @@
-import { createFileRoute } from '@tanstack/react-router';
 import { motion } from 'motion/react';
-import { useRef } from 'react';
-import { Links } from '~/components/LinksSection/LinksSection';
+import { Links } from '~/components/Links';
 import { Name } from '~/components/Name';
 import { NotFound } from '~/components/NotFound';
 import { useAnimatedSubtitle } from '~/hooks/useAnimatedSubtitle';
 import { useAnimatedTitle } from '~/hooks/useAnimatedTitle';
+import { useElementRefs } from '~/hooks/useElementRefs';
 import { useIsLinksInView } from '~/hooks/useIsLinksInView';
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute({
   notFoundComponent: NotFound,
   component() {
-    /** refs */
-    const nameSectionRef = useRef<HTMLElement>(null);
-    const nameButtonRef = useRef<HTMLButtonElement>(null);
-    const nameRef = useRef<HTMLDivElement>(null);
-    const linksSectionRef = useRef<HTMLElement>(null);
-    const githubLinkRef = useRef<HTMLAnchorElement>(null);
-
-    /** state */
-    const [linksRef] = useIsLinksInView();
-
-    /** animations */
+    const refs = useElementRefs();
+    const [linksVisibilityRef] = useIsLinksInView();
     const titleAnimations = useAnimatedTitle();
     const subTitleRef = useAnimatedSubtitle();
 
-    /** handlers */
-    function scrollLinksIntoView() {
-      linksSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
-      nameButtonRef?.current?.blur();
-    }
-
-    function scrollNameIntoView() {
-      githubLinkRef?.current?.blur();
-      nameSectionRef?.current?.scrollIntoView({ behavior: 'smooth' });
-      nameButtonRef?.current?.focus();
-    }
-
     return (
-      <>
-        <section ref={nameSectionRef} tabIndex={-1}>
+      <main>
+        <section ref={refs.name.section} tabIndex={-1}>
           <Name
-            nameButtonRef={nameButtonRef}
-            nameRef={nameRef}
+            nameButtonRef={refs.name.button}
+            nameRef={refs.name.text}
             subTitleRef={subTitleRef}
             moveLeft={titleAnimations.moveLeft}
             moveRight={titleAnimations.moveRight}
-            scrollNameIntoView={scrollNameIntoView}
-            scrollLinksIntoView={scrollLinksIntoView}
+            scrollNameIntoView={refs.name.scrollIntoView}
+            scrollLinksIntoView={refs.links.scrollIntoView}
           />
         </section>
 
         <motion.section
-          ref={linksSectionRef}
+          ref={refs.links.section}
           style={{ opacity: titleAnimations.linksOpacity }}
         >
-          <Links linksSectionRef={linksRef} githubLinkRef={githubLinkRef} />
+          <Links
+            visibilityRef={linksVisibilityRef}
+            githubLinkRef={refs.links.githubLink}
+          />
         </motion.section>
-      </>
+      </main>
     );
   },
 });

@@ -11,16 +11,16 @@ import { ResumeSection } from '~/components/ResumeSection/ResumeSection';
 import { SECTIONS, activeViewAtom } from '~/store/atoms';
 
 export function Links({
-  linksSectionRef,
+  visibilityRef,
   githubLinkRef,
 }: {
-  linksSectionRef: RefObject<HTMLDivElement | null>;
+  visibilityRef: RefObject<HTMLDivElement | null>;
   githubLinkRef: RefObject<HTMLAnchorElement | null>;
 }) {
   const activeView = useAtomValue(activeViewAtom);
 
   return (
-    <div ref={linksSectionRef} className="links-container">
+    <div ref={visibilityRef} className="links-container">
       {activeView === SECTIONS.LINKS && (
         <>
           {isDesktop && <ActiveLink />}

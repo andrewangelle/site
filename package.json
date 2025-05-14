@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "netlify:dev": "netlify dev",
-    "dev": "vinxi dev",
-    "build": "vinxi build",
-    "start": "vinxi start",
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "node .output/server/index.mjs",
     "lint:fix": "pnpm exec biome check . --write",
     "lint:check": "pnpm exec biome check .",
     "format": "pnpm exec biome format . --write",
@@ -29,8 +29,8 @@
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
     "@netlify/functions": "^2.8.2",
-    "@tanstack/react-router": "^1.117.1",
-    "@tanstack/react-start": "^1.118.0",
+    "@tanstack/react-router": "1.120.4-alpha.15",
+    "@tanstack/react-start": "1.120.4-alpha.16",
     "dotenv": "^16.0.0",
     "husky": "^9.1.7",
     "jotai": "^2.10.3",
@@ -39,11 +39,10 @@
     "react": "^19.0.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.4.0",
-    "vinxi": "^0.5.3"
+    "react-icons": "^5.4.0"
   },
   "devDependencies": {
-    "@tanstack/react-router-devtools": "^1.117.1",
+    "@tanstack/react-router-devtools": "1.120.4-alpha.15",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",
@@ -51,6 +50,7 @@
     "globals": "^15.13.0",
     "netlify-cli": "^17.38.0",
     "typescript": "^5.7.2",
+    "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4"
   },
   "engines": {
