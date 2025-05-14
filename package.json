@@ -29,8 +29,8 @@
   "dependencies": {
     "@biomejs/biome": "^1.9.4",
     "@netlify/functions": "^2.8.2",
-    "@tanstack/react-router": "1.120.4-alpha.1",
-    "@tanstack/react-start": "1.120.4-alpha.6",
+    "@tanstack/react-router": "1.120.4-alpha.15",
+    "@tanstack/react-start": "1.120.4-alpha.16",
     "dotenv": "^16.0.0",
     "husky": "^9.1.7",
     "jotai": "^2.10.3",
@@ -42,7 +42,7 @@
     "react-icons": "^5.4.0"
   },
   "devDependencies": {
-    "@tanstack/react-router-devtools": "1.120.4-alpha.1",
+    "@tanstack/react-router-devtools": "1.120.4-alpha.15",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",
