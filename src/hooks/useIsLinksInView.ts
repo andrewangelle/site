@@ -1,6 +1,7 @@
 import { useAtom } from 'jotai/react';
 import { useInView } from 'motion/react';
-import { type RefObject, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
+import type { RefObject } from 'react';
 import { usePrevious } from '~/hooks/usePrevious';
 import { linksInViewAtom } from '~/store/atoms';
 
