@@ -1,3 +1,5 @@
+import type { HTMLMotionProps } from 'motion/react';
+
 export const strings = {
   name: 'Andrew Angelle',
   subtitle: 'software developer',
@@ -9,7 +11,7 @@ export const strings = {
   notFound: 'Page Not Found',
   errorBoundary: 'Something happened',
   backToLinks: 'Close',
-  downloads: 'Download',
+  download: 'Download',
   view: 'View',
   hrefs: {
     github: 'http://www.github.com/andrewangelle',
@@ -20,12 +22,14 @@ export const strings = {
     name: 'View Andrew Angelles contact links',
     github: "Navigate to Andrew Angelle's GitHub Page",
     linkedin: "Navigate to Andrew Angelle's LinkedIn Page",
-    resume: "View options for downloading Andrew Angelle's resume",
     closeDownloads: 'Close the downloads section',
-    resumePdf: "Download Andrew Angelle's resume as a pdf",
-    resumeView: "View Andrew Angelle's resume as a pdf",
     contact: 'Email Andrew Angelle',
     notFound: 'Page Not Found. Go back to main page.',
+    resume: {
+      open: "View options for downloading Andrew Angelle's resume",
+      view: "View Andrew Angelle's resume as a pdf",
+      download: "Download Andrew Angelle's resume as a pdf",
+    },
   },
 };
 
@@ -39,4 +43,25 @@ export const colors = {
 export const activeLinkConfig = {
   scale: 1.25,
   transition: { duration: 0.5, ease: 'easeInOut' },
+};
+
+export type EnterExitAnimationProps = Pick<
+  HTMLMotionProps<'h3' | 'div' | 'button'>,
+  'initial' | 'animate' | 'exit' | 'variants'
+>;
+
+export const enterExitAnimationProps: EnterExitAnimationProps = {
+  initial: 'hidden',
+  animate: 'visible',
+  exit: 'hidden',
+  variants: {
+    hidden: {
+      scaleX: 0,
+      opacity: 0,
+    },
+    visible: {
+      scaleX: 1,
+      opacity: 1,
+    },
+  },
 };

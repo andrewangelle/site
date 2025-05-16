@@ -15,7 +15,7 @@ export function ViewResumeSection() {
         <h3 role="presentation">{strings.resume}</h3>
         <button
           type="button"
-          aria-label={strings.aria.resume}
+          aria-label={strings.aria.resume.view}
           onClick={() => {
             setActiveView(SECTIONS.RESUME);
             setActiveLink(strings.resume);
@@ -29,7 +29,7 @@ export function ViewResumeSection() {
 
   return (
     <motion.button
-      aria-label={strings.aria.resume}
+      aria-label={strings.aria.resume.view}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
       onHoverStart={() => setActiveLink(strings.resume)}

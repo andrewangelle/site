@@ -6,11 +6,11 @@ import { FaGithub } from 'react-icons/fa';
 import { activeLinkAtom } from '~/store/atoms';
 import { ANCHOR_REL, activeLinkConfig, strings } from '~/utils/constants';
 
-export function GitHubLink({
-  ref,
-}: {
+type GithubLinkProps = {
   ref: RefObject<HTMLAnchorElement | null>;
-}) {
+};
+
+export function GitHubLink({ ref }: GithubLinkProps) {
   const setActiveLink = useSetAtom(activeLinkAtom);
 
   if (isMobile) {
