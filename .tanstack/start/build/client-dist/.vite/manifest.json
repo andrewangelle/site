@@ -1,0 +1,37 @@
+{
+  "../../../../~start/default-client-entry.tsx": {
+    "file": "assets/main-DDMTX9ck.js",
+    "name": "main",
+    "src": "../../../../~start/default-client-entry.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/routes/index.tsx?tsr-split=notFoundComponent"
+    ],
+    "assets": [
+      "assets/index-C4zbAgzN.css",
+      "assets/links-container-DDn7MNLM.css",
+      "assets/name-container-BkGAydb4.css"
+    ]
+  },
+  "/Users/andrewangelle/code/site/src/styles/index.css": {
+    "file": "assets/index-C4zbAgzN.css",
+    "src": "/Users/andrewangelle/code/site/src/styles/index.css"
+  },
+  "/Users/andrewangelle/code/site/src/styles/links-container.css": {
+    "file": "assets/links-container-DDn7MNLM.css",
+    "src": "/Users/andrewangelle/code/site/src/styles/links-container.css"
+  },
+  "/Users/andrewangelle/code/site/src/styles/name-container.css": {
+    "file": "assets/name-container-BkGAydb4.css",
+    "src": "/Users/andrewangelle/code/site/src/styles/name-container.css"
+  },
+  "src/routes/index.tsx?tsr-split=notFoundComponent": {
+    "file": "assets/index-DYwOkg2Y.js",
+    "name": "index",
+    "src": "src/routes/index.tsx?tsr-split=notFoundComponent",
+    "isDynamicEntry": true,
+    "imports": [
+      "../../../../~start/default-client-entry.tsx"
+    ]
+  }
+}
