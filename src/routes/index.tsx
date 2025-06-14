@@ -1,3 +1,4 @@
+import { createFileRoute } from '@tanstack/react-router';
 import { motion } from 'motion/react';
 import { Links } from '~/components/Links';
 import { Name } from '~/components/Name';
@@ -7,7 +8,7 @@ import { useAnimatedTitle } from '~/hooks/useAnimatedTitle';
 import { useElementRefs } from '~/hooks/useElementRefs';
 import { useIsLinksInView } from '~/hooks/useIsLinksInView';
 
-export const Route = createFileRoute({
+export const Route = createFileRoute('/')({
   notFoundComponent: NotFound,
   component() {
     const refs = useElementRefs();

@@ -1,6 +1,6 @@
 import { createServerFileRoute } from '@tanstack/react-start/server';
 
-export const ServerRoute = createServerFileRoute().methods({
+export const ServerRoute = createServerFileRoute('/api/resume/pdf').methods({
   GET: async ({ request }) => {
     try {
       const url = new URL(request.url);

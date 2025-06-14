@@ -81,6 +81,10 @@
     align-items: center;
     gap: 4px;
 
+    h3 {
+      cursor: pointer;
+    }
+
     &:hover {
       h3 {
         color: skyblue;

@@ -9,14 +9,14 @@ import { LinkedInLink } from '~/components/LinksSection/LinkedInLink';
 import { ViewResumeSection } from '~/components/LinksSection/ViewResumeSection';
 import { ResumeSection } from '~/components/ResumeSection/ResumeSection';
 import { SECTIONS, activeViewAtom } from '~/store/atoms';
+import { enterExitAnimationProps } from '~/utils/constants';
 
-export function Links({
-  visibilityRef,
-  githubLinkRef,
-}: {
+type LinksProps = {
   visibilityRef: RefObject<HTMLDivElement | null>;
   githubLinkRef: RefObject<HTMLAnchorElement | null>;
-}) {
+};
+
+export function Links({ visibilityRef, githubLinkRef }: LinksProps) {
   const activeView = useAtomValue(activeViewAtom);
 
   return (
@@ -25,22 +25,7 @@ export function Links({
         <>
           {isDesktop && <ActiveLink />}
 
-          <motion.div
-            className="links"
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            variants={{
-              hidden: {
-                scaleX: 0,
-                opacity: 0,
-              },
-              visible: {
-                scaleX: 1,
-                opacity: 1,
-              },
-            }}
-          >
+          <motion.div className="links" {...enterExitAnimationProps}>
             <GitHubLink ref={githubLinkRef} />
             <LinkedInLink />
             <ContactLink />
