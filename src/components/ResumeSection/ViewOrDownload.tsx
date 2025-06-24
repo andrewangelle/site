@@ -1,5 +1,5 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import { Link } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { BsDownload, BsFiletypePdf } from 'react-icons/bs';
@@ -9,6 +9,8 @@ import { ResumePDF } from '../../PDF/ResumePDF';
 import { PDF_CONSTANTS } from '../../PDF/constants';
 
 export function ViewOrDownload({ action }: ResumeActionLinkProps) {
+  const navigate = useNavigate();
+
   if (isMobile) {
     return (
       <div className="mobile-link">
@@ -35,7 +37,7 @@ export function ViewOrDownload({ action }: ResumeActionLinkProps) {
   }
 
   return (
-    <motion.button
+    <motion.div
       aria-label={strings.aria.resume[action]}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
@@ -48,10 +50,17 @@ export function ViewOrDownload({ action }: ResumeActionLinkProps) {
           <BsDownload role="presentation" className="doc-link" size={60} />
         </PDFDownloadLink>
       ) : (
-        <Link to="/resume">
+        <Link
+          to="/resume"
+          onKeyDown={(e) => {
+            if (e.key === ' ' || e.key === 'Enter') {
+              navigate({ to: '/resume' });
+            }
+          }}
+        >
           <BsFiletypePdf role="presentation" className="doc-link" size={60} />
         </Link>
       )}
-    </motion.button>
+    </motion.div>
   );
 }
