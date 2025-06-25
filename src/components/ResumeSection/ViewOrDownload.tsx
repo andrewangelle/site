@@ -1,66 +1,27 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import { Link, useNavigate } from '@tanstack/react-router';
-import { motion } from 'motion/react';
-import { isMobile } from 'react-device-detect';
+import { Link } from '@tanstack/react-router';
 import { BsDownload, BsFiletypePdf } from 'react-icons/bs';
+import { ResumePDF } from '~/PDF/ResumePDF';
+import { PDF_CONSTANTS } from '~/PDF/constants';
 import type { ResumeActionLinkProps } from '~/components/ResumeSection/ResumeAction';
-import { activeLinkConfig, strings } from '~/utils/constants';
-import { ResumePDF } from '../../PDF/ResumePDF';
-import { PDF_CONSTANTS } from '../../PDF/constants';
+import { strings } from '~/utils/constants';
 
 export function ViewOrDownload({ action }: ResumeActionLinkProps) {
-  const navigate = useNavigate();
-
-  if (isMobile) {
+  if (action === 'download') {
     return (
-      <div className="mobile-link">
-        <button type="button" aria-label={strings.aria.resume[action]}>
-          {action === 'download' ? (
-            <PDFDownloadLink
-              document={<ResumePDF />}
-              fileName={PDF_CONSTANTS.DOC_TITLE}
-            >
-              <BsDownload role="presentation" className="doc-link" size={60} />
-            </PDFDownloadLink>
-          ) : (
-            <Link to="/resume">
-              <BsFiletypePdf
-                role="presentation"
-                className="doc-link"
-                size={60}
-              />
-            </Link>
-          )}
-        </button>
-      </div>
+      <PDFDownloadLink
+        document={<ResumePDF />}
+        fileName={PDF_CONSTANTS.DOC_TITLE}
+        aria-label={strings.aria.resume[action]}
+      >
+        <BsDownload role="presentation" className="doc-link" size={60} />
+      </PDFDownloadLink>
     );
   }
 
   return (
-    <motion.div
-      aria-label={strings.aria.resume[action]}
-      whileFocus={activeLinkConfig}
-      whileHover={activeLinkConfig}
-    >
-      {action === 'download' ? (
-        <PDFDownloadLink
-          document={<ResumePDF />}
-          fileName={PDF_CONSTANTS.DOC_TITLE}
-        >
-          <BsDownload role="presentation" className="doc-link" size={60} />
-        </PDFDownloadLink>
-      ) : (
-        <Link
-          to="/resume"
-          onKeyDown={(e) => {
-            if (e.key === ' ' || e.key === 'Enter') {
-              navigate({ to: '/resume' });
-            }
-          }}
-        >
-          <BsFiletypePdf role="presentation" className="doc-link" size={60} />
-        </Link>
-      )}
-    </motion.div>
+    <Link to="/resume" aria-label={strings.aria.resume[action]}>
+      <BsFiletypePdf role="presentation" className="doc-link" size={60} />
+    </Link>
   );
 }

@@ -1,5 +1,33 @@
-import { StyleSheet } from '@react-pdf/renderer';
-import '~/PDF/fonts';
+import { Font, StyleSheet } from '@react-pdf/renderer';
+
+const fontWeights = Array(9)
+  .fill(null)
+  .map((_, idx) => (idx + 1) * 100);
+
+Font.register({
+  family: 'Bitter',
+  fonts: fontWeights.map((fontWeight) => ({
+    src: `https://cdn.jsdelivr.net/fontsource/fonts/bitter@latest/latin-${fontWeight}-normal.ttf`,
+    fontWeight,
+  })),
+});
+
+Font.register({
+  family: 'BitterItalic',
+  fontStyle: 'italic',
+  fonts: fontWeights.map((fontWeight) => ({
+    src: `https://cdn.jsdelivr.net/fontsource/fonts/bitter@latest/latin-${fontWeight}-italic.ttf`,
+    fontWeight,
+  })),
+});
+
+Font.register({
+  family: 'FiraSans',
+  fonts: fontWeights.map((fontWeight) => ({
+    src: `https://cdn.jsdelivr.net/fontsource/fonts/fira-sans@latest/latin-${fontWeight}-normal.ttf`,
+    fontWeight,
+  })),
+});
 
 export const colors = {
   yellow: {
