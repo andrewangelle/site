@@ -28,12 +28,11 @@ export const PDF_CONSTANTS = {
       title: 'Staff Software Engineer',
       date: 'September 2019 - present',
       description: [
-        'Tech lead for multiple greenfield initiatives utilizing React, TypeScript, and NodeJS.',
-        'Led the effort to streamline development standards for the team’s process, code style, testing, tooling, and best practices for a React-based development effort.',
-        'I established myself as the go-to engineering resource for React/TypeScript questions and implementation. I also helped to mentor and guide other developers',
-        'I was able to implement the project’s build and CI/CD pipeline.',
+        'Tech lead for multiple greenfield initiatives utilizing modern fullstack TypeScript architecture.',
+        'Led the effort to streamline development standards for the team’s process, code style, testing, tooling, CI/CD, and best practices.',
+        'I established myself as the go-to engineering resource for initiatives I was involved in. I also helped to mentor and guide other developers',
         'Collaborated with product, design, and backend teams to facilitate front-end implementation of features',
-        'Contributed to architectural decisions for multiple projects that I was involved in.',
+        'Contributed to architectural decisions for efforts that I was involved in.',
       ],
     },
     {

@@ -36,6 +36,7 @@ export function ResumePDF() {
           <ColumnMain>
             <EducationPDF />
           </ColumnMain>
+          <ColumnSide> </ColumnSide>
         </Row>
       </Page>
     </Document>
