@@ -1,6 +1,6 @@
 import { Text, View } from '@react-pdf/renderer';
+import { PDF_CONSTANTS } from '~/PDF/constants';
 import { typography } from '~/PDF/theme';
-import { PDF_CONSTANTS } from './constants';
 
 export function HeaderPDF() {
   return (

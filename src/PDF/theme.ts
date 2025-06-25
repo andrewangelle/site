@@ -1,9 +1,8 @@
 import { Font, StyleSheet } from '@react-pdf/renderer';
 
-const fontWeights = Array(10)
+const fontWeights = Array(9)
   .fill(null)
-  .map((_, idx) => idx * 100)
-  .filter(Boolean);
+  .map((_, idx) => (idx + 1) * 100);
 
 Font.register({
   family: 'Bitter',

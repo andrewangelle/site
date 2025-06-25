@@ -1,6 +1,6 @@
 import { Text, View } from '@react-pdf/renderer';
 import { PDF_CONSTANTS } from '~/PDF/constants';
-import { colors, typography } from '~/PDF/theme';
+import { typography } from '~/PDF/theme';
 
 export function EducationPDF() {
   return (
@@ -8,7 +8,7 @@ export function EducationPDF() {
       <Text style={typography.h3}>{PDF_CONSTANTS.headings.EDUCATION}</Text>
 
       {PDF_CONSTANTS.education.map((school) => (
-        <View key={school.name}>
+        <View key={school.name} style={{ marginBottom: 8 }}>
           <View
             break
             style={{
@@ -26,16 +26,6 @@ export function EducationPDF() {
 
             <Text style={{ fontFamily: 'BitterItalic' }}>{school.title}</Text>
           </View>
-
-          <Text
-            style={{
-              ...typography.body_3,
-              marginTop: 8,
-              marginBottom: 8,
-            }}
-          >
-            {school.date}
-          </Text>
         </View>
       ))}
     </View>
