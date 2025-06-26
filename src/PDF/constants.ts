@@ -1,13 +1,13 @@
 export const PDF_CONSTANTS = {
   DOC_TITLE: 'AndrewAngelleSoftwareEngineerResume',
-  headings: {
+  HEADINGS: {
     EXPERIENCE: 'EXPERIENCE',
     NAME: 'andrew angelle',
     TITLE: 'software engineer',
     SKILLS: 'SKILLS',
     EDUCATION: 'EDUCATION',
   },
-  contact_links: {
+  CONTACT: {
     EMAIL: {
       title: 'andrewangelle@gmail.com',
       href: 'mailto:andrewangelle@gmail.com',
@@ -21,7 +21,7 @@ export const PDF_CONSTANTS = {
       href: 'https://andrewangelle.com',
     },
   },
-  jobs: [
+  JOBS: [
     {
       name: 'Experian',
       location: 'Remote',
@@ -54,7 +54,7 @@ export const PDF_CONSTANTS = {
       ],
     },
   ],
-  education: [
+  EDUCATION: [
     {
       name: 'University of Southern Mississippi',
       location: 'Hattiesburg, MS',
@@ -66,7 +66,7 @@ export const PDF_CONSTANTS = {
       title: 'Bachelors of Arts',
     },
   ],
-  skills: [
+  SKILLS: [
     'JavaScript',
     'TypeScript',
     'React',

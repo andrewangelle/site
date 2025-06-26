@@ -4,7 +4,7 @@ import { layout, typography } from '~/PDF/theme';
 
 export function ContactLinksPDF() {
   const {
-    contact_links: { EMAIL, GITHUB, SITE },
+    CONTACT: { EMAIL, GITHUB, SITE },
   } = PDF_CONSTANTS;
   return (
     <View style={{ ...layout.links, marginBottom: 44 }}>
