@@ -82,7 +82,8 @@
     gap: 4px;
     color: white;
     text-decoration: none;
-   
+    outline: none;
+
     h3 {
       cursor: pointer;
       opacity: 1;
