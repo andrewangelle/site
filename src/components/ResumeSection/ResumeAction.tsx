@@ -1,17 +1,31 @@
 import { motion } from 'motion/react';
+import { useRef } from 'react';
 import { ViewOrDownload } from '~/components/ResumeSection/ViewOrDownload';
-import { enterExitAnimationProps, strings } from '~/utils/constants';
+import { useIsFocusWithin } from '~/hooks/useIsFocusWithin';
+import { useIsHovering } from '~/hooks/useIsHovering';
+import { enterExitAnimationProps } from '~/utils/constants';
+import { strings } from '~/utils/constants';
 
 export type ResumeActionLinkProps = { action: 'view' | 'download' };
 
 export function ResumeAction({ action }: ResumeActionLinkProps) {
-  return (
-    <div className="pdf-link">
-      <motion.h3 {...enterExitAnimationProps}>{strings[action]}</motion.h3>
+  const containerRef = useRef(null);
+  const isFocusWithin = useIsFocusWithin(containerRef);
+  const isHovering = useIsHovering(containerRef);
 
-      <motion.div className="links" {...enterExitAnimationProps}>
-        <ViewOrDownload action={action} />
-      </motion.div>
-    </div>
+  const isActive = isHovering || isFocusWithin;
+
+  return (
+    <motion.div ref={containerRef} {...enterExitAnimationProps}>
+      <ViewOrDownload
+        action={action}
+        isFocused={isFocusWithin}
+        isHovering={isHovering}
+      >
+        <h3 style={{ color: isActive ? 'skyblue' : 'white' }}>
+          {strings[action]}
+        </h3>
+      </ViewOrDownload>
+    </motion.div>
   );
 }
