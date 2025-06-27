@@ -2,10 +2,9 @@ import { View, type ViewProps } from '@react-pdf/renderer';
 import type { ReactNode } from 'react';
 import { layout } from '~/PDF/theme';
 
-export function Row({
-  children,
-  ...props
-}: { children: ReactNode } & ViewProps) {
+type LayoutProps = { children: ReactNode } & ViewProps;
+
+export function Row({ children, ...props }: LayoutProps) {
   return (
     <View
       {...props}
@@ -19,10 +18,7 @@ export function Row({
   );
 }
 
-export function ColumnMain({
-  children,
-  ...props
-}: { children: ReactNode } & ViewProps) {
+export function ColumnMain({ children, ...props }: LayoutProps) {
   return (
     <View
       {...props}
@@ -36,10 +32,7 @@ export function ColumnMain({
   );
 }
 
-export function ColumnSide({
-  children,
-  ...props
-}: { children: ReactNode } & ViewProps) {
+export function ColumnSide({ children, ...props }: LayoutProps) {
   return (
     <View
       {...props}
