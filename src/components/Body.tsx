@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai/react';
 import type { KeyboardEvent, ReactNode } from 'react';
 import { useAnimatedBackground } from '~/hooks/useAnimatedBackground';
-import { SECTIONS, activeViewAtom } from '~/store/atoms';
+import { activeViewAtom, SECTIONS } from '~/store/atoms';
 
 export function Body({ children }: { children: ReactNode }) {
   const [activeView, setActiveView] = useAtom(activeViewAtom);
@@ -14,6 +14,7 @@ export function Body({ children }: { children: ReactNode }) {
   }
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: This is intentional for keyboard navigation
     <body ref={ref} onKeyDown={closeResumeSectionOnEscape}>
       {children}
     </body>

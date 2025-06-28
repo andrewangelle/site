@@ -8,7 +8,7 @@ import { GitHubLink } from '~/components/LinksSection/GitHubLink';
 import { LinkedInLink } from '~/components/LinksSection/LinkedInLink';
 import { ViewResumeSection } from '~/components/LinksSection/ViewResumeSection';
 import { ResumeSection } from '~/components/ResumeSection/ResumeSection';
-import { SECTIONS, activeViewAtom } from '~/store/atoms';
+import { activeViewAtom, SECTIONS } from '~/store/atoms';
 import { enterExitAnimationProps } from '~/utils/constants';
 
 type LinksProps = {

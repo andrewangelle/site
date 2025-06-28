@@ -1,11 +1,11 @@
 import { Document, Page, Text } from '@react-pdf/renderer';
 import { ContactLinksPDF } from '~/PDF/ContactLinksPDF';
+import { PDF_CONSTANTS } from '~/PDF/constants';
 import { EducationPDF } from '~/PDF/EducationPDF';
 import { ExperiencePDF } from '~/PDF/ExperiencePDF';
 import { HeaderPDF } from '~/PDF/HeaderPDF';
 import { ColumnMain, ColumnSide, Row } from '~/PDF/LayoutPDF';
 import { SkillsPDF } from '~/PDF/SkillsPDF';
-import { PDF_CONSTANTS } from '~/PDF/constants';
 import { layout } from '~/PDF/theme';
 
 export function ResumePDF() {

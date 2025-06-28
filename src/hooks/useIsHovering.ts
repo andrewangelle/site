@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import type { RefObject } from 'react';
+import { useEffect, useState } from 'react';
 
 export function useIsHovering<ElementType extends HTMLElement>(
   ref: RefObject<ElementType | null>,

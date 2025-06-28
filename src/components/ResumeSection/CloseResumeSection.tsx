@@ -1,6 +1,6 @@
 import { useSetAtom } from 'jotai';
 import { motion } from 'motion/react';
-import { SECTIONS, activeLinkAtom, activeViewAtom } from '~/store/atoms';
+import { activeLinkAtom, activeViewAtom, SECTIONS } from '~/store/atoms';
 import { enterExitAnimationProps, strings } from '~/utils/constants';
 
 export function CloseResumeSection() {

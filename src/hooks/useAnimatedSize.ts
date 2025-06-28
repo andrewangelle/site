@@ -1,5 +1,5 @@
-import { useAnimate } from 'motion/react';
 import type { ValueAnimationTransition } from 'motion/react';
+import { useAnimate } from 'motion/react';
 import { useEffect } from 'react';
 
 export type UseAnimatedSizeOptions = {

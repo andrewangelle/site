@@ -1,8 +1,8 @@
 import {
+  createRootRoute,
   HeadContent,
   Outlet,
   Scripts,
-  createRootRoute,
 } from '@tanstack/react-router';
 import { Provider } from 'jotai/react';
 import type { ReactNode } from 'react';

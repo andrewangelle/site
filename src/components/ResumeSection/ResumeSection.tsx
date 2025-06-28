@@ -3,10 +3,10 @@ import { useEffect } from 'react';
 import { CloseResumeSection } from '~/components/ResumeSection/CloseResumeSection';
 import { ResumeAction } from '~/components/ResumeSection/ResumeAction';
 import {
-  SECTIONS,
   activeLinkAtom,
   activeViewAtom,
   linksInViewAtom,
+  SECTIONS,
 } from '~/store/atoms';
 
 export function ResumeSection() {

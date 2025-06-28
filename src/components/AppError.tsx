@@ -1,5 +1,5 @@
-import { ErrorComponent, Link, useNavigate } from '@tanstack/react-router';
 import type { ErrorComponentProps } from '@tanstack/react-router';
+import { ErrorComponent, Link, useNavigate } from '@tanstack/react-router';
 import { strings } from '~/utils/constants';
 
 export function AppError({ error }: ErrorComponentProps) {

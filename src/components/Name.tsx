@@ -1,7 +1,7 @@
 import { useAtomValue } from 'jotai/react';
 import { type MotionValue, motion } from 'motion/react';
 import type { RefObject } from 'react';
-import { SECTIONS, activeViewAtom } from '~/store/atoms';
+import { activeViewAtom, SECTIONS } from '~/store/atoms';
 import { enterExitAnimationProps, strings } from '~/utils/constants';
 
 type NameProps = {
