@@ -1,24 +1,17 @@
-import { useScroll, useTransform } from 'motion/react';
+import { useAtomValue } from 'jotai/react';
+import { useAnimate } from 'motion/react';
+import { useEffect } from 'react';
+import { linksInViewAtom } from '~/store/atoms';
+import { colors } from '~/utils/constants';
 
 export function useAnimatedTitle() {
-  const { scrollYProgress } = useScroll();
-  const moveLeft = useTransform(scrollYProgress, getLeftOffset);
-  const moveRight = useTransform(scrollYProgress, getRightOffset);
-  const linksOpacity = useTransform(scrollYProgress, (latest) => latest);
+  const [ref, animate] = useAnimate();
+  const isLinksInView = useAtomValue(linksInViewAtom);
 
-  function getLeftOffset(value: number) {
-    const result = Math.ceil(value * 1000);
-    const offset = result < 1000 ? result : 1000;
-    return `${Math.abs(result + offset) * -1}px`;
-  }
+  useEffect(() => {
+    const color = isLinksInView ? colors.sky : colors.red;
+    animate(ref.current, { color }, { ease: 'linear' });
+  }, [isLinksInView, animate, ref.current]);
 
-  function getRightOffset(value: number) {
-    return `${Math.ceil(value * 1000)}px`;
-  }
-
-  return {
-    moveLeft,
-    moveRight,
-    linksOpacity,
-  };
+  return ref;
 }

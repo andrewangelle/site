@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Links } from '~/components/Links';
 import { Name } from '~/components/Name';
 import { NotFound } from '~/components/NotFound';
-import { useAnimatedSubtitle } from '~/hooks/useAnimatedSubtitle';
+import { useAnimatedName } from '~/hooks/useAnimatedName';
 import { useAnimatedTitle } from '~/hooks/useAnimatedTitle';
 import { useElementRefs } from '~/hooks/useElementRefs';
 import { useIsLinksInView } from '~/hooks/useIsLinksInView';
@@ -13,8 +13,8 @@ export const Route = createFileRoute('/')({
   component() {
     const refs = useElementRefs();
     const [linksVisibilityRef] = useIsLinksInView();
-    const titleAnimations = useAnimatedTitle();
-    const subTitleRef = useAnimatedSubtitle();
+    const nameAnimations = useAnimatedName();
+    const titleRef = useAnimatedTitle();
 
     return (
       <main>
@@ -22,9 +22,9 @@ export const Route = createFileRoute('/')({
           <Name
             nameButtonRef={refs.name.button}
             nameRef={refs.name.text}
-            subTitleRef={subTitleRef}
-            moveLeft={titleAnimations.moveLeft}
-            moveRight={titleAnimations.moveRight}
+            titleRef={titleRef}
+            moveLeft={nameAnimations.moveLeft}
+            moveRight={nameAnimations.moveRight}
             scrollNameIntoView={refs.name.scrollIntoView}
             scrollLinksIntoView={refs.links.scrollIntoView}
           />
@@ -32,7 +32,7 @@ export const Route = createFileRoute('/')({
 
         <motion.section
           ref={refs.links.section}
-          style={{ opacity: titleAnimations.linksOpacity }}
+          style={{ opacity: nameAnimations.linksOpacity }}
         >
           <Links
             visibilityRef={linksVisibilityRef}

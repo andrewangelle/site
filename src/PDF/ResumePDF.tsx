@@ -1,4 +1,4 @@
-import { Document, Page } from '@react-pdf/renderer';
+import { Document, Page, Text } from '@react-pdf/renderer';
 import { ContactLinksPDF } from '~/PDF/ContactLinksPDF';
 import { EducationPDF } from '~/PDF/EducationPDF';
 import { ExperiencePDF } from '~/PDF/ExperiencePDF';
@@ -36,7 +36,9 @@ export function ResumePDF() {
           <ColumnMain>
             <EducationPDF />
           </ColumnMain>
-          <ColumnSide> </ColumnSide>
+          <ColumnSide>
+            <Text> </Text>
+          </ColumnSide>
         </Row>
       </Page>
     </Document>

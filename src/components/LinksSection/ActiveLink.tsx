@@ -1,10 +1,10 @@
 import { useAtomValue } from 'jotai/react';
 import { motion } from 'motion/react';
-import { useAnimatedActiveLink } from '~/hooks/useAnimatedActiveLink';
+import { useAnimatedActiveLinkText } from '~/hooks/useAnimatedActiveLinkText';
 import { activeLinkAtom } from '~/store/atoms';
 
 export function ActiveLink() {
-  const ref = useAnimatedActiveLink();
+  const ref = useAnimatedActiveLinkText();
   const activeLink = useAtomValue(activeLinkAtom);
   return (
     <motion.h3 ref={ref} initial={{ opacity: 0 }}>

@@ -14,7 +14,8 @@
     "lint:check": "pnpm exec biome check .",
     "format": "pnpm exec biome format . --write",
     "pre-commit": "lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "update:tsr": "pnpm add @tanstack/react-start@latest @tanstack/react-router@latest @tanstack/react-router-devtols@latest"
   },
   "husky": {
     "hooks": {

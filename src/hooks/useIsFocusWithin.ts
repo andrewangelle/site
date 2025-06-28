@@ -18,14 +18,12 @@ export function useIsFocusWithin<ElementType extends HTMLElement>(
     // Check focus on mount
     handleFocusChange();
 
-    // Add event listeners for focusin and focusout
-    document.addEventListener('focusin', handleFocusChange);
-    document.addEventListener('focusout', handleFocusChange);
+    globalThis.document.addEventListener('focusin', handleFocusChange);
+    globalThis.document.addEventListener('focusout', handleFocusChange);
 
     return () => {
-      // Cleanup event listeners
-      document.removeEventListener('focusin', handleFocusChange);
-      document.removeEventListener('focusout', handleFocusChange);
+      globalThis.document.removeEventListener('focusin', handleFocusChange);
+      globalThis.document.removeEventListener('focusout', handleFocusChange);
     };
   }, [ref]);
 
