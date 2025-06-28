@@ -15,7 +15,12 @@
     "format": "pnpm exec biome format . --write",
     "pre-commit": "lint-staged",
     "prepare": "husky",
-    "update:tsr": "pnpm add @tanstack/react-start@latest @tanstack/react-router@latest @tanstack/react-router-devtools@latest"
+    "update:tsr": "pnpm add @tanstack/react-start@latest @tanstack/react-router@latest @tanstack/react-router-devtools@latest",
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report"
   },
   "husky": {
     "hooks": {
@@ -45,7 +50,9 @@
     "react-icons": "^5.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.53.1",
     "@tanstack/react-router-devtools": "1.122.0",
+    "@types/node": "^24.0.7",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",

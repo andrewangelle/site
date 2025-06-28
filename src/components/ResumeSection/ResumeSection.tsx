@@ -23,7 +23,7 @@ export function ResumeSection() {
 
   return (
     <>
-      <div className="pdf-links-container">
+      <div data-testid="resume-section" className="pdf-links-container">
         <ResumeAction action="view" />
         <ResumeAction action="download" />
       </div>

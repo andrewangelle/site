@@ -49,9 +49,15 @@ dependencies:
     version: 5.5.0(react@19.1.0)
 
 devDependencies:
+  '@playwright/test':
+    specifier: ^1.53.1
+    version: 1.53.1
   '@tanstack/react-router-devtools':
     specifier: 1.122.0
     version: 1.122.0(@tanstack/react-router@1.122.0)(@tanstack/router-core@1.122.0)(csstype@3.1.3)(react-dom@19.1.0)(react@19.1.0)(solid-js@1.9.6)(tiny-invariant@1.3.3)
+  '@types/node':
+    specifier: ^24.0.7
+    version: 24.0.7
   '@types/react':
     specifier: ^19.0.1
     version: 19.1.3
@@ -69,13 +75,13 @@ devDependencies:
     version: 15.15.0
   netlify-cli:
     specifier: ^17.38.0
-    version: 17.38.1(@types/node@22.15.12)
+    version: 17.38.1(@types/node@24.0.7)
   typescript:
     specifier: ^5.7.2
     version: 5.8.3
   vite:
     specifier: ^6.3.5
-    version: 6.3.5(@types/node@22.15.12)
+    version: 6.3.5(@types/node@24.0.7)
   vite-tsconfig-paths:
     specifier: ^5.1.4
     version: 5.1.4(typescript@5.8.3)(vite@6.3.5)
@@ -1323,7 +1329,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 22.15.12
+      '@types/node': 24.0.7
       '@types/yargs': 16.0.9
       chalk: 4.1.2
     dev: true
@@ -1447,7 +1453,7 @@ packages:
       yargs: 17.7.2
     dev: true
 
-  /@netlify/build@29.58.0(@opentelemetry/api@1.8.0)(@types/node@22.15.12):
+  /@netlify/build@29.58.0(@opentelemetry/api@1.8.0)(@types/node@24.0.7):
     resolution: {integrity: sha512-aLFJTQtP7uwoFUzq5IPLRL3Zy8FTyvW0MfHRzzV7jku416uOAcLXy9EkvpJcuvXpqvTsuKBlF553Jirz2UlNRw==}
     engines: {node: ^14.16.0 || >=16.0.0}
     hasBin: true
@@ -1513,7 +1519,7 @@ packages:
       strip-ansi: 7.1.0
       supports-color: 9.4.0
       terminal-link: 3.0.0
-      ts-node: 10.9.2(@types/node@22.15.12)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@24.0.7)(typescript@5.8.3)
       typescript: 5.8.3
       uuid: 9.0.1
       yargs: 17.7.2
@@ -2328,6 +2334,14 @@ packages:
     requiresBuild: true
     optional: true
 
+  /@playwright/test@1.53.1:
+    resolution: {integrity: sha512-Z4c23LHV0muZ8hfv4jw6HngPJkbbtZxTkxPNIg7cJcTc9C28N/p2q7g3JZS2SiKBBHJ3uM1dgDye66bB7LEk5w==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dependencies:
+      playwright: 1.53.1
+    dev: true
+
   /@pnpm/config.env-replace@1.1.0:
     resolution: {integrity: sha512-htyl8TWnKL7K/ESFa1oW2UB5lVDxuF5DpM7tBi6Hu2LNL3mWkIzNLG6N4zoCUP1lCKNxWy/3iu8mS8MvToGd6w==}
     engines: {node: '>=12.22.0'}
@@ -2819,7 +2833,7 @@ packages:
       '@tanstack/router-utils': 1.121.21
       babel-dead-code-elimination: 1.0.10
       tiny-invariant: 1.3.3
-      vite: 6.3.5(@types/node@22.15.12)
+      vite: 6.3.5(@types/node@24.0.7)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2891,7 +2905,7 @@ packages:
     dependencies:
       '@tanstack/start-plugin-core': 1.122.0(@tanstack/react-router@1.122.0)(vite@6.3.5)
       '@vitejs/plugin-react': 4.4.1(vite@6.3.5)
-      vite: 6.3.5(@types/node@22.15.12)
+      vite: 6.3.5(@types/node@24.0.7)
       zod: 3.24.4
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -2961,7 +2975,7 @@ packages:
       '@vitejs/plugin-react': 4.4.1(vite@6.3.5)
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
-      vite: 6.3.5(@types/node@22.15.12)
+      vite: 6.3.5(@types/node@24.0.7)
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
@@ -3088,7 +3102,7 @@ packages:
       babel-dead-code-elimination: 1.0.10
       chokidar: 3.6.0
       unplugin: 2.3.2
-      vite: 6.3.5(@types/node@22.15.12)
+      vite: 6.3.5(@types/node@24.0.7)
       zod: 3.24.4
     transitivePeerDependencies:
       - supports-color
@@ -3160,7 +3174,7 @@ packages:
       nitropack: 2.11.12
       pathe: 2.0.3
       ufo: 1.6.1
-      vite: 6.3.5(@types/node@22.15.12)
+      vite: 6.3.5(@types/node@24.0.7)
       xmlbuilder2: 3.1.1
       zod: 3.24.4
     transitivePeerDependencies:
@@ -3317,7 +3331,7 @@ packages:
   /@types/http-proxy@1.17.16:
     resolution: {integrity: sha512-sdWoUajOB1cd0A8cRRQ1cfyWNbmFKLAqBB89Y8x5iYyG/mkJHc0YUH8pdWBy2omi9qtCpiIgGjuwO0dQST2l5w==}
     dependencies:
-      '@types/node': 22.15.12
+      '@types/node': 24.0.7
     dev: true
 
   /@types/istanbul-lib-coverage@2.0.6:
@@ -3336,10 +3350,10 @@ packages:
       '@types/istanbul-lib-report': 3.0.3
     dev: true
 
-  /@types/node@22.15.12:
-    resolution: {integrity: sha512-K0fpC/ZVeb8G9rm7bH7vI0KAec4XHEhBam616nVJCV51bKzJ6oA3luG4WdKoaztxe70QaNjS/xBmcDLmr4PiGw==}
+  /@types/node@24.0.7:
+    resolution: {integrity: sha512-YIEUUr4yf8q8oQoXPpSlnvKNVKDQlPMWrmOcgzoduo7kvA2UF0/BwJ/eMKFTiTtkNL17I0M6Xe2tvwFU7be6iw==}
     dependencies:
-      undici-types: 6.21.0
+      undici-types: 7.8.0
 
   /@types/normalize-package-data@2.4.4:
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -3382,7 +3396,7 @@ packages:
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
     requiresBuild: true
     dependencies:
-      '@types/node': 22.15.12
+      '@types/node': 24.0.7
     optional: true
 
   /@typescript-eslint/project-service@8.33.0(typescript@5.8.3):
@@ -3531,7 +3545,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.27.1(@babel/core@7.27.4)
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: 6.3.5(@types/node@22.15.12)
+      vite: 6.3.5(@types/node@24.0.7)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -6256,6 +6270,14 @@ packages:
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
 
+  /fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -8035,7 +8057,7 @@ packages:
     resolution: {integrity: sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==}
     dev: true
 
-  /netlify-cli@17.38.1(@types/node@22.15.12):
+  /netlify-cli@17.38.1(@types/node@24.0.7):
     resolution: {integrity: sha512-9R7KYIJac0FPbgCgIG3UuBZB2QMmSBBMygAUfRzTjT6PLOYS6xVLAlmO4/upVdSu//gREimPLlKaYVNiH2lUqQ==}
     engines: {node: '>=18.14.0'}
     hasBin: true
@@ -8044,7 +8066,7 @@ packages:
       '@bugsnag/js': 7.25.0
       '@fastify/static': 7.0.4
       '@netlify/blobs': 8.1.0
-      '@netlify/build': 29.58.0(@opentelemetry/api@1.8.0)(@types/node@22.15.12)
+      '@netlify/build': 29.58.0(@opentelemetry/api@1.8.0)(@types/node@24.0.7)
       '@netlify/build-info': 7.17.0
       '@netlify/config': 20.21.0
       '@netlify/edge-bundler': 12.3.1(supports-color@9.4.0)
@@ -8979,6 +9001,22 @@ packages:
       exsolve: 1.0.5
       pathe: 2.0.3
     dev: false
+
+  /playwright-core@1.53.1:
+    resolution: {integrity: sha512-Z46Oq7tLAyT0lGoFx4DOuB1IA9D1TPj0QkYxpPVUnGDqHHvDpCftu1J2hM2PiWsNMoZh8+LQaarAWcDfPBc6zg==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dev: true
+
+  /playwright@1.53.1:
+    resolution: {integrity: sha512-LJ13YLr/ocweuwxyGf1XNFWIU4M2zUSo149Qbp+A4cpwDjsxRPj7k6H25LBrEHiEwxvRbD8HdwvQmRMSvquhYw==}
+    engines: {node: '>=18'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.53.1
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
 
   /postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
@@ -10425,7 +10463,7 @@ packages:
       typescript: 5.8.3
     dev: false
 
-  /ts-node@10.9.2(@types/node@22.15.12)(typescript@5.8.3):
+  /ts-node@10.9.2(@types/node@24.0.7)(typescript@5.8.3):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -10444,7 +10482,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.15.12
+      '@types/node': 24.0.7
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
@@ -10590,9 +10628,8 @@ packages:
       unplugin: 2.3.2
     dev: false
 
-  /undici-types@6.21.0:
-    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
-    requiresBuild: true
+  /undici-types@7.8.0:
+    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
 
   /undici@6.21.3:
     resolution: {integrity: sha512-gBLkYIlEnSp8pFbT64yFgGE6UIB9tAkhukC23PmMDCe5Nd+cRqKxSjw5y54MK2AZMgZfJWMaNE4nYUHgi1XEOw==}
@@ -10998,13 +11035,13 @@ packages:
       debug: 4.4.0(supports-color@9.4.0)
       globrex: 0.1.2
       tsconfck: 3.1.5(typescript@5.8.3)
-      vite: 6.3.5(@types/node@22.15.12)
+      vite: 6.3.5(@types/node@24.0.7)
     transitivePeerDependencies:
       - supports-color
       - typescript
     dev: true
 
-  /vite@6.3.5(@types/node@22.15.12):
+  /vite@6.3.5(@types/node@24.0.7):
     resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
@@ -11044,7 +11081,7 @@ packages:
       yaml:
         optional: true
     dependencies:
-      '@types/node': 22.15.12
+      '@types/node': 24.0.7
       esbuild: 0.25.4
       fdir: 6.4.4(picomatch@4.0.2)
       picomatch: 4.0.2
