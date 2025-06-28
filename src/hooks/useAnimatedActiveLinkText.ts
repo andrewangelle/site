@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { usePrevious } from '~/hooks/usePrevious';
 import { activeLinkAtom } from '~/store/atoms';
 
-export function useAnimatedActiveLink() {
+export function useAnimatedActiveLinkText() {
   const activeLink = useAtomValue(activeLinkAtom);
   const [ref, animate] = useAnimate();
   const previousActiveLink = usePrevious(activeLink);

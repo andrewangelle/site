@@ -7,7 +7,7 @@ import { enterExitAnimationProps, strings } from '~/utils/constants';
 type NameProps = {
   nameButtonRef: RefObject<HTMLButtonElement | null>;
   nameRef: RefObject<HTMLHeadingElement | null>;
-  subTitleRef: RefObject<HTMLHeadingElement | null>;
+  titleRef: RefObject<HTMLHeadingElement | null>;
   moveLeft: MotionValue<string>;
   moveRight: MotionValue<string>;
   scrollNameIntoView: () => void;
@@ -17,7 +17,7 @@ type NameProps = {
 export function Name({
   nameButtonRef,
   nameRef,
-  subTitleRef,
+  titleRef,
   moveLeft,
   moveRight,
   scrollNameIntoView,
@@ -44,7 +44,7 @@ export function Name({
           {strings.name}
         </motion.h1>
 
-        <motion.h2 ref={subTitleRef} style={{ x: moveRight }}>
+        <motion.h2 ref={titleRef} style={{ x: moveRight }}>
           {strings.subtitle}
         </motion.h2>
       </motion.button>
