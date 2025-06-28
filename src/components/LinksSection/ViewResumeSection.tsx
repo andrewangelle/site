@@ -29,7 +29,7 @@ export function ViewResumeSection() {
 
   return (
     <motion.button
-      aria-label={strings.aria.resume.view}
+      aria-label={strings.aria.resume.open}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
       onHoverStart={() => setActiveLink(strings.resume)}

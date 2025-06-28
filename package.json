@@ -52,6 +52,7 @@
   "devDependencies": {
     "@playwright/test": "^1.53.1",
     "@tanstack/react-router-devtools": "1.122.0",
+    "@types/node": "^24.0.7",
     "@types/react": "^19.0.1",
     "@types/react-dom": "^19.0.2",
     "autoprefixer": "^10.4.20",

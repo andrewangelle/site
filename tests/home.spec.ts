@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { strings } from '~/utils/constants';
 
 test.describe('Home Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -21,11 +22,19 @@ test.describe('Home Page', () => {
     // Check for LinkedIn link
     const linkedinLink = page.getByRole('link', { name: /LinkedIn/i });
     await expect(linkedinLink).toBeVisible();
+
+    // Check for LinkedIn link
+    const contactLink = page.getByLabel(strings.aria.contact);
+    await expect(contactLink).toBeVisible();
+
+    // Check for LinkedIn link
+    const resumeButton = page.getByLabel(strings.aria.resume.open);
+    await expect(resumeButton).toBeVisible();
   });
 
-  test('should have resume section', async ({ page }) => {
-    await page.getByLabel('View Andrew Angelles contact links').click();
-    await page.getByLabel(`View Andrew Angelle's resume as a pdf`).click();
+  test('should open resume actions', async ({ page }) => {
+    await page.getByLabel(strings.aria.name).click();
+    await page.getByLabel(strings.aria.resume.open).click();
 
     // Look for resume-related content
     const resumeSection = page
@@ -34,6 +43,12 @@ test.describe('Home Page', () => {
       )
       .first();
     await expect(resumeSection).toBeVisible();
+
+    const viewResume = page.getByLabel(strings.aria.resume.view);
+    await expect(viewResume).toBeVisible();
+
+    const downloadResume = page.getByLabel(strings.aria.resume.download);
+    await expect(downloadResume).toBeVisible();
   });
 
   test('should be responsive', async ({ page }) => {
