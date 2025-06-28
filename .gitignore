@@ -12,3 +12,8 @@ dist
 .nitro
 .tanstack-start/build
 .tanstack
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
