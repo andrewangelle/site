@@ -1,44 +1,51 @@
+import type { AnimationOptions, DOMKeyframesDefinition } from 'motion/react';
 import { useAnimate } from 'motion/react';
-import type { ValueAnimationTransition } from 'motion/react';
 import { useEffect } from 'react';
 
-export type UseAnimatedSizeOptions = {
-  initialSize: number;
-  size: number;
-  duration: number;
-  easeOnGrow: ValueAnimationTransition['ease'];
-  easeOnShrink: ValueAnimationTransition['ease'];
+type Frames = {
+  grow: DOMKeyframesDefinition;
+  shrink: DOMKeyframesDefinition;
 };
 
-const defaultOptions: UseAnimatedSizeOptions = {
-  initialSize: 1,
-  size: 1.25,
-  duration: 0.375,
-  easeOnGrow: 'easeIn',
-  easeOnShrink: 'easeOut',
+type Options = {
+  grow: AnimationOptions;
+  shrink: AnimationOptions;
+};
+
+const defaultKeyframes: Frames = {
+  grow: {
+    scale: [1, 1.25],
+  },
+  shrink: {
+    scale: [1.25, 1],
+  },
+};
+
+const defaultOptions: Options = {
+  grow: {
+    ease: 'easeIn',
+    duration: 0.375,
+  },
+  shrink: {
+    ease: 'easeOut',
+    duration: 0.375,
+  },
 };
 
 export function useAnimatedSize(
   isActive = false,
-  options: Partial<UseAnimatedSizeOptions> = defaultOptions,
+  frames = defaultKeyframes,
+  options = defaultOptions,
 ) {
   const [ref, animate] = useAnimate();
 
   useEffect(() => {
     function grow() {
-      animate(
-        ref.current,
-        { scale: [options?.initialSize, options?.size] },
-        { duration: options.duration, ease: options.easeOnGrow },
-      );
+      animate(ref.current, frames.grow, options.grow);
     }
 
     function shrink() {
-      animate(
-        ref.current,
-        { scale: [options?.size, options?.initialSize] },
-        { duration: options.duration, ease: options.easeOnShrink },
-      );
+      animate(ref.current, frames.shrink, options.shrink);
     }
 
     if (isActive) {
@@ -46,7 +53,7 @@ export function useAnimatedSize(
     } else {
       shrink();
     }
-  }, [ref, animate, isActive, options]);
+  }, [ref, animate, isActive, options, frames]);
 
   return ref;
 }

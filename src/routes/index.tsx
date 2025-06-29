@@ -15,7 +15,6 @@ export const Route = createFileRoute('/')({
     const [linksVisibilityRef] = useIsLinksInView();
     const nameAnimations = useAnimatedName();
     const titleRef = useAnimatedTitle();
-
     return (
       <main>
         <section ref={refs.name.section} tabIndex={-1}>

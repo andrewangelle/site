@@ -2,7 +2,7 @@ import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { IoDocumentText } from 'react-icons/io5';
-import { SECTIONS, activeLinkAtom, activeViewAtom } from '~/store/atoms';
+import { activeLinkAtom, activeViewAtom, SECTIONS } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
 export function ViewResumeSection() {

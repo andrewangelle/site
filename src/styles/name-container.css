@@ -5,6 +5,16 @@
   justify-content: center;
   width: 100%;
 
+  @media (max-width: 450px) {
+    .inner {
+      max-width: 320px;
+    }
+
+    h2 {
+      font-weight: 450;
+    }
+  }
+
   .inner {
     display: flex;
     flex-direction: column;
@@ -36,16 +46,6 @@
     & {
       top: calc(50% - 72px);
       left: unset;
-    }
-  }
-
-  @media (max-width: 450px) {
-    .inner {
-      max-width: 320px;
-    }
-
-    h2 {
-      font-weight: 450;
     }
   }
 }

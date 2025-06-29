@@ -1,7 +1,8 @@
 import { useAtomValue } from 'jotai/react';
 import { type MotionValue, motion } from 'motion/react';
 import type { RefObject } from 'react';
-import { SECTIONS, activeViewAtom } from '~/store/atoms';
+import { useActiveElement } from '~/hooks/useActiveElement';
+import { activeViewAtom, SECTIONS } from '~/store/atoms';
 import { enterExitAnimationProps, strings } from '~/utils/constants';
 
 type NameProps = {
@@ -24,12 +25,22 @@ export function Name({
   scrollLinksIntoView,
 }: NameProps) {
   const activeView = useAtomValue(activeViewAtom);
+  const activeElement = useActiveElement();
+
+  /**
+   * If links section is visible, and focused element is <body/> then when the user presses tab we want the first focused element to be the first link in the section.
+   * By default the name element will be the first focused element and tabbing will scroll the links out of view.
+   * This edge case occurs when you view the resume PDF and click the back button
+   */
+  const tabIndex =
+    activeView === SECTIONS.LINKS && activeElement?.tagName === 'BODY' ? -1 : 0;
 
   return (
     <div className="name-container" tabIndex={-1}>
       <motion.button
+        data-testid="name-button"
         ref={nameButtonRef}
-        tabIndex={activeView === SECTIONS.LINKS ? 0 : -1}
+        tabIndex={tabIndex}
         className="inner"
         aria-label={strings.aria.name}
         {...enterExitAnimationProps}
@@ -39,6 +50,12 @@ export function Name({
         }}
         onFocus={scrollNameIntoView}
         onClick={scrollLinksIntoView}
+        onKeyDown={(e) => {
+          if (e.key === 'Tab') {
+            e.preventDefault();
+            scrollLinksIntoView();
+          }
+        }}
       >
         <motion.h1 ref={nameRef} style={{ x: moveLeft }}>
           {strings.name}

@@ -3,11 +3,11 @@ import { Link } from '@tanstack/react-router';
 import { motion } from 'motion/react';
 import { useRef } from 'react';
 import { BsDownload, BsFiletypePdf } from 'react-icons/bs';
-import { ResumePDF } from '~/PDF/ResumePDF';
-import { PDF_CONSTANTS } from '~/PDF/constants';
 import { AnimatedIcon } from '~/components/ResumeSection/AnimatedIcon';
 import { useIsFocusWithin } from '~/hooks/useIsFocusWithin';
 import { useIsHovering } from '~/hooks/useIsHovering';
+import { PDF_CONSTANTS } from '~/PDF/constants';
+import { ResumePDF } from '~/PDF/ResumePDF';
 import { enterExitAnimationProps, strings } from '~/utils/constants';
 
 export type ResumeActionLinkProps = { action: 'view' | 'download' };

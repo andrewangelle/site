@@ -8,8 +8,9 @@ export function useElementRefs() {
   const githubLink = useRef<HTMLAnchorElement>(null);
 
   function scrollLinksIntoView() {
-    linksSection?.current?.scrollIntoView({ behavior: 'smooth' });
     nameButton?.current?.blur();
+    linksSection?.current?.scrollIntoView({ behavior: 'smooth' });
+    githubLink?.current?.focus();
   }
 
   function scrollNameIntoView() {

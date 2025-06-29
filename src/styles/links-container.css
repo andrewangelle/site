@@ -1,13 +1,24 @@
 .links-container {
   width: 100%;
   bottom: 0px;
-  top: 0px;
   left: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   top: calc(50% - 78px);
   position: absolute;
+
+  @media (max-width: 400px) {
+    & {
+      top: calc(50% - 100px);
+    }
+
+    .links {
+      gap: unset;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+  }
 
   h3 {
     opacity: 0;
@@ -56,18 +67,6 @@
 
   .doc-link {
     stroke-width: 0.2;
-  }
-
-  @media (max-width: 400px) {
-    & {
-      top: calc(50% - 100px);
-    }
-
-    .links {
-      gap: unset;
-      justify-content: space-evenly;
-      width: 100%;
-    }
   }
 }
 
