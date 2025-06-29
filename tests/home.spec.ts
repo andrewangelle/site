@@ -14,7 +14,11 @@ test.describe('Home Page', () => {
     await expect(page.locator('body')).toBeVisible();
   });
 
-  test('should have navigation links', async ({ page }) => {
+  test('should scroll navigation links into view', async ({ page }) => {
+    await page.evaluate(() => {
+      window.scrollBy(0, 720); // Scroll down by 500 pixels
+    });
+
     // Check for GitHub link
     const githubLink = page.getByRole('link', { name: /GitHub/i });
     await expect(githubLink).toBeVisible();

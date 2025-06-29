@@ -38,6 +38,7 @@ export function Name({
   return (
     <div className="name-container" tabIndex={-1}>
       <motion.button
+        data-testid="name-button"
         ref={nameButtonRef}
         tabIndex={tabIndex}
         className="inner"
