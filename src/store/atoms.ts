@@ -11,4 +11,4 @@ export const SECTIONS = {
 
 export type Section = (typeof SECTIONS)[keyof typeof SECTIONS];
 
-export const activeViewAtom = atom<Section>(SECTIONS.LINKS);
+export const activeViewAtom = atom<Section>(SECTIONS.NAME);

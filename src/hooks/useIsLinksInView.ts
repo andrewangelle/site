@@ -1,9 +1,9 @@
-import { useAtom } from 'jotai/react';
+import { useAtom, useSetAtom } from 'jotai/react';
 import { useInView } from 'motion/react';
 import type { RefObject } from 'react';
 import { useEffect, useRef } from 'react';
 import { usePrevious } from '~/hooks/usePrevious';
-import { linksInViewAtom } from '~/store/atoms';
+import { activeViewAtom, linksInViewAtom, SECTIONS } from '~/store/atoms';
 
 export function useIsLinksInView(): [
   RefObject<HTMLDivElement | null>,
@@ -13,12 +13,14 @@ export function useIsLinksInView(): [
   const isLinksInView = useInView(linksRef);
   const prevLinksInView = usePrevious(isLinksInView);
   const [isInView, setInView] = useAtom(linksInViewAtom);
+  const setActiveView = useSetAtom(activeViewAtom);
 
   useEffect(() => {
     if (isLinksInView !== prevLinksInView) {
       setInView(isLinksInView);
+      setActiveView(isLinksInView ? SECTIONS.LINKS : SECTIONS.NAME);
     }
-  }, [isLinksInView, prevLinksInView, setInView]);
+  }, [isLinksInView, prevLinksInView, setInView, setActiveView]);
 
   return [linksRef, isInView];
 }
