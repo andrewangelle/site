@@ -36,8 +36,11 @@ test.describe('Home Page', () => {
     await expect(resumeButton).toBeVisible();
   });
 
-  test.skip('should open resume actions', async ({ page }) => {
-    await page.getByLabel(strings.aria.name).click();
+  test('should open resume actions', async ({ page }) => {
+    await page.evaluate(() => {
+      window.scrollBy(0, 1200); // Scroll down by 500 pixels
+    });
+
     await page.getByLabel(strings.aria.resume.open).click();
 
     // Look for resume-related content
