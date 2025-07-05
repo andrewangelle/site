@@ -20,6 +20,12 @@
     }
   }
 
+  @media (min-width: 401px) {
+    .links {
+      gap: 24px;
+    }
+  }
+
   h3 {
     opacity: 0;
     min-height: 35px;
@@ -34,7 +40,6 @@
   .links {
     color: var(--white);
     display: flex;
-    gap: 24px;
   }
 
   .close-downloads {
