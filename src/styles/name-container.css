@@ -7,11 +7,18 @@
 
   @media (max-width: 450px) {
     .inner {
-      max-width: 320px;
+      padding: 0px 24px;
+      max-width: unset;
     }
 
     h2 {
       font-weight: 450;
+    }
+  }
+
+  @media(min-width: 451px) {
+    .inner {
+      max-width: 440px;
     }
   }
 
@@ -21,7 +28,6 @@
     outline-offset: 8px;
     cursor: pointer;
     width: 100%;
-    max-width: 440px;
   }
 
   h1 {

@@ -4,7 +4,7 @@ import { PDF_CONSTANTS } from '~/PDF/constants';
 import { EducationPDF } from '~/PDF/EducationPDF';
 import { ExperiencePDF } from '~/PDF/ExperiencePDF';
 import { HeaderPDF } from '~/PDF/HeaderPDF';
-import { ColumnMain, ColumnSide, Row } from '~/PDF/LayoutPDF';
+import { Row } from '~/PDF/LayoutPDF';
 import { SkillsPDF } from '~/PDF/SkillsPDF';
 import { layout } from '~/PDF/theme';
 
@@ -13,32 +13,18 @@ export function ResumePDF() {
     <Document title={PDF_CONSTANTS.DOC_TITLE}>
       <Page wrap style={layout.page}>
         <Row>
-          <ColumnMain>
-            <HeaderPDF />
-          </ColumnMain>
-
-          <ColumnSide>
-            <ContactLinksPDF />
-          </ColumnSide>
+          <HeaderPDF />
+          <ContactLinksPDF />
         </Row>
 
         <Row>
-          <ColumnMain>
-            <ExperiencePDF />
-          </ColumnMain>
-
-          <ColumnSide>
-            <SkillsPDF />
-          </ColumnSide>
+          <ExperiencePDF />
+          <SkillsPDF />
         </Row>
 
         <Row>
-          <ColumnMain>
-            <EducationPDF />
-          </ColumnMain>
-          <ColumnSide>
-            <Text> </Text>
-          </ColumnSide>
+          <EducationPDF />
+          <Text> </Text>
         </Row>
       </Page>
     </Document>
