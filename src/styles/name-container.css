@@ -16,7 +16,7 @@
     }
   }
 
-  @media(min-width: 451px) {
+  @media (min-width: 451px) {
     .inner {
       max-width: 440px;
     }
