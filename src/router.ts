@@ -3,7 +3,7 @@ import { AppError } from '~/components/AppError';
 import { NotFound } from '~/components/NotFound';
 import { routeTree } from '~/routeTree.gen';
 
-export function createRouter() {
+export function getRouter() {
   const router = createTanStackRouter({
     routeTree,
     defaultErrorComponent: AppError,
@@ -16,6 +16,6 @@ export function createRouter() {
 
 declare module '@tanstack/react-router' {
   interface Register {
-    router: ReturnType<typeof createRouter>;
+    router: ReturnType<typeof getRouter>;
   }
 }
