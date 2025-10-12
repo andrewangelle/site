@@ -1,8 +1,8 @@
 [build]
-  functions = ".netlify/functions-internal"
-  publish = "dist"
+  command = "vite build"
+  publish = "dist/client"
 
 [dev]
-  functions = ".netlify/functions-internal"
-  publish = "dist"
-  port = 3030
+  functions = ".netlify/functions-serve/server"
+  publish = "dist/client"
+  targetPort = 3000

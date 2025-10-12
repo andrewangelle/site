@@ -35,8 +35,8 @@
   },
   "dependencies": {
     "@netlify/functions": "^2.8.2",
+    "@netlify/vite-plugin-tanstack-start": "^1.1.0",
     "@react-pdf/renderer": "^4.3.0",
-    "@tanstack/nitro-v2-vite-plugin": "^1.132.40",
     "@tanstack/react-router": "1.132.47",
     "@tanstack/react-start": "1.132.52",
     "dotenv": "^16.6.1",
