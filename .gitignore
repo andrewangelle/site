@@ -17,3 +17,6 @@ dist
 /test-results/
 /playwright-report/
 /playwright/.cache/
+./src/services/visitors/db.json
+/src/services/visitors/db.json
+src/services/visitors/db.json
