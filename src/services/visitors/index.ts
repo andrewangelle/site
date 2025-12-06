@@ -15,9 +15,8 @@ async function write(fingerprint: string) {
     siteID: process.env.SITE_BLOB_ID,
     token: process.env.SITE_TOKEN,
   });
-  const visitorStore = await store.get('visitors', { type: 'json' });
-  const visitorData = JSON.parse(visitorStore) ?? ([] as string[]);
-  const nextState = Array.from(new Set([...visitorData, fingerprint]));
+  const visitors = await store.get('visitors', { type: 'json' });
+  const nextState = Array.from(new Set([...visitors, fingerprint]));
   await store.setJSON('visitors', nextState);
 }
 
