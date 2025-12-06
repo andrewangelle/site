@@ -2,20 +2,34 @@ import crypto from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { getStore } from '@netlify/blobs';
 import { createMiddleware } from '@tanstack/react-start';
-
-export const visitorsFilePath = path.join(import.meta.dirname, './db.json');
 
 export const visitorsMiddleware = createMiddleware().server(
   async ({ request, next }) => {
+    const fingerprint = createFingerprint(request);
+
     if (process.env.NODE_ENV === 'development') {
-      await write(createFingerprint(request));
+      await writeDev(fingerprint);
+    } else {
+      await writeProd(fingerprint);
     }
+
     return next();
   },
 );
 
-async function write(fingerprint: string) {
+async function writeProd(fingerprint: string) {
+  const store = getStore('site-store');
+  const visitorStore = await store.get('visitors', { type: 'json' });
+  const visitorData = JSON.parse(visitorStore) as string[];
+  const nextState = Array.from(new Set([...visitorData, fingerprint]));
+  await store.setJSON('visitors', nextState);
+}
+
+async function writeDev(fingerprint: string) {
+  const visitorsFilePath = path.join(import.meta.dirname, './db.json');
+
   let visitorData: { visitors: string[] } = { visitors: [] };
 
   if (existsSync(visitorsFilePath)) {
@@ -28,6 +42,21 @@ async function write(fingerprint: string) {
   };
 
   await writeFile(visitorsFilePath, JSON.stringify(nextState));
+}
+
+export async function readDev() {
+  const visitorsFilePath = path.join(import.meta.dirname, './db.json');
+  const dbFile = await readFile(visitorsFilePath, 'utf-8');
+  return JSON.parse(dbFile) as { visitors: string[] };
+}
+
+export async function readProd() {
+  const store = getStore('site-store');
+  const visitorStore = await store.get('visitors', { type: 'json' });
+  const visitorData = JSON.parse(visitorStore) as string[];
+  return {
+    visitors: visitorData,
+  };
 }
 
 function createFingerprint(req: Request): string {
@@ -43,9 +72,7 @@ function createFingerprint(req: Request): string {
 
   // @ts-expect-error
   const ip = req.ip || req.connection?.remoteAddress || '';
-
   const results: string[] = [ip];
-
   const headers = new Headers(req.headers);
 
   for (const field of fields) {
