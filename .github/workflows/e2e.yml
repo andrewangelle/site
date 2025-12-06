@@ -40,6 +40,9 @@ jobs:
 
     - name: Run Playwright tests
       run: pnpm test
+      env:
+        SITE_BLOB_ID: ${{ secrets.SITE_BLOB_ID }}
+        SITE_TOKEN: ${{ secrets.SITE_TOKEN }}
       
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
