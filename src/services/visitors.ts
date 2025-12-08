@@ -4,7 +4,13 @@ import { createMiddleware } from '@tanstack/react-start';
 
 export const visitorsMiddleware = createMiddleware().server(
   async ({ request, next }) => {
-    await write(createFingerprint(request));
+    const skip = process.env.CI || process.env.NODE_ENV === 'test';
+
+    if (!skip) {
+      console.log('RUNNING');
+      await write(createFingerprint(request));
+    }
+
     return next();
   },
 );
