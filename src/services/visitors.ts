@@ -7,7 +7,6 @@ export const visitorsMiddleware = createMiddleware().server(
     const skip = process.env.CI || process.env.NODE_ENV === 'test';
 
     if (!skip) {
-      console.log('RUNNING');
       await write(createFingerprint(request));
     }
 
