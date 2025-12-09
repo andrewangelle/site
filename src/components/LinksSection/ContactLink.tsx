@@ -1,12 +1,13 @@
-import { useSetAtom } from 'jotai/react';
+import { useAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import { isMobile } from 'react-device-detect';
 import { FaEnvelopeSquare } from 'react-icons/fa';
+import { ActiveUnderline } from '~/components/LinksSection/ActiveUnderline';
 import { activeLinkAtom } from '~/store/atoms';
 import { ANCHOR_REL, activeLinkConfig, strings } from '~/utils/constants';
 
 export function ContactLink() {
-  const setActiveLink = useSetAtom(activeLinkAtom);
+  const [activeLink, setActiveLink] = useAtom(activeLinkAtom);
 
   if (isMobile) {
     return (
@@ -43,6 +44,7 @@ export function ContactLink() {
       }}
     >
       <FaEnvelopeSquare role="presentation" size={60} />
+      <ActiveUnderline isActive={activeLink === strings.contact} />
     </motion.a>
   );
 }

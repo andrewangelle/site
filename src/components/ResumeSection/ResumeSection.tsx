@@ -1,4 +1,5 @@
 import { useAtom, useAtomValue, useSetAtom } from 'jotai/react';
+import { motion } from 'motion/react';
 import { useEffect } from 'react';
 import { CloseResumeSection } from '~/components/ResumeSection/CloseResumeSection';
 import { ResumeAction } from '~/components/ResumeSection/ResumeAction';
@@ -8,6 +9,7 @@ import {
   linksInViewAtom,
   SECTIONS,
 } from '~/store/atoms';
+import { strings } from '~/utils/constants';
 
 export function ResumeSection() {
   const isLinksInView = useAtomValue(linksInViewAtom);
@@ -23,10 +25,15 @@ export function ResumeSection() {
 
   return (
     <>
-      <div data-testid="resume-section" className="pdf-links-container">
+      <motion.div
+        data-testid="resume-section"
+        className="pdf-links-container"
+        onHoverEnd={() => setActiveLink(strings.resume)}
+        onBlur={() => setActiveLink(strings.resume)}
+      >
         <ResumeAction action="view" />
         <ResumeAction action="download" />
-      </div>
+      </motion.div>
 
       <CloseResumeSection />
     </>
