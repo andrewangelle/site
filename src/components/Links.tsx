@@ -21,17 +21,14 @@ export function Links({ visibilityRef, githubLinkRef }: LinksProps) {
 
   return (
     <div ref={visibilityRef} className="links-container">
+      {isDesktop && <ActiveLink />}
       {activeView === SECTIONS.LINKS && (
-        <>
-          {isDesktop && <ActiveLink />}
-
-          <motion.div className="links" {...enterExitAnimationProps}>
-            <GitHubLink ref={githubLinkRef} />
-            <LinkedInLink />
-            <ContactLink />
-            <ViewResumeSection />
-          </motion.div>
-        </>
+        <motion.div className="links" {...enterExitAnimationProps}>
+          <GitHubLink ref={githubLinkRef} />
+          <LinkedInLink />
+          <ContactLink />
+          <ViewResumeSection />
+        </motion.div>
       )}
 
       {activeView === SECTIONS.RESUME && <ResumeSection />}

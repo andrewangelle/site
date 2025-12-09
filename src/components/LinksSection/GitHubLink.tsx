@@ -1,8 +1,9 @@
-import { useSetAtom } from 'jotai/react';
+import { useAtom } from 'jotai/react';
 import { motion } from 'motion/react';
 import type { RefObject } from 'react';
 import { isMobile } from 'react-device-detect';
 import { FaGithub } from 'react-icons/fa';
+import { ActiveUnderline } from '~/components/LinksSection/ActiveUnderline';
 import { activeLinkAtom } from '~/store/atoms';
 import { ANCHOR_REL, activeLinkConfig, strings } from '~/utils/constants';
 
@@ -11,7 +12,7 @@ type GithubLinkProps = {
 };
 
 export function GitHubLink({ ref }: GithubLinkProps) {
-  const setActiveLink = useSetAtom(activeLinkAtom);
+  const [activeLink, setActiveLink] = useAtom(activeLinkAtom);
 
   if (isMobile) {
     return (
@@ -50,6 +51,7 @@ export function GitHubLink({ ref }: GithubLinkProps) {
       }}
     >
       <FaGithub role="presentation" size={60} />
+      <ActiveUnderline isActive={activeLink === strings.github} />
     </motion.a>
   );
 }
