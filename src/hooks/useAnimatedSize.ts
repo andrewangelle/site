@@ -24,11 +24,11 @@ const defaultKeyframes: Frames = {
 const defaultOptions: Options = {
   grow: {
     ease: 'easeIn',
-    duration: 0.375,
+    duration: 0.2575,
   },
   shrink: {
     ease: 'easeOut',
-    duration: 0.375,
+    duration: 0.2575,
   },
 };
 

@@ -60,6 +60,8 @@ section {
 
 a {
   color: inherit;
+  position: relative;
+  display: inline-block;
 }
 
 button {

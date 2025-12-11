@@ -1,4 +1,8 @@
-import type { HTMLMotionProps } from 'motion/react';
+import type {
+  HTMLMotionProps,
+  TargetAndTransition,
+  VariantLabels,
+} from 'motion/react';
 
 export const strings = {
   name: 'Andrew Angelle',
@@ -40,7 +44,9 @@ export const colors = {
   sky: '#f0f2f5',
 };
 
-export const activeLinkConfig = {
+type ActiveLinkConfig = VariantLabels | TargetAndTransition | undefined;
+
+export const activeLinkConfig: ActiveLinkConfig = {
   scale: 1.25,
   transition: { duration: 0.5, ease: 'easeInOut' },
 };
