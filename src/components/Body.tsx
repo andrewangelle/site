@@ -1,22 +1,32 @@
-import { useAtom } from 'jotai/react';
-import type { KeyboardEvent, ReactNode } from 'react';
+import { useAtom, useSetAtom } from 'jotai/react';
+import type { ReactNode } from 'react';
+import { useEffect } from 'react';
 import { useAnimatedBackground } from '~/hooks/useAnimatedBackground';
-import { activeViewAtom, SECTIONS } from '~/store/atoms';
+import { activeLinkAtom, activeViewAtom, SECTIONS } from '~/store/atoms';
 
 export function Body({ children }: { children: ReactNode }) {
   const [activeView, setActiveView] = useAtom(activeViewAtom);
+  const setActiveLink = useSetAtom(activeLinkAtom);
+
   const ref = useAnimatedBackground();
 
-  function closeResumeSectionOnEscape(event: KeyboardEvent) {
-    if (event.key === 'Escape' && activeView === SECTIONS.RESUME) {
-      setActiveView(SECTIONS.LINKS);
-    }
-  }
+  useEffect(() => {
+    function closeResumeSectionOnEscape(event: KeyboardEvent) {
+      const isShiftTab = event.key === 'Tab' && event.shiftKey;
+      const isExitingViaKeyboard = isShiftTab || event.key === 'Escape';
 
-  return (
-    // biome-ignore lint/a11y/noStaticElementInteractions: This is intentional for keyboard navigation
-    <body ref={ref} onKeyDown={closeResumeSectionOnEscape}>
-      {children}
-    </body>
-  );
+      if (isExitingViaKeyboard && activeView === SECTIONS.RESUME) {
+        setActiveView(SECTIONS.LINKS);
+        setActiveLink(null);
+      }
+    }
+
+    document.addEventListener('keydown', closeResumeSectionOnEscape);
+
+    return () => {
+      document.removeEventListener('keydown', closeResumeSectionOnEscape);
+    };
+  }, [activeView, setActiveLink, setActiveView]);
+
+  return <body ref={ref}>{children}</body>;
 }
