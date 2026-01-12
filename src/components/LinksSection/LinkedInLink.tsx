@@ -1,12 +1,17 @@
 import { useAtom } from 'jotai/react';
 import { motion } from 'motion/react';
+import type { RefObject } from 'react';
 import { isMobile } from 'react-device-detect';
 import { FaLinkedin } from 'react-icons/fa';
 import { ActiveUnderline } from '~/components/LinksSection/ActiveUnderline';
 import { activeLinkAtom } from '~/store/atoms';
 import { ANCHOR_REL, activeLinkConfig, strings } from '~/utils/constants';
 
-export function LinkedInLink() {
+type LinkedinLinkProps = {
+  ref: RefObject<HTMLAnchorElement | null>;
+};
+
+export function LinkedInLink({ ref }: LinkedinLinkProps) {
   const [activeLink, setActiveLink] = useAtom(activeLinkAtom);
 
   if (isMobile) {
@@ -27,14 +32,20 @@ export function LinkedInLink() {
 
   return (
     <motion.a
+      ref={ref}
       aria-label={strings.aria.linkedin}
       href={strings.hrefs.linkedin}
       target="_blank"
       rel={ANCHOR_REL}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
-      onHoverStart={() => setActiveLink(strings.linkedin)}
-      onHoverEnd={() => setActiveLink(null)}
+      onHoverStart={() => {
+        ref.current?.focus();
+        setActiveLink(strings.linkedin);
+      }}
+      onHoverEnd={() => {
+        ref.current?.blur();
+      }}
       onFocus={() => setActiveLink(strings.linkedin)}
       onBlur={() => setActiveLink(null)}
       onKeyDown={(e) => {

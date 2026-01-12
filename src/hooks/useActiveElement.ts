@@ -6,7 +6,7 @@ export function useActiveElement(): Element | null {
   }
 
   function subscribe(callback: (element: Element | null) => void): () => void {
-    const timer = setInterval(callback, 250);
+    const timer = setInterval(callback, 100);
     return () => {
       clearInterval(timer);
     };
