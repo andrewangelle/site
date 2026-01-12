@@ -1,12 +1,17 @@
 import { useAtom, useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
+import type { RefObject } from 'react';
 import { isMobile } from 'react-device-detect';
 import { IoDocumentText } from 'react-icons/io5';
 import { ActiveUnderline } from '~/components/LinksSection/ActiveUnderline';
 import { activeLinkAtom, activeViewAtom, SECTIONS } from '~/store/atoms';
 import { activeLinkConfig, strings } from '~/utils/constants';
 
-export function ViewResumeSection() {
+type ViewResumeSectionProps = {
+  ref: RefObject<HTMLButtonElement | null>;
+};
+
+export function ViewResumeSection({ ref }: ViewResumeSectionProps) {
   const [activeLink, setActiveLink] = useAtom(activeLinkAtom);
   const setActiveView = useSetAtom(activeViewAtom);
 
@@ -30,12 +35,19 @@ export function ViewResumeSection() {
 
   return (
     <motion.button
+      ref={ref}
       aria-label={strings.aria.resume.open}
       style={{ position: 'relative' }}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
-      onHoverStart={() => setActiveLink(strings.resume)}
-      onHoverEnd={() => setActiveLink(null)}
+      onHoverStart={() => {
+        ref.current?.focus();
+        setActiveLink(strings.resume);
+      }}
+      onHoverEnd={() => {
+        setActiveLink(null);
+        ref.current?.blur();
+      }}
       onFocus={() => setActiveLink(strings.resume)}
       onBlur={() => setActiveLink(null)}
       onClick={() => {

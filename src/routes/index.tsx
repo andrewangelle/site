@@ -40,6 +40,9 @@ export const Route = createFileRoute('/')({
           <Links
             visibilityRef={linksVisibilityRef}
             githubLinkRef={refs.links.githubLink}
+            linkedinLinkRef={refs.links.linkedinLink}
+            contactLinkRef={refs.links.contactLink}
+            viewResumeSectionRef={refs.links.viewResumeSection}
           />
         </motion.section>
       </main>

@@ -40,8 +40,13 @@ export function GitHubLink({ ref }: GithubLinkProps) {
       rel={ANCHOR_REL}
       whileFocus={activeLinkConfig}
       whileHover={activeLinkConfig}
-      onHoverStart={() => setActiveLink(strings.github)}
-      onHoverEnd={() => setActiveLink(null)}
+      onHoverStart={() => {
+        ref.current?.focus();
+        setActiveLink(strings.github);
+      }}
+      onHoverEnd={() => {
+        ref.current?.blur();
+      }}
       onFocus={() => setActiveLink(strings.github)}
       onBlur={() => setActiveLink(null)}
       onKeyDown={(e) => {

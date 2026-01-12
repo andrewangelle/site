@@ -14,9 +14,18 @@ import { enterExitAnimationProps } from '~/utils/constants';
 type LinksProps = {
   visibilityRef: RefObject<HTMLDivElement | null>;
   githubLinkRef: RefObject<HTMLAnchorElement | null>;
+  linkedinLinkRef: RefObject<HTMLAnchorElement | null>;
+  contactLinkRef: RefObject<HTMLAnchorElement | null>;
+  viewResumeSectionRef: RefObject<HTMLButtonElement | null>;
 };
 
-export function Links({ visibilityRef, githubLinkRef }: LinksProps) {
+export function Links({
+  visibilityRef,
+  githubLinkRef,
+  linkedinLinkRef,
+  contactLinkRef,
+  viewResumeSectionRef,
+}: LinksProps) {
   const activeView = useAtomValue(activeViewAtom);
 
   return (
@@ -25,9 +34,9 @@ export function Links({ visibilityRef, githubLinkRef }: LinksProps) {
       {activeView === SECTIONS.LINKS && (
         <motion.div className="links" {...enterExitAnimationProps}>
           <GitHubLink ref={githubLinkRef} />
-          <LinkedInLink />
-          <ContactLink />
-          <ViewResumeSection />
+          <LinkedInLink ref={linkedinLinkRef} />
+          <ContactLink ref={contactLinkRef} />
+          <ViewResumeSection ref={viewResumeSectionRef} />
         </motion.div>
       )}
 

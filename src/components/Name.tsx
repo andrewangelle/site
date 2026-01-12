@@ -33,7 +33,10 @@ export function Name({
    * This edge case occurs when you view the resume PDF and click the back button
    */
   const tabIndex =
-    activeView === SECTIONS.LINKS && activeElement?.tagName === 'BODY' ? -1 : 0;
+    (activeView === SECTIONS.LINKS || activeView === SECTIONS.RESUME) &&
+    activeElement?.tagName === 'BODY'
+      ? -1
+      : 0;
 
   return (
     <div className="name-container" tabIndex={-1}>
