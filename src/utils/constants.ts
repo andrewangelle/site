@@ -6,7 +6,7 @@ import type {
 
 export const strings = {
   name: 'Andrew Angelle',
-  subtitle: 'software developer',
+  subtitle: 'software engineer',
   github: 'GitHub',
   contact: 'Contact',
   linkedin: 'LinkedIn',
