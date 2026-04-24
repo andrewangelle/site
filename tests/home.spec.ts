@@ -1,5 +1,17 @@
+import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { strings } from '~/utils/constants';
+
+function delay(ms = 1000) {
+  return new Promise<void>((res) => setTimeout(() => res(), ms));
+}
+
+async function scrollLinksIntoView(page: Page) {
+  const name = page.getByRole('button').first();
+  await expect(name).toBeVisible();
+  await name.click();
+  await delay();
+}
 
 test.describe('Home Page', () => {
   test.beforeEach(async ({ page }) => {
@@ -19,21 +31,27 @@ test.describe('Home Page', () => {
       window.scrollBy(0, 720); // Scroll down by 500 pixels
     });
 
+    await scrollLinksIntoView(page);
+
     // Check for GitHub link
-    const githubLink = page.getByRole('link', { name: /GitHub/i });
-    await expect(githubLink).toBeVisible();
+    await page
+      .getByRole('link', { name: /GitHub/i })
+      .waitFor({ state: 'visible', timeout: 10000 });
 
     // Check for LinkedIn link
-    const linkedinLink = page.getByRole('link', { name: /LinkedIn/i });
-    await expect(linkedinLink).toBeVisible();
+    await page
+      .getByRole('link', { name: /LinkedIn/i })
+      .waitFor({ state: 'visible', timeout: 10000 });
 
-    // Check for LinkedIn link
-    const contactLink = page.getByLabel(strings.aria.contact);
-    await expect(contactLink).toBeVisible();
+    // Check for Contact link
+    await page
+      .getByLabel(strings.aria.contact)
+      .waitFor({ state: 'visible', timeout: 10000 });
 
-    // Check for LinkedIn link
-    const resumeButton = page.getByLabel(strings.aria.resume.open);
-    await expect(resumeButton).toBeVisible();
+    // Check for Resume link
+    await page
+      .getByLabel(strings.aria.resume.open)
+      .waitFor({ state: 'visible', timeout: 10000 });
   });
 
   test('should open resume actions', async ({ page }) => {
@@ -41,10 +59,11 @@ test.describe('Home Page', () => {
       window.scrollBy(0, 1200); // Scroll down by 500 pixels
     });
 
+    await scrollLinksIntoView(page);
+
     await page.getByLabel(strings.aria.resume.open).click();
 
     // Look for resume-related content
-
     const viewResume = page.getByLabel(strings.aria.resume.view);
     await expect(viewResume).toBeVisible();
 
