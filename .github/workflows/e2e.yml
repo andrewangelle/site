@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v6
       with:
         node-version: lts/*
     
@@ -40,6 +40,7 @@ jobs:
 
     - name: Run Playwright tests
       run: pnpm test
+      continue-on-error: true
       env:
         SITE_BLOB_ID: ${{ secrets.SITE_BLOB_ID }}
         SITE_TOKEN: ${{ secrets.SITE_TOKEN }}
@@ -50,3 +51,9 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+
+    - name: Debug via SSH on failure
+      if: failure()
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 30

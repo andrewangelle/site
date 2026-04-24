@@ -20,9 +20,18 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
 
-    video: process.env.CI ? 'retain-on-failure' : 'on'
+    video: process.env.CI ? 'retain-on-failure' : 'on',
+
+    // Slow down in CI to catch race conditions
+    launchOptions: {
+      slowMo: process.env.CI ? 100 : 0,
+    },
   },
 
+    // Longer timeouts for slower CI runners
+    timeout: process.env.CI ? 60_000 : 30_000,
+    expect: { timeout: process.env.CI ? 10_000 : 5_000 },
+    
   /* Configure projects for major browsers */
   projects: [
     {
