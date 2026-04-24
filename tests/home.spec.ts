@@ -38,17 +38,17 @@ test.describe('Home Page', () => {
       .getByRole('link', { name: /GitHub/i })
       .waitFor({ state: 'visible', timeout: 10000 });
 
-    // // Check for LinkedIn link
+    // Check for LinkedIn link
     await page
       .getByRole('link', { name: /LinkedIn/i })
       .waitFor({ state: 'visible', timeout: 10000 });
 
-    // // Check for Contact link
+    // Check for Contact link
     await page
       .getByLabel(strings.aria.contact)
       .waitFor({ state: 'visible', timeout: 10000 });
 
-    // // Check for Resume link
+    // Check for Resume link
     await page
       .getByLabel(strings.aria.resume.open)
       .waitFor({ state: 'visible', timeout: 10000 });
