@@ -56,7 +56,7 @@ test.describe('Home Page', () => {
 
   test('should open resume actions', async ({ page }) => {
     await page.evaluate(() => {
-      window.scrollBy(0, 1200); // Scroll down by 500 pixels
+      window.scrollBy(0, 1200); // Scroll down by 1200 pixels
     });
 
     await scrollLinksIntoView(page);
