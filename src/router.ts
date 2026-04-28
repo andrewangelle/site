@@ -19,6 +19,13 @@ export function getRouter() {
     Sentry.init({
       dsn: sentryDsn,
       sendDefaultPii: true,
+      integrations: [
+        Sentry.tanstackRouterBrowserTracingIntegration(router),
+        Sentry.replayIntegration(),
+      ],
+      tracesSampleRate: 1.0,
+      replaysSessionSampleRate: 0.1,
+      replaysOnErrorSampleRate: 1.0,
     });
   }
 
