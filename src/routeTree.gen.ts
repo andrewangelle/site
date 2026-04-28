@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisitorsRouteImport } from './routes/visitors'
+import { Route as SimulateErrorRouteImport } from './routes/simulate-error'
 import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as IndexRouteImport } from './routes/index'
 
 const VisitorsRoute = VisitorsRouteImport.update({
   id: '/visitors',
   path: '/visitors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SimulateErrorRoute = SimulateErrorRouteImport.update({
+  id: '/simulate-error',
+  path: '/simulate-error',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResumeRoute = ResumeRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/resume': typeof ResumeRoute
+  '/simulate-error': typeof SimulateErrorRoute
   '/visitors': typeof VisitorsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/resume': typeof ResumeRoute
+  '/simulate-error': typeof SimulateErrorRoute
   '/visitors': typeof VisitorsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/resume': typeof ResumeRoute
+  '/simulate-error': typeof SimulateErrorRoute
   '/visitors': typeof VisitorsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/resume' | '/visitors'
+  fullPaths: '/' | '/resume' | '/simulate-error' | '/visitors'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/resume' | '/visitors'
-  id: '__root__' | '/' | '/resume' | '/visitors'
+  to: '/' | '/resume' | '/simulate-error' | '/visitors'
+  id: '__root__' | '/' | '/resume' | '/simulate-error' | '/visitors'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ResumeRoute: typeof ResumeRoute
+  SimulateErrorRoute: typeof SimulateErrorRoute
   VisitorsRoute: typeof VisitorsRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/visitors'
       fullPath: '/visitors'
       preLoaderRoute: typeof VisitorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/simulate-error': {
+      id: '/simulate-error'
+      path: '/simulate-error'
+      fullPath: '/simulate-error'
+      preLoaderRoute: typeof SimulateErrorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resume': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ResumeRoute: ResumeRoute,
+  SimulateErrorRoute: SimulateErrorRoute,
   VisitorsRoute: VisitorsRoute,
 }
 export const routeTree = rootRouteImport

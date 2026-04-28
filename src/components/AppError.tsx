@@ -1,18 +1,23 @@
+import * as Sentry from '@sentry/tanstackstart-react';
 import type { ErrorComponentProps } from '@tanstack/react-router';
-import { ErrorComponent, Link, useNavigate } from '@tanstack/react-router';
+import { Link, useNavigate } from '@tanstack/react-router';
+import { useEffect } from 'react';
 import { strings } from '~/utils/constants';
 
-export function AppError({ error }: ErrorComponentProps) {
+export function AppError(props: ErrorComponentProps) {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    Sentry.captureException(props);
+  }, [props]);
+
   return (
     <div className="section">
-      <ErrorComponent error={error} />
-
       <div className="name-container">
         <div className="inner">
           <Link
             aria-label={strings.aria.notFound}
-            className="title not-found"
+            className="title app-error"
             to="/"
             onKeyDown={(e) => {
               if (e.key === ' ') {
@@ -20,7 +25,8 @@ export function AppError({ error }: ErrorComponentProps) {
               }
             }}
           >
-            <h1>{strings.errorBoundary}</h1>
+            <h1>{strings.errorTitle}</h1>
+            <h2>{strings.errorSubtitle}</h2>
           </Link>
         </div>
       </div>
