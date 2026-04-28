@@ -89,3 +89,13 @@ button:not([data-testid="name-button"]) {
 .not-found {
   text-decoration: none;
 }
+
+.app-error {
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+}
+
+.simulate-error {
+  cursor: pointer;
+}
