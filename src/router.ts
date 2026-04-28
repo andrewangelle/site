@@ -18,6 +18,7 @@ export function getRouter() {
   if (!router.isServer) {
     Sentry.init({
       dsn: sentryDsn,
+      enabled: import.meta.env.PROD,
       sendDefaultPii: true,
       integrations: [
         Sentry.tanstackRouterBrowserTracingIntegration(router),
