@@ -1,4 +1,5 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import * as Sentry from '@sentry/tanstackstart-react';
 import { useNavigate } from '@tanstack/react-router';
 import { useSetAtom } from 'jotai/react';
 import { motion } from 'motion/react';
@@ -30,6 +31,7 @@ export function ResumeAction({ action }: ResumeActionLinkProps) {
 
   function navigateToViewResume() {
     navigate({ to: '/resume' });
+    Sentry.metrics.count('resume_viewed', 1);
   }
 
   if (action === 'download') {
@@ -48,6 +50,9 @@ export function ResumeAction({ action }: ResumeActionLinkProps) {
             aria-label={strings.aria.resume.download}
             style={isFocusWithin ? { marginBottom: 3 } : {}}
             onFocus={() => setActiveLink(strings[action])}
+            onClick={() => {
+              Sentry.metrics.count('resume_download', 1);
+            }}
           >
             {isMobile && (
               <h3 style={{ color: isActive ? 'skyblue' : 'white' }}>
