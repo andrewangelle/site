@@ -70,5 +70,10 @@
   "engines": {
     "node": ">=22.0.0"
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "pnpm": {
+    "overrides": {
+      "sharp": "^0.34.0"
+    }
+  }
 }
