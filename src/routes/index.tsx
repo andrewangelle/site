@@ -7,12 +7,13 @@ import { useAnimatedName } from '~/hooks/useAnimatedName';
 import { useAnimatedTitle } from '~/hooks/useAnimatedTitle';
 import { useElementRefs } from '~/hooks/useElementRefs';
 import { useIsLinksInView } from '~/hooks/useIsLinksInView';
+import { pageViewsMiddleware } from '~/services/pageViews';
 import { visitorsMiddleware } from '~/services/visitors';
 
 export const Route = createFileRoute('/')({
   notFoundComponent: NotFound,
   server: {
-    middleware: [visitorsMiddleware],
+    middleware: [visitorsMiddleware, pageViewsMiddleware],
   },
   component() {
     const refs = useElementRefs();
