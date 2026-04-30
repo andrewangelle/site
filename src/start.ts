@@ -3,8 +3,9 @@ import {
   sentryGlobalRequestMiddleware,
 } from '@sentry/tanstackstart-react';
 import { createStart } from '@tanstack/react-start';
+import { pageViewsMiddleware } from '~/services/pageViews';
 
 export const startInstance = createStart(() => ({
   requestMiddleware: [sentryGlobalRequestMiddleware],
-  functionMiddleware: [sentryGlobalFunctionMiddleware],
+  functionMiddleware: [sentryGlobalFunctionMiddleware, pageViewsMiddleware],
 }));
