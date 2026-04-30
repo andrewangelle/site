@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import { getStore } from '@netlify/blobs';
-import * as Sentry from '@sentry/tanstackstart-react';
-import { createMiddleware } from '@tanstack/react-start';
+import { createMiddleware, createServerFn } from '@tanstack/react-start';
+import { getRequest } from '@tanstack/react-start/server';
 
 export const visitorsMiddleware = createMiddleware().server(
   async ({ request, next }) => {
@@ -15,13 +15,17 @@ export const visitorsMiddleware = createMiddleware().server(
   },
 );
 
+export const getFingerprint = createServerFn().handler(async () => {
+  const request = getRequest();
+  return createFingerprint(request);
+});
+
 async function write(fingerprint: string) {
   const store = getStore({
     name: 'site-store',
     siteID: process.env.SITE_BLOB_ID,
     token: process.env.SITE_TOKEN,
   });
-  Sentry.metrics.count('page_view_unique', 1, { attributes: { fingerprint } });
   const visitors = await store.get('visitors', { type: 'json' });
   const nextState = Array.from(new Set([...visitors, fingerprint]));
   await store.setJSON('visitors', nextState);

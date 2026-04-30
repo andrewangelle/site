@@ -40,6 +40,7 @@
     "@react-pdf/renderer": "^4.3.0",
     "@tanstack/react-router": "1.168.23",
     "@tanstack/react-start": "1.167.42",
+    "@tanstack/zod-adapter": "^1.166.9",
     "dotenv": "^16.6.1",
     "husky": "^9.1.7",
     "jotai": "^2.13.0",
@@ -48,7 +49,8 @@
     "react": "^19.2.3",
     "react-device-detect": "^2.2.3",
     "react-dom": "^19.2.3",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.1.3",
