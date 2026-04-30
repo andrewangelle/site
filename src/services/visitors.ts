@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { getStore } from '@netlify/blobs';
-import { createMiddleware } from '@tanstack/react-start';
+import { createMiddleware, createServerFn } from '@tanstack/react-start';
+import { getRequest } from '@tanstack/react-start/server';
 
 export const visitorsMiddleware = createMiddleware().server(
   async ({ request, next }) => {
@@ -13,6 +14,11 @@ export const visitorsMiddleware = createMiddleware().server(
     return next();
   },
 );
+
+export const getFingerprint = createServerFn().handler(async () => {
+  const request = getRequest();
+  return createFingerprint(request);
+});
 
 async function write(fingerprint: string) {
   const store = getStore({

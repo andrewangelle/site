@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { motion } from 'motion/react';
+import { useEffect } from 'react';
 import { Links } from '~/components/Links';
 import { Name } from '~/components/Name';
 import { NotFound } from '~/components/NotFound';
@@ -7,18 +8,29 @@ import { useAnimatedName } from '~/hooks/useAnimatedName';
 import { useAnimatedTitle } from '~/hooks/useAnimatedTitle';
 import { useElementRefs } from '~/hooks/useElementRefs';
 import { useIsLinksInView } from '~/hooks/useIsLinksInView';
-import { visitorsMiddleware } from '~/services/visitors';
+import { sendPageViewMetric } from '~/services/pageViews';
+import { getFingerprint, visitorsMiddleware } from '~/services/visitors';
 
 export const Route = createFileRoute('/')({
   notFoundComponent: NotFound,
   server: {
     middleware: [visitorsMiddleware],
   },
+  async loader() {
+    return {
+      fingerprint: await getFingerprint(),
+    };
+  },
   component() {
+    const loader = Route.useLoaderData();
     const refs = useElementRefs();
     const [linksVisibilityRef] = useIsLinksInView();
     const nameAnimations = useAnimatedName();
     const titleRef = useAnimatedTitle();
+
+    useEffect(() => {
+      sendPageViewMetric(loader);
+    }, []);
     return (
       <main>
         <section ref={refs.name.section} tabIndex={-1}>
