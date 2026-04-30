@@ -31,6 +31,7 @@ export const Route = createFileRoute('/')({
     useEffect(() => {
       sendPageViewMetric(loader);
     }, []);
+
     return (
       <main>
         <section ref={refs.name.section} tabIndex={-1}>

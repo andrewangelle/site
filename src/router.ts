@@ -24,10 +24,12 @@ export function getRouter() {
         Sentry.tanstackRouterBrowserTracingIntegration(router),
         Sentry.replayIntegration(),
         Sentry.linkedErrorsIntegration(),
+        Sentry.consoleLoggingIntegration({ levels: ['log', 'warn', 'error'] }),
       ],
       tracesSampleRate: 1.0,
       replaysSessionSampleRate: 0.1,
       replaysOnErrorSampleRate: 1.0,
+      enableLogs: true,
     });
   }
 
