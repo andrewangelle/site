@@ -1,15 +1,10 @@
-import * as Sentry from '@sentry/tanstackstart-react';
 import { createFileRoute } from '@tanstack/react-router';
 import { useEffect, useState } from 'react';
 
 export const Route = createFileRoute('/simulate-error')({
   component() {
     const [shouldError, setShouldError] = useState(false);
-    useEffect(() => {
-      Sentry.logger.info('User triggered test log', {
-        log_source: 'sentry_test',
-      });
-    }, []);
+
     return (
       <div className="section">
         <div className="name-container">
