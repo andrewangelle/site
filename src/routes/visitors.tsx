@@ -11,10 +11,12 @@ export const Route = createFileRoute('/visitors')({
           token: process.env.SITE_TOKEN,
         });
 
-        const visitors = await store.get('visitors', { type: 'json' });
+        const visitors = await store.list({
+          prefix: 'visitors/',
+        });
 
         const data = JSON.stringify({
-          count: visitors.length ?? 0,
+          count: visitors.blobs.length ?? 0,
         });
 
         const options = {
