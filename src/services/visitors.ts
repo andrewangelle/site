@@ -1,17 +1,23 @@
 import crypto from 'node:crypto';
 import { getStore } from '@netlify/blobs';
+import * as Sentry from '@sentry/tanstackstart-react';
 import { createMiddleware, createServerFn } from '@tanstack/react-start';
 import { getRequest } from '@tanstack/react-start/server';
+import { strings } from '~/utils/constants';
 
 export const visitorsMiddleware = createMiddleware().server(
   async ({ request, next }) => {
     const skip = process.env.CI || process.env.NODE_ENV === 'test';
 
+    const response = await next();
+
     if (!skip) {
-      await write(createFingerprint(request));
+      void write(createFingerprint(request)).catch((e) => {
+        Sentry.logger.error(strings.errors.writeVisitors, e);
+      });
     }
 
-    return next();
+    return response;
   },
 );
 
@@ -26,9 +32,8 @@ async function write(fingerprint: string) {
     siteID: process.env.SITE_BLOB_ID,
     token: process.env.SITE_TOKEN,
   });
-  const visitors = await store.get('visitors', { type: 'json' });
-  const nextState = Array.from(new Set([...visitors, fingerprint]));
-  await store.setJSON('visitors', nextState);
+
+  await store.set(`visitors/${fingerprint}`, '1');
 }
 
 function createFingerprint(req: Request): string {

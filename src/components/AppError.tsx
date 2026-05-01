@@ -25,8 +25,8 @@ export function AppError(props: ErrorComponentProps) {
               }
             }}
           >
-            <h1>{strings.errorTitle}</h1>
-            <h2>{strings.errorSubtitle}</h2>
+            <h1>{strings.errors.fallbackTitle}</h1>
+            <h2>{strings.errors.fallbackSubtitle}</h2>
           </Link>
         </div>
       </div>

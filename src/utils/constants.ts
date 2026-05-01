@@ -12,9 +12,6 @@ export const strings = {
   linkedin: 'LinkedIn',
   resume: 'Resume',
   pdf: 'PDF',
-  notFound: 'Page Not Found',
-  errorTitle: 'Yikes',
-  errorSubtitle: 'go back home',
   backToLinks: 'Close',
   download: 'Download',
   view: 'View',
@@ -35,6 +32,12 @@ export const strings = {
       view: "View Andrew Angelle's resume as a pdf",
       download: "Download Andrew Angelle's resume as a pdf",
     },
+  },
+  errors: {
+    fallbackTitle: 'Yikes',
+    fallbackSubtitle: 'go back home',
+    notFound: 'Page Not Found',
+    writeVisitors: 'Failed to write fingerprint to storage',
   },
 };
 

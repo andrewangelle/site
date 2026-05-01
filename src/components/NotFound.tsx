@@ -28,7 +28,7 @@ export function NotFound(props: NotFoundRouteProps) {
               }
             }}
           >
-            <h1>{strings.notFound}</h1>
+            <h1>{strings.errors.notFound}</h1>
           </Link>
         </div>
       </div>
