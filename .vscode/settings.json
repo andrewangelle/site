@@ -19,13 +19,12 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
-  },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  
+  },  
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
 },
   "js/ts.experimental.useTsgo": true,
-  "js/ts.tsdk": "node_modules/typescript/lib"
+  "js/ts.tsdk": "node_modules/typescript/lib",
+  "typescript.native-preview.tsdk": "/Users/andrewangelle/code/site/node_modules/@typescript/native-preview"
 }
