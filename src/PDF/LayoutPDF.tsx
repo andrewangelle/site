@@ -1,12 +1,13 @@
 import type { ViewProps } from '@react-pdf/renderer';
 import { View } from '@react-pdf/renderer';
-import type { ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
 import { cloneElement } from 'react';
 import { layout } from '~/PDF/theme';
 
 type LayoutProps = { children: ReactNode } & ViewProps;
 
-export function Row({ children, ...props }: LayoutProps) {
+export function Row(props: LayoutProps) {
+  const children = props.children as ReactElement<LayoutProps>[];
   const MainSection = cloneElement(children?.[0]);
   const SideSection = cloneElement(children?.[1]);
   return (
