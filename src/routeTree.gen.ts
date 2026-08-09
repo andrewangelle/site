@@ -9,19 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VisitorsRouteImport } from './routes/visitors'
-import { Route as SimulateErrorRouteImport } from './routes/simulate-error'
-import { Route as ResumeRouteImport } from './routes/resume'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResumeRouteImport } from './routes/resume'
+import { Route as SimulateErrorRouteImport } from './routes/simulate-error'
+import { Route as VisitorsRouteImport } from './routes/visitors'
 
-const VisitorsRoute = VisitorsRouteImport.update({
-  id: '/visitors',
-  path: '/visitors',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SimulateErrorRoute = SimulateErrorRouteImport.update({
-  id: '/simulate-error',
-  path: '/simulate-error',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResumeRoute = ResumeRouteImport.update({
@@ -29,9 +24,14 @@ const ResumeRoute = ResumeRouteImport.update({
   path: '/resume',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const SimulateErrorRoute = SimulateErrorRouteImport.update({
+  id: '/simulate-error',
+  path: '/simulate-error',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VisitorsRoute = VisitorsRouteImport.update({
+  id: '/visitors',
+  path: '/visitors',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -71,18 +71,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/visitors': {
-      id: '/visitors'
-      path: '/visitors'
-      fullPath: '/visitors'
-      preLoaderRoute: typeof VisitorsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/simulate-error': {
-      id: '/simulate-error'
-      path: '/simulate-error'
-      fullPath: '/simulate-error'
-      preLoaderRoute: typeof SimulateErrorRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resume': {
@@ -92,11 +85,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResumeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/simulate-error': {
+      id: '/simulate-error'
+      path: '/simulate-error'
+      fullPath: '/simulate-error'
+      preLoaderRoute: typeof SimulateErrorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/visitors': {
+      id: '/visitors'
+      path: '/visitors'
+      fullPath: '/visitors'
+      preLoaderRoute: typeof VisitorsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
