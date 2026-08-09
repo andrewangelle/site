@@ -2,15 +2,24 @@ import type { Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { strings } from '~/utils/constants';
 
-function delay(ms = 1000) {
-  return new Promise<void>((res) => setTimeout(() => res(), ms));
-}
-
+/**
+ * Two things make clicking the name button racy:
+ *
+ * - The page is server rendered, so the button is in the DOM and clickable
+ *   before React has hydrated. A click that lands first is dropped silently.
+ * - The button is `position: fixed` at the center of the viewport, so once the
+ *   links are on screen they cover it and swallow pointer events. Each attempt
+ *   scrolls back to the top so the button is never behind the links overlay.
+ */
 async function scrollLinksIntoView(page: Page) {
-  const name = page.getByRole('button').first();
+  const name = page.getByTestId('name-button');
   await expect(name).toBeVisible();
-  await name.click();
-  await delay();
+
+  await expect(async () => {
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await name.click({ timeout: 5_000 });
+    await expect(page.locator('.links')).toBeVisible({ timeout: 5_000 });
+  }).toPass({ timeout: 30_000 });
 }
 
 test.describe('Home Page', () => {
@@ -27,10 +36,6 @@ test.describe('Home Page', () => {
   });
 
   test('should scroll navigation links into view', async ({ page }) => {
-    await page.evaluate(() => {
-      window.scrollBy(0, 720); // Scroll down by 500 pixels
-    });
-
     await scrollLinksIntoView(page);
 
     // Check for GitHub link
@@ -55,10 +60,6 @@ test.describe('Home Page', () => {
   });
 
   test('should open resume actions', async ({ page }) => {
-    await page.evaluate(() => {
-      window.scrollBy(0, 1200); // Scroll down by 1200 pixels
-    });
-
     await scrollLinksIntoView(page);
 
     await page.getByLabel(strings.aria.resume.open).click();
